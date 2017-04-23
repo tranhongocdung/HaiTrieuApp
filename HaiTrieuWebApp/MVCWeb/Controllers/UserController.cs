@@ -53,7 +53,7 @@ namespace MVCWeb.Controllers
 
                     if (roles.Contains("Admin"))
                     {
-                        return RedirectToAction("Create", "Order");
+                        return RedirectToAction("Edit", "Order");
                     }
                 }
 

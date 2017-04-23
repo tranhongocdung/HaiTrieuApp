@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<div class="row">
+    &nbsp;
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Thông tin khách hàng
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Tên khách hàng</label>
+                            <input type="text" class="form-control" id="txtCustomerName"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Điện thoại</label>
+                            <input type="text" class="form-control" id="txtPhoneNo"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="txtEmail"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input type="text" class="form-control" id="txtAddress"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Ghi chú</label>
+                            <input type="text" class="form-control" id="txtNote"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Thông tin đơn hàng
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-hover" id="product-order">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                #
+                            </th>
+                            <th class="text-center">
+                                Tên sản phẩm
+                            </th>
+                            <th class="text-center">
+                                Đơn giá
+                            </th>
+                            <th class="text-center">
+                                Số lượng
+                            </th>
+                            <th class="text-center">
+                                Thành tiền
+                            </th>
+                            <th style="width: 50px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-row-container">
+                        <tr>
+                            <td class="text-center count-no">
+                                1
+                            </td>
+                            <td style="width: 40%">
+                                <a href="#" class="product-name" data-type="select2" data-value="0">Chọn sản phẩm</a>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Đơn giá" class="form-control unit-price"/>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Số lượng" class="form-control quantity"/>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Thành tiền" class="form-control totalcash" readonly="readonly"/>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm remove-row"><span class="glyphicon glyphicon-remove"></span></button>
+                            </td>
+                        </tr>
+                        <tr id="tr-for-append"></tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-primary" id="add-product-row">Thêm sản phẩm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section OptionalCss
+{
+    <link href="~/Scripts/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    <link href="~/Scripts/x-editable/select2/select2.css" rel="stylesheet" />
+    <link href="~/Scripts/x-editable/select2/select2-bootstrap.css" rel="stylesheet" />
+}
+
+@section OptionalJs
+{
+    <script src="~/Scripts/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <script src="~/Scripts/x-editable/select2/select2.js"></script>
+    <script src="~/Scripts/views/order-edit.js"></script>
+}
+
+
+
+   
