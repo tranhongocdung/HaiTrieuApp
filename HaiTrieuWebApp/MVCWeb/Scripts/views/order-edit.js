@@ -23,9 +23,13 @@ function initRemoveProductRowButton(container) {
     if (typeof container == "undefined") {
         var container = $("body");
     }
-    container.find(".remove-row").click(function () {
-        $(this).parent().parent().remove();
-        numberProductRow();
+    container.find(".remove-row").first().confirmation({
+        onConfirm: function() {
+            $(this).parent().parent().remove();
+            numberProductRow();
+        },
+        placement: "left",
+        title: "Xóa dòng này?"
     });
 }
 
@@ -42,6 +46,7 @@ function initXEditable(container) {
         var container = $("body");
     }
     container.find(".product-name").editable({
+        type: "select2",
         select2: {
             placeholder: "Chọn sản phẩm",
             allowClear: true,
@@ -87,5 +92,6 @@ function calculateTotalCash(container) {
         quantity.val("1");
     }
     var totalCash = container.find(".totalcash");
-    totalCash.val(parseInt(unitPrice.val()) * parseInt(quantity.val()));
+    var result = parseInt(unitPrice.val()) * parseInt(quantity.val());
+    totalCash.val(result.toLocaleString("en"));
 }

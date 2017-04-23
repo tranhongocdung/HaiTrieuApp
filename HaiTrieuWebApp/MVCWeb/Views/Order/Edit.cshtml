@@ -61,19 +61,19 @@
                 <table class="table table-bordered table-hover" id="product-order">
                     <thead>
                         <tr>
-                            <th class="text-center">
+                            <th class="text-center" style="width: 30px">
                                 #
                             </th>
                             <th class="text-center">
                                 Tên sản phẩm
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" style="width: 130px">
                                 Đơn giá
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" style="width: 130px">
                                 Số lượng
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" style="width: 130px">
                                 Thành tiền
                             </th>
                             <th style="width: 50px"></th>
@@ -84,8 +84,8 @@
                             <td class="text-center count-no">
                                 1
                             </td>
-                            <td style="width: 40%">
-                                <a href="#" class="product-name" data-type="select2" data-value="0">Chọn sản phẩm</a>
+                            <td>
+                                <a href="#" class="product-name" data-value="0">Chọn sản phẩm</a>
                             </td>
                             <td>
                                 <input type="text" placeholder="Đơn giá" class="form-control unit-price"/>
@@ -97,7 +97,7 @@
                                 <input type="text" placeholder="Thành tiền" class="form-control totalcash" readonly="readonly"/>
                             </td>
                             <td>
-                                <button class="btn btn-danger btn-sm remove-row"><span class="glyphicon glyphicon-remove"></span></button>
+                                <button class="btn btn-danger btn-sm remove-row" data-toggle="confirmation"><span class="glyphicon glyphicon-remove"></span></button>
                             </td>
                         </tr>
                         <tr id="tr-for-append"></tr>
@@ -120,6 +120,7 @@
 {
     <script src="~/Scripts/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="~/Scripts/x-editable/select2/select2.js"></script>
+    <script src="~/Scripts/confirmation/bootstrap-confirmation.min.js"></script>
     <script src="~/Scripts/views/order-edit.js"></script>
 }
 
