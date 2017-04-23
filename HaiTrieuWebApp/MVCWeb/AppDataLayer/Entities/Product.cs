@@ -10,5 +10,6 @@ namespace MVCWeb.AppDataLayer.Entities
         public int Id { get; set; }
         public string ProductName { get; set; }
         public int UnitPrice { get; set; }
+        public string ShortDescription { get; set; }
     }
 }

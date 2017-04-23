@@ -316,11 +316,3 @@ table.dataTable thead .sorting:after {
 
 .form-control.datepicker-control[readonly] { cursor: pointer;background-color: #fff}
 .table td {vertical-align: middle !important}
-
-/*Custome CSS code for application*/
-#cartracking-table td {height: 55px}
-#car-tracking-edit-modal .modal-footer {margin-top: 0}
-.alert.alert-small { padding: 5px;margin-bottom: 10px}
-.notification-container { height: 32px}
-.edit-loader {display: block;margin: 2px auto 0 auto}
-#manage-loader { position: fixed;top: 350px;display: none}

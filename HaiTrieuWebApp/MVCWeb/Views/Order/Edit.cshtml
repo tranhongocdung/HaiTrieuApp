@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Ghi chú</label>
+                            <label>Ghi chú riêng của khách hàng</label>
                             <input type="text" class="form-control" id="txtNote"/>
                         </div>
                     </div>
@@ -64,8 +64,14 @@
                             <th class="text-center" style="width: 30px">
                                 #
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" style="width: 300px">
                                 Tên sản phẩm
+                            </th>
+                            <th class="text-center" style="width: 180px">
+                                Quy cách
+                            </th>
+                            <th class="text-center">
+                                Mô tả
                             </th>
                             <th class="text-center" style="width: 130px">
                                 Đơn giá
@@ -81,20 +87,25 @@
                     </thead>
                     <tbody id="product-row-container">
                         <tr>
-                            <td class="text-center count-no">
-                                1
-                            </td>
+                            <td class="text-center count-no"></td>
                             <td>
                                 <a href="#" class="product-name" data-value="0">Chọn sản phẩm</a>
+                                <input type="hidden" class="product-id"/>
+                            </td>
+                            <td class="text-center">
+                                <span class="text-danger short-description"></span>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Mô tả" class="form-control product-note"/>
                             </td>
                             <td>
                                 <input type="text" placeholder="Đơn giá" class="form-control unit-price"/>
                             </td>
                             <td>
-                                <input type="text" placeholder="Số lượng" class="form-control quantity"/>
+                                <input type="text" placeholder="Số lượng" class="form-control quantity" value="1"/>
                             </td>
                             <td>
-                                <input type="text" placeholder="Thành tiền" class="form-control totalcash" readonly="readonly"/>
+                                <input type="text" placeholder="Thành tiền" class="form-control product-cash" data-value="" readonly="readonly"/>
                             </td>
                             <td>
                                 <button class="btn btn-danger btn-sm remove-row" data-toggle="confirmation"><span class="glyphicon glyphicon-remove"></span></button>
@@ -103,7 +114,68 @@
                         <tr id="tr-for-append"></tr>
                     </tbody>
                 </table>
-                <button class="btn btn-primary" id="add-product-row">Thêm sản phẩm</button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="pull-left">
+                            <button class="btn btn-primary" id="add-product-row"><span class="glyphicon glyphicon-plus"></span> Thêm sản phẩm</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pull-right">
+                            <table class="pull-right">
+                                <tr>
+                                    <td style="width: 100px">
+                                        <h4>Tổng tiền </h4>
+                                    </td>
+                                    <td style="width: 130px">
+                                        <button class="btn btn-primary btn-block" id="total-cash">0</button>
+                                    </td>
+                                    <td style="width: 50px" class="text-right">
+                                        <h4>VNĐ</h4>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="pull-right">
+                                <tr>
+                                    <td style="width: 100px">
+                                        <h4>Chiết khấu </h4>
+                                    </td>
+                                    <td style="width: 180px">
+                                        <div class="input-group" style="margin-right: 15px">
+                                            <input type="text" class="form-control" id="discount">
+                                            <div class="input-group-addon">
+                                                <select id="discount-type" style="background: transparent;border: 0">
+                                                    <option value="0">%</option>
+                                                    <option value="1">VNĐ</option>
+                                                </select>
+                                                
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="width: 130px">
+                                        <button class="btn btn-danger btn-block" id="total-discount">0</button>
+                                    </td>
+                                    <td style="width: 50px" class="text-right">
+                                        <h4>VNĐ</h4>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="pull-right">
+                                <tr>
+                                    <td style="width: 100px">
+                                        <h4>Thực thu </h4>
+                                    </td>
+                                    <td style="width: 130px">
+                                        <button class="btn btn-success btn-block" id="final-cash">0</button>
+                                    </td>
+                                    <td style="width: 50px" class="text-right">
+                                        <h4>VNĐ</h4>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -121,6 +193,7 @@
     <script src="~/Scripts/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
     <script src="~/Scripts/x-editable/select2/select2.js"></script>
     <script src="~/Scripts/confirmation/bootstrap-confirmation.min.js"></script>
+    <script src="~/Scripts/jquery.numeric.min.js"></script>
     <script src="~/Scripts/views/order-edit.js"></script>
 }
 
