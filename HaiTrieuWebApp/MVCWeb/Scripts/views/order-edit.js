@@ -10,7 +10,31 @@ $(document).ready(function() {
     initNumericTextbox("#discount");
     initDiscountTypeOnChange();
     initSearchCustomerTextbox();
+    initCustomerTypeToggle();
 });
+
+function initCustomerTypeToggle() {
+    $("#chkCustomerType").bootstrapToggle({
+        on: "Khách mới",
+        off: "Khách cũ"
+    });
+    if ($("#customer-id").val() == "") {
+        $("#chkCustomerType").bootstrapToggle("disable");
+    }
+    $("#chkCustomerType").change(function() {
+        if ($(this).prop("checked")) {
+            $("#customer-id").val("");
+            $("#txtCustomerName").val("").removeAttr("readonly");
+            $("#txtPhoneNo").val("").removeAttr("readonly");
+            $("#txtEmail").val("").removeAttr("readonly");
+            $("#txtAddress").val("").removeAttr("readonly");
+            $("#txtDistrict").val("").removeAttr("readonly");
+            $("#txtCity").val("").removeAttr("readonly");
+            $("#txtCustomerNote").val("").removeAttr("readonly");
+            $("#chkCustomerType").bootstrapToggle("disable");
+        }
+    });
+}
 
 function initSearchCustomerTextbox() {
     $("#txtSearchCustomer").bootcomplete({
@@ -19,6 +43,8 @@ function initSearchCustomerTextbox() {
         onSelect:function(id) {
             $("#txtSearchCustomer").val("");
             loadCustomerDetail(id);
+            $("#chkCustomerType").bootstrapToggle("enable");
+            $("#chkCustomerType").bootstrapToggle("off");
         }
     });
 }
@@ -29,13 +55,14 @@ function loadCustomerDetail(id) {
         data: {id : id},
         dataType: "json",
         success: function (data) {
-            $("#txtCustomerName").val(data.CustomerName);
-            $("#txtPhoneNo").val(data.PhoneNo);
-            $("#txtEmail").val(data.Email);
-            $("#txtAddress").val(data.Address);
-            $("#txtDistrict").val(data.District);
-            $("#txtCity").val(data.City);
-            $("#txtCustomerNote").val(data.Note);
+            $("#customer-id").val(data.Id);
+            $("#txtCustomerName").val(data.CustomerName).attr("readonly","readonly");
+            $("#txtPhoneNo").val(data.PhoneNo).attr("readonly", "readonly");
+            $("#txtEmail").val(data.Email).attr("readonly", "readonly");
+            $("#txtAddress").val(data.Address).attr("readonly", "readonly");
+            $("#txtDistrict").val(data.District).attr("readonly", "readonly");
+            $("#txtCity").val(data.City).attr("readonly", "readonly");
+            $("#txtCustomerNote").val(data.Note).attr("readonly", "readonly");
         }
     });
 }
@@ -64,11 +91,12 @@ function initAddProductRowButton() {
         var appendRow = $("#tr-for-append");
         appendRow.append(productRow);
         appendRow.removeAttr("id");
+        appendRow.addClass("product-order-row");
         initXEditable(appendRow);
         initRemoveProductRowButton(appendRow);
         initNumericTextbox(".unit-price", appendRow);
         initNumericTextbox(".quantity", appendRow);
-        $("#product-row-container").append("<tr id=\"tr-for-append\"></tr>");
+        $("#product-order-row-container").append("<tr id=\"tr-for-append\"></tr>");
         numberProductRow();
     });
 }
@@ -160,7 +188,7 @@ function calculateCashForProductRow(container) {
 function calculateTotalCash() {
     var totalCash = 0;
     var discount = 0;
-    $("#product-row-container tr:not(#tr-for-append)").each(function() {
+    $("tr.product-order-row").each(function() {
         if ($(this).find(".product-id").val() != "") {
             totalCash = totalCash + parseInt($(this).find(".product-cash").data("value"));
         }

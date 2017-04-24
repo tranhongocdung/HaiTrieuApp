@@ -30,6 +30,6 @@ namespace MVCWeb.AppDataLayer.Entities
         public string City { get; set; }
         public string Note { get; set; }
         public DateTime? CreatedOn { get; set; }
-        //public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -79,7 +79,7 @@
                     success: function( json ) {
                         var results = ''
                         $.each( json, function(i, j) {
-                            results += '<a href="#" class="list-group-item" data-id="'+j.Id+'" data-label="'+j.Label+'">'+j.Label+'</a>'
+                            results += '<a href="#" class="list-group-item list-group-item-success" data-id="' + j.Id + '" data-label="' + j.Label + '">' + j.Label + '</a>'
                         });
                         
                         $(that).next('.'+settings.menuClass).html(results)

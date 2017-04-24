@@ -15,6 +15,8 @@ namespace MVCWeb.AppDataLayer.Entities
         public string Description { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime? CompletedOn { get; set; }
+        public int? DiscountType { get; set; }
+        public int? DiscountValue { get; set; }
         public int OrderStatusId { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVCWeb.AppDataLayer.Entities
@@ -9,7 +10,7 @@ namespace MVCWeb.AppDataLayer.Entities
         [Key]
         public int Id { get; set; }
         public string Label { get; set; }
-
+        public virtual ICollection<Order> Orders { get; set; }
         //Enum
         public const int Pending = 0;
         public const int Completed = 1;
