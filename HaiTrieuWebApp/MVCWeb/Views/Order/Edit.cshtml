@@ -16,6 +16,23 @@
             </div>
             <div class="panel-body">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <table>
+                                <tr>
+                                    <td style="width: 90px">
+                                        <strong>Tìm khách:</strong>
+                                    </td>
+                                    <td style="width: 200px">
+                                        <input type="text" class="form-control" placeholder="Từ khóa..." id="txtSearchCustomer" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Tên khách hàng</label>
@@ -36,10 +53,22 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Địa chỉ</label>
                             <input type="text" class="form-control" id="txtAddress"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Quận/Huyện</label>
+                            <input type="text" class="form-control" id="txtDistrict"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Tỉnh/Thành phố</label>
+                            <input type="text" class="form-control" id="txtCity" />
                         </div>
                     </div>
                 </div>
@@ -47,7 +76,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Ghi chú riêng của khách hàng</label>
-                            <input type="text" class="form-control" id="txtNote"/>
+                            <input type="text" class="form-control" id="txtCustomerNote"/>
                         </div>
                     </div>
                 </div>
@@ -183,13 +212,15 @@
     </div>
 </div>
 
-<input type="hidden" id="productname-datasource" value="@Url.Action("GetProductName","DataSource")"/>
+<input type="hidden" id="product-name-datasource" value="@Url.Action("GetProductName", "DataSource")"/>
+<input type="hidden" id="customer-suggestion-datasource" value="@Url.Action("GetCustomerSuggestion","DataSource")" />
 
 @section OptionalCss
 {
     <link href="~/Scripts/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
     <link href="~/Scripts/x-editable/select2/select2.css" rel="stylesheet" />
     <link href="~/Scripts/x-editable/select2/select2-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootcomplete/bootcomplete.css" rel="stylesheet" />
 }
 
 @section OptionalJs
@@ -198,6 +229,7 @@
     <script src="~/Scripts/x-editable/select2/select2.js"></script>
     <script src="~/Scripts/confirmation/bootstrap-confirmation.min.js"></script>
     <script src="~/Scripts/jquery.numeric.min.js"></script>
+    <script src="~/Content/bootcomplete/jquery.bootcomplete.js"></script>
     <script src="~/Scripts/views/order-edit.js"></script>
 }
 

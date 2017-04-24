@@ -9,7 +9,36 @@ $(document).ready(function() {
     initNumericTextbox(".quantity");
     initNumericTextbox("#discount");
     initDiscountTypeOnChange();
+    initSearchCustomerTextbox();
 });
+
+function initSearchCustomerTextbox() {
+    $("#txtSearchCustomer").bootcomplete({
+        url: $("#customer-suggestion-datasource").val(),
+        fillTextbox: false,
+        onSelect:function(id) {
+            $("#txtSearchCustomer").val("");
+            loadCustomerDetail(id);
+        }
+    });
+}
+
+function loadCustomerDetail(id) {
+    $.ajax({
+        url: $("#customer-suggestion-datasource").val(),
+        data: {id : id},
+        dataType: "json",
+        success: function (data) {
+            $("#txtCustomerName").val(data.CustomerName);
+            $("#txtPhoneNo").val(data.PhoneNo);
+            $("#txtEmail").val(data.Email);
+            $("#txtAddress").val(data.Address);
+            $("#txtDistrict").val(data.District);
+            $("#txtCity").val(data.City);
+            $("#txtCustomerNote").val(data.Note);
+        }
+    });
+}
 
 function initDiscountTypeOnChange() {
     $("#discount-type").change(function() {
@@ -81,7 +110,7 @@ function initXEditable(container) {
                 return item.Id;
             },
             ajax: {
-                url: $("#productname-datasource").val(),
+                url: $("#product-name-datasource").val(),
                 dataType: "json",
                 data: function (term, page) {
                     return { query: term };
@@ -100,7 +129,7 @@ function initXEditable(container) {
                 return item.ProductName;
             },
             initSelection: function (element, callback) {
-                return $.post($("#productname-datasource").val(), { id: element.val() }, function (data) {
+                return $.post($("#product-name-datasource").val(), { id: element.val() }, function (data) {
                     callback(data);
                 });
             }

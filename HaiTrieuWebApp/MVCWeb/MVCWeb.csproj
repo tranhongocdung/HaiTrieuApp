@@ -138,12 +138,15 @@
     <Compile Include="AppDataLayer\Entities\User.cs" />
     <Compile Include="AppDataLayer\FilterParams.cs" />
     <Compile Include="AppDataLayer\ReturnData.cs" />
+    <Compile Include="AppDataLayer\ReturnLabel.cs" />
     <Compile Include="AppDataLayer\Security\BaseViewPage.cs" />
     <Compile Include="AppDataLayer\Security\CustomAuthorizeAttribute.cs" />
     <Compile Include="AppDataLayer\Security\CustomPrincipal.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Content\bootcomplete\bootcomplete.css" />
+    <Content Include="Content\bootcomplete\jquery.bootcomplete.js" />
     <Content Include="Content\print.css" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
