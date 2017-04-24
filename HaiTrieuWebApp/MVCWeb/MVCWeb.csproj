@@ -129,7 +129,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppDataLayer\Entities\Customer.cs" />
     <Compile Include="AppDataLayer\Entities\DbAppContext.cs" />
+    <Compile Include="AppDataLayer\Entities\Order.cs" />
+    <Compile Include="AppDataLayer\Entities\OrderDetail.cs" />
+    <Compile Include="AppDataLayer\Entities\OrderStatus.cs" />
     <Compile Include="AppDataLayer\Entities\Product.cs" />
     <Compile Include="AppDataLayer\Entities\User.cs" />
     <Compile Include="AppDataLayer\FilterParams.cs" />
@@ -140,6 +144,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Content\print.css" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\DataSourceController.cs" />
@@ -348,6 +353,7 @@
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Scripts\x-editable\dist\LICENSE-MIT" />
     <Content Include="Scripts\x-editable\dist\README.md" />
+    <Content Include="Views\Order\Print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppDataLayer\ExtendingEntities\" />

@@ -81,7 +81,7 @@ function initXEditable(container) {
                 return item.Id;
             },
             ajax: {
-                url: "/datasource/getproductname",
+                url: $("#productname-datasource").val(),
                 dataType: "json",
                 data: function (term, page) {
                     return { query: term };
@@ -100,7 +100,7 @@ function initXEditable(container) {
                 return item.ProductName;
             },
             initSelection: function (element, callback) {
-                return $.post("/datasource/getproductname", { id: element.val() }, function (data) {
+                return $.post($("#productname-datasource").val(), { id: element.val() }, function (data) {
                     callback(data);
                 });
             }
