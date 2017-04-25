@@ -1,17 +1,33 @@
 ﻿$.fn.editable.defaults.mode = "inline";
 
-$(document).ready(function() {
+$(document).ready(function () {
     initXEditable();
     initAddProductRowButton();
     initRemoveProductRowButton();
     numberProductRow();
     initNumericTextbox(".unit-price");
     initNumericTextbox(".quantity");
-    initNumericTextbox("#discount");
+    initNumericTextbox("#discount-value");
     initDiscountTypeOnChange();
     initSearchCustomerTextbox();
     initCustomerTypeToggle();
+    initSubmitButton();
+    initExistingOrder();
 });
+
+function initExistingOrder() {
+    if ($("#order-id").val() != "") {
+        $(".customer-info").attr("readonly", "readonly");
+        $("#chkCustomerType").bootstrapToggle("off");
+        $("#chkCustomerType").bootstrapToggle("disable");
+        $(".product-order-row").each(function () {
+            calculateCashForProductRow($(this));
+        });
+        $("#discount-type").val($("#order-discount-type").val());
+        $("#discount-value").val($("#order-discount-value").val());
+        calculateTotalCash();
+    }
+}
 
 function initCustomerTypeToggle() {
     $("#chkCustomerType").bootstrapToggle({
@@ -24,13 +40,14 @@ function initCustomerTypeToggle() {
     $("#chkCustomerType").change(function() {
         if ($(this).prop("checked")) {
             $("#customer-id").val("");
-            $("#txtCustomerName").val("").removeAttr("readonly");
-            $("#txtPhoneNo").val("").removeAttr("readonly");
-            $("#txtEmail").val("").removeAttr("readonly");
-            $("#txtAddress").val("").removeAttr("readonly");
-            $("#txtDistrict").val("").removeAttr("readonly");
-            $("#txtCity").val("").removeAttr("readonly");
-            $("#txtCustomerNote").val("").removeAttr("readonly");
+            $("#txtCustomerName").val("");
+            $("#txtPhoneNo").val("");
+            $("#txtEmail").val("");
+            $("#txtAddress").val("");
+            $("#txtDistrict").val("");
+            $("#txtCity").val("");
+            $("#txtCustomerNote").val("");
+            $(".customer-info").attr("readonly", "readonly");
             $("#chkCustomerType").bootstrapToggle("disable");
         }
     });
@@ -56,13 +73,14 @@ function loadCustomerDetail(id) {
         dataType: "json",
         success: function (data) {
             $("#customer-id").val(data.Id);
-            $("#txtCustomerName").val(data.CustomerName).attr("readonly","readonly");
-            $("#txtPhoneNo").val(data.PhoneNo).attr("readonly", "readonly");
-            $("#txtEmail").val(data.Email).attr("readonly", "readonly");
-            $("#txtAddress").val(data.Address).attr("readonly", "readonly");
-            $("#txtDistrict").val(data.District).attr("readonly", "readonly");
-            $("#txtCity").val(data.City).attr("readonly", "readonly");
-            $("#txtCustomerNote").val(data.Note).attr("readonly", "readonly");
+            $("#txtCustomerName").val(data.CustomerName);
+            $("#txtPhoneNo").val(data.PhoneNo);
+            $("#txtEmail").val(data.Email);
+            $("#txtAddress").val(data.Address);
+            $("#txtDistrict").val(data.District);
+            $("#txtCity").val(data.City);
+            $("#txtCustomerNote").val(data.Note);
+            $(".customer-info").attr("readonly", "readonly");
         }
     });
 }
@@ -87,7 +105,7 @@ function initNumericTextbox(selector, container) {
 
 function initAddProductRowButton() {
     $("#add-product-row").click(function() {
-        var productRow = "<td class=\"text-center count-no\"></td><td><a href=\"#\" class=\"product-name\" data-value=\"0\">Chọn sản phẩm</a><input type=\"hidden\" class=\"product-id\"/></td><td class=\"text-center\"><span class=\"text-danger short-description\"></span></td><td><input type=\"text\" placeholder=\"Mô tả\" class=\"form-control product-note\"/></td><td><input type=\"text\" placeholder=\"Đơn giá\" class=\"form-control unit-price\"/></td><td><input type=\"text\" placeholder=\"Số lượng\" class=\"form-control quantity\"/></td><td><input type=\"text\" placeholder=\"Thành tiền\" class=\"form-control product-cash\" readonly=\"readonly\"/></td><td><button class=\"btn btn-danger btn-sm remove-row\" data-toggle=\"confirmation\"><span class=\"glyphicon glyphicon-remove\"></span></button></td>";
+        var productRow = "<td class=\"text-center count-no\"></td><td><a href=\"#\" class=\"product-name\" data-value=\"0\">Chọn sản phẩm</a><input type=\"hidden\" class=\"product-id\"/><input type=\"hidden\" class=\"order-detail-id\" value=\"0\"/></td><td class=\"text-center\"><span class=\"text-danger short-description\"></span></td><td><input type=\"text\" placeholder=\"Mô tả\" class=\"form-control product-note\"/></td><td><input type=\"text\" placeholder=\"Đơn giá\" class=\"form-control unit-price\"/></td><td><input type=\"text\" placeholder=\"Số lượng\" class=\"form-control quantity\"/></td><td><input type=\"text\" placeholder=\"Thành tiền\" class=\"form-control product-cash\" readonly=\"readonly\"/></td><td><button class=\"btn btn-danger btn-sm remove-row\" data-toggle=\"confirmation\"><span class=\"glyphicon glyphicon-remove\"></span></button></td>";
         var appendRow = $("#tr-for-append");
         appendRow.append(productRow);
         appendRow.removeAttr("id");
@@ -105,7 +123,7 @@ function initRemoveProductRowButton(container) {
     if (typeof container == "undefined") {
         var container = $("body");
     }
-    container.find(".remove-row").first().confirmation({
+    container.find(".remove-row").confirmation({
         onConfirm: function() {
             $(this).parent().parent().remove();
             numberProductRow();
@@ -193,14 +211,49 @@ function calculateTotalCash() {
             totalCash = totalCash + parseInt($(this).find(".product-cash").data("value"));
         }
     });
-    if ($("#discount").val() != "") {
+    if ($("#discount-value").val() != "") {
         if ($("#discount-type").val() == "0") {
-            discount = totalCash * parseInt($("#discount").val()) / 100;
+            discount = totalCash * parseInt($("#discount-value").val()) / 100;
         } else {
-            discount = parseInt($("#discount").val());
+            discount = parseInt($("#discount-value").val());
         }
         $("#total-discount").html(discount.toLocaleString("en"));
     }
     $("#total-cash").html(totalCash.toLocaleString("en"));
     $("#final-cash").html((totalCash-discount).toLocaleString("en"));
+}
+
+function initSubmitButton() {
+    $("#btnSubmit").click(function () {
+        if (validateOrderBeforeSend())
+            $("#frmOrderEdit").submit();
+    });
+}
+
+function validateOrderBeforeSend() {
+    if ($("#customer-id").val() == "" || $("#txtCustomerName").val() == "") {
+        showMessage("Vui lòng chọn khách hàng hoặc nhập ít nhất tên khách hàng!", "error");
+        return false;
+    }
+    $("#order-discount-type").val($("#discount-type").val());
+    $("#order-discount-value").val($("#discount-value").val());
+    var orderDetails = [];
+    $(".product-order-row").each(function() {
+        var obj = $(this);
+        if (obj.find(".product-id") != "" && obj.find(".unit-price") != "" && obj.find(".quantity") != "") {
+            orderDetails.push({
+                Id: obj.find(".order-detail-id").val(),
+                ProductId: obj.find(".product-id").val(),
+                UnitPrice: obj.find(".unit-price").val(),
+                Quantity: obj.find(".quantity").val(),
+                Note: obj.find(".product-note").val()
+            });
+        }
+    });
+    $("#order-detail-json").val(JSON.stringify(orderDetails));
+    return true;
+}
+
+function orderEditCallBack(result) {
+    showMessage("Đã lưu đơn hàng thành công!", "success");
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model MVCWeb.Models.OrderEditModel
 @{
     ViewBag.Title = "Đơn hàng";
     Layout = "~/Views/Shared/MainLayout.cshtml";
@@ -11,99 +11,113 @@
 
 <div class="row">
 <div class="col-md-12">
-<div class="panel panel-warning">
-    <div class="panel-heading">
-        Thông tin đơn hàng
+@using (Ajax.BeginForm("Edit", "Order", new AjaxOptions
+{
+    OnSuccess = "orderEditCallBack",
+    LoadingElementId = "orderEditLoading"
+}, new { @id = "frmOrderEdit" }))
+{
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            Thông tin đơn hàng
+        </div>
+        <div class="panel-body">
+            <div class="row" style="margin-bottom: 15px">
+                <div class="col-md-12">
+                    <table class="pull-left">
+                        <tr>
+                            <td style="width: 90px">
+                                <strong>Tìm khách:</strong>
+                            </td>
+                            <td style="width: 200px">
+                                <input type="text" class="form-control" placeholder="Từ khóa..." id="txtSearchCustomer"/>
+                            </td>
+                            <td style="width: 30px"></td>
+                            <td>
+                                <input type="checkbox" id="chkCustomerType" checked="checked">
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="pull-right">
+                        <tr>
+                            <td style="width: 40px">
+                                <img src="~/Content/images/ajax-loader-2.gif" style="display: none" id="orderEditLoading"/>
+                            </td>
+                            <td class="text-right" style="width: 130px">
+                                <button class="btn btn-danger" type="button" id="btnSubmit"><span class="glyphicon glyphicon-floppy-disk"></span> Lưu đơn hàng</button>
+                            </td>
+                            <td class="text-right" style="width: 140px">
+                                <button class="btn btn-primary" type="button" id="btnPrint"><span class="glyphicon glyphicon-print"></span> In đơn hàng</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tên khách hàng</label>
+                        @Html.TextBoxFor(o => o.Customer.CustomerName, new {@class = "form-control customer-info", @id = "txtCustomerName"})
+                        @Html.HiddenFor(o => o.Customer.Id, new {@id = "customer-id"})
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Điện thoại</label>
+                        @Html.TextBoxFor(o => o.Customer.PhoneNo, new {@class = "form-control customer-info", @id = "txtPhoneNo"})
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Email</label>
+                        @Html.TextBoxFor(o => o.Customer.Email, new {@class = "form-control customer-info", @id = "txtEmail"})
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        @Html.TextBoxFor(o => o.Customer.Address, new {@class = "form-control customer-info", @id = "txtAddress"})
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Quận/Huyện</label>
+                        @Html.TextBoxFor(o => o.Customer.District, new {@class = "form-control customer-info", @id = "txtDistrict"})
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tỉnh/Thành phố</label>
+                        @Html.TextBoxFor(o => o.Customer.City, new {@class = "form-control customer-info", @id = "txtCity"})
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label>Ghi chú cho khách hàng</label>
+                        @Html.TextBoxFor(o => o.Customer.Note, new {@class = "form-control customer-info", @id = "txtCustomerNote"})
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Ghi chú cho đơn hàng</label>
+                        @Html.TextBoxFor(o => o.Order.Note, new {@class = "form-control", @id = "txtOrderNote"})
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="panel-body">
-        <div class="row" style="margin-bottom: 15px">
-            <div class="col-md-12">
-                <table class="pull-left">
-                    <tr>
-                        <td style="width: 90px">
-                            <strong>Tìm khách:</strong>
-                        </td>
-                        <td style="width: 200px">
-                            <input type="text" class="form-control" placeholder="Từ khóa..." id="txtSearchCustomer"/>
-                        </td>
-                        <td style="width: 30px"></td>
-                        <td>
-                            <input type="checkbox" id="chkCustomerType" checked="checked">
-                        </td>
-                    </tr>
-                </table>
-                <table class="pull-right">
-                    <tr>
-                        <td style="width: 150px">
-                            <button class="btn btn-primary"><span class="glyphicon glyphicon-print"></span> In đơn hàng</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-danger"><span class="glyphicon glyphicon-floppy-disk"></span> Lưu đơn hàng</button>
-                        </td>
-                    </tr>
-                </table>
-                <div class="clear"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Tên khách hàng</label>
-                    <input type="text" class="form-control" id="txtCustomerName"/>
-                    <input type="hidden" id="customer-id"/>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Điện thoại</label>
-                    <input type="text" class="form-control" id="txtPhoneNo"/>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" id="txtEmail"/>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Địa chỉ</label>
-                    <input type="text" class="form-control" id="txtAddress"/>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Quận/Huyện</label>
-                    <input type="text" class="form-control" id="txtDistrict"/>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label>Tỉnh/Thành phố</label>
-                    <input type="text" class="form-control" id="txtCity"/>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-9">
-                <div class="form-group">
-                    <label>Ghi chú cho khách hàng</label>
-                    <input type="text" class="form-control" id="txtCustomerNote"/>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Ghi chú cho đơn hàng</label>
-                    <input type="text" class="form-control" id="txtOrderNote" />
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    @Html.HiddenFor(o => o.Order.DiscountType, new { @id = "order-discount-type"})
+    @Html.HiddenFor(o => o.Order.DiscountValue, new { @id = "order-discount-value" })
+    @Html.HiddenFor(o => o.OrderDetailJson, new { @id = "order-detail-json" })
+    @Html.HiddenFor(o => o.Order.Id, new { @id = "order-id" })
+}
 
 <div class="panel panel-warning">
     <div class="panel-heading">
@@ -112,58 +126,94 @@
     <div class="panel-body">
         <table class="table table-bordered table-hover" id="product-order">
             <thead>
-                <tr>
-                    <th class="text-center" style="width: 30px">
-                        #
-                    </th>
-                    <th class="text-center" style="width: 300px">
-                        Tên sản phẩm
-                    </th>
-                    <th class="text-center" style="width: 180px">
-                        Quy cách
-                    </th>
-                    <th class="text-center">
-                        Mô tả
-                    </th>
-                    <th class="text-center" style="width: 130px">
-                        Đơn giá
-                    </th>
-                    <th class="text-center" style="width: 130px">
-                        Số lượng
-                    </th>
-                    <th class="text-center" style="width: 130px">
-                        Thành tiền
-                    </th>
-                    <th style="width: 50px"></th>
-                </tr>
+            <tr>
+                <th class="text-center" style="width: 30px">
+                    #
+                </th>
+                <th class="text-center" style="width: 300px">
+                    Tên sản phẩm
+                </th>
+                <th class="text-center" style="width: 180px">
+                    Quy cách
+                </th>
+                <th class="text-center">
+                    Mô tả
+                </th>
+                <th class="text-center" style="width: 130px">
+                    Đơn giá
+                </th>
+                <th class="text-center" style="width: 130px">
+                    Số lượng
+                </th>
+                <th class="text-center" style="width: 130px">
+                    Thành tiền
+                </th>
+                <th style="width: 50px"></th>
+            </tr>
             </thead>
             <tbody id="product-order-row-container">
+            @if (Model.Order != null && Model.Order.OrderDetails != null)
+            {
+                foreach (var orderDetail in Model.Order.OrderDetails)
+                {
+                    <tr class="product-order-row">
+                        <td class="text-center count-no"></td>
+                        <td>
+                            <a href="#" class="product-name" data-value="@orderDetail.ProductId">@orderDetail.Product.ProductName</a>
+                            <input type="hidden" class="product-id" value="@orderDetail.ProductId"/>
+                            <input type="hidden" class="order-detail-id" value="@orderDetail.Id"/>
+                        </td>
+                        <td class="text-center">
+                            <span class="text-danger short-description">@orderDetail.Product.ShortDescription</span>
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Mô tả" class="form-control product-note" value="@orderDetail.Note" />
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Đơn giá" class="form-control unit-price" value="@orderDetail.UnitPrice" />
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Số lượng" class="form-control quantity" value="@orderDetail.Quantity" />
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Thành tiền" class="form-control product-cash" data-value="" readonly="readonly" />
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm remove-row" data-toggle="confirmation"><span class="glyphicon glyphicon-remove"></span></button>
+                        </td>
+                    </tr>
+                }
+            }
+            else if (Model.Order == null)
+            {
                 <tr class="product-order-row">
                     <td class="text-center count-no"></td>
                     <td>
                         <a href="#" class="product-name" data-value="0">Chọn sản phẩm</a>
                         <input type="hidden" class="product-id"/>
+                        <input type="hidden" class="order-detail-id" value="0"/>
                     </td>
                     <td class="text-center">
                         <span class="text-danger short-description"></span>
                     </td>
                     <td>
-                        <input type="text" placeholder="Mô tả" class="form-control product-note"/>
+                        <input type="text" placeholder="Mô tả" class="form-control product-note" />
                     </td>
                     <td>
-                        <input type="text" placeholder="Đơn giá" class="form-control unit-price"/>
+                        <input type="text" placeholder="Đơn giá" class="form-control unit-price" />
                     </td>
                     <td>
-                        <input type="text" placeholder="Số lượng" class="form-control quantity" value="1"/>
+                        <input type="text" placeholder="Số lượng" class="form-control quantity" />
                     </td>
                     <td>
-                        <input type="text" placeholder="Thành tiền" class="form-control product-cash" data-value="" readonly="readonly"/>
+                        <input type="text" placeholder="Thành tiền" class="form-control product-cash" data-value="" readonly="readonly" />
                     </td>
                     <td>
                         <button class="btn btn-danger btn-sm remove-row" data-toggle="confirmation"><span class="glyphicon glyphicon-remove"></span></button>
                     </td>
                 </tr>
-                <tr id="tr-for-append"></tr>
+            }
+            <tr id="tr-for-append"></tr>
             </tbody>
         </table>
         <div class="row">
@@ -195,7 +245,7 @@
                             </td>
                             <td style="width: 180px">
                                 <div class="input-group" style="margin-right: 15px">
-                                    <input type="text" class="form-control" id="discount">
+                                    <input type="text" class="form-control" id="discount-value">
                                     <div class="input-group-addon">
                                         <select id="discount-type" style="background: transparent; border: 0">
                                             <option value="0">%</option>
@@ -234,7 +284,6 @@
 </div>
 </div>
 </div>
-
 
 <input type="hidden" id="product-name-datasource" value="@Url.Action("GetProductName", "DataSource")"/>
 <input type="hidden" id="customer-suggestion-datasource" value="@Url.Action("GetCustomerSuggestion","DataSource")" />

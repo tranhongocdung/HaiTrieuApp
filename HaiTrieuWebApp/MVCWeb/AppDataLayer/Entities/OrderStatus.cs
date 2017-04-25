@@ -12,8 +12,8 @@ namespace MVCWeb.AppDataLayer.Entities
         public string Label { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         //Enum
-        public const int Pending = 0;
-        public const int Completed = 1;
-        public const int Cancelled = 2;
+        public const int Pending = 1;
+        public const int Completed = 2;
+        public const int Cancelled = 3;
     }
 }

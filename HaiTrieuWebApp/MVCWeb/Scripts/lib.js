@@ -13,7 +13,7 @@
         default:
             cssclass = "alert-info";
     }
-    $("#alert-container").append("<div id=\"alert-div\" class=\"alert fade in text-center " + cssclass + "\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><strong>" + message + "</strong></div>");
+    $("#alert-container").append("<div id=\"alert-div\" class=\"alert fade in text-center " + cssclass + "\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><span>" + message + "</span></div>");
 
     setTimeout(function () {
         $("#alert-div").fadeTo(2000, 500).slideUp(500, function () {

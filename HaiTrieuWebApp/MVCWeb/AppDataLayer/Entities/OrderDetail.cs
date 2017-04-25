@@ -13,6 +13,8 @@ namespace MVCWeb.AppDataLayer.Entities
         public int UnitPrice { get; set; }
         public int Quantity { get; set; }
         public string Note { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Product Product { get; set; }
         [ForeignKey("OrderId")]
         public virtual Order Order { get; set; }
     }
