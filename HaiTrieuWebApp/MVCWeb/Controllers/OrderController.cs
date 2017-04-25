@@ -42,7 +42,11 @@ namespace MVCWeb.Controllers
             }
 
             model.Order.CustomerId = customerId;
-            var orderDetails = JsonConvert.DeserializeObject<List<OrderDetail>>(model.OrderDetailJson);
+            var orderDetails = new List<OrderDetail>();
+            if (!string.IsNullOrEmpty(model.OrderDetailJson))
+            {
+                orderDetails = JsonConvert.DeserializeObject<List<OrderDetail>>(model.OrderDetailJson);
+            }
             if (model.Order.Id != 0)
             {
                 OrderRepository.Update(model.Order);

@@ -231,7 +231,7 @@ function initSubmitButton() {
 }
 
 function validateOrderBeforeSend() {
-    if ($("#customer-id").val() == "" || $("#txtCustomerName").val() == "") {
+    if ($("#customer-id").val() == "" && $("#txtCustomerName").val().trim() == "") {
         showMessage("Vui lòng chọn khách hàng hoặc nhập ít nhất tên khách hàng!", "error");
         return false;
     }
@@ -240,7 +240,7 @@ function validateOrderBeforeSend() {
     var orderDetails = [];
     $(".product-order-row").each(function() {
         var obj = $(this);
-        if (obj.find(".product-id") != "" && obj.find(".unit-price") != "" && obj.find(".quantity") != "") {
+        if (obj.find(".product-id").val() != "" && obj.find(".unit-price").val() != "" && obj.find(".quantity").val() != "") {
             orderDetails.push({
                 Id: obj.find(".order-detail-id").val(),
                 ProductId: obj.find(".product-id").val(),
@@ -250,7 +250,11 @@ function validateOrderBeforeSend() {
             });
         }
     });
-    $("#order-detail-json").val(JSON.stringify(orderDetails));
+    if (orderDetails.length > 0) {
+        $("#order-detail-json").val(JSON.stringify(orderDetails));
+    } else {
+        $("#order-detail-json").val("");
+    }
     return true;
 }
 
