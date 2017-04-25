@@ -20,12 +20,14 @@ function initExistingOrder() {
         $(".customer-info").attr("readonly", "readonly");
         $("#chkCustomerType").bootstrapToggle("off");
         $("#chkCustomerType").bootstrapToggle("disable");
-        $(".product-order-row").each(function () {
+        $(".product-order-row").each(function() {
             calculateCashForProductRow($(this));
         });
         $("#discount-type").val($("#order-discount-type").val());
         $("#discount-value").val($("#order-discount-value").val());
         calculateTotalCash();
+    } else {
+        $("#tdPrint").addClass("hidden");
     }
 }
 
@@ -259,5 +261,7 @@ function validateOrderBeforeSend() {
 }
 
 function orderEditCallBack(result) {
-    showMessage("Đã lưu đơn hàng thành công!", "success");
+    if (result == "")
+        showMessage("Đã lưu đơn hàng thành công!", "success");
+    else window.location = location.protocol + "//" + location.host + location.pathname + "?id=" + result;
 }

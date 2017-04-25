@@ -18,7 +18,7 @@ $(function() {
     $(".clear-text").click(function () {
         $(this).parent().parent().children("input").first().val("");
     });
-    UILoad.initDatePicker(".datepicker-control");
+    //UILoad.initDatePicker(".datepicker-control");
     UILoad.initMVCValidationForBootstrap();
 });
 

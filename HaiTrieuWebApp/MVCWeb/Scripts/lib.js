@@ -19,5 +19,5 @@
         $("#alert-div").fadeTo(2000, 500).slideUp(500, function () {
             $("#alert-div").remove();
         });
-    }, 3000);
+    }, 2000);
 }

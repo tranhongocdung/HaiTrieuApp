@@ -151,7 +151,8 @@
     <Content Include="Content\bootcomplete\jquery.bootcomplete.js" />
     <Content Include="Content\bootstrap-toggle\bootstrap-toggle.min.css" />
     <Content Include="Content\bootstrap-toggle\bootstrap-toggle.min.js" />
-    <Content Include="Content\print.css" />
+    <Content Include="Content\printA5.css" />
+    <Content Include="Content\printA4.css" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\DataSourceController.cs" />
@@ -363,7 +364,7 @@
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Scripts\x-editable\dist\LICENSE-MIT" />
     <Content Include="Scripts\x-editable\dist\README.md" />
-    <Content Include="Views\Order\Print.cshtml" />
+    <Content Include="Views\Order\PrintA5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppDataLayer\ExtendingEntities\" />

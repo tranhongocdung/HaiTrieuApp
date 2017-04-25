@@ -51,17 +51,17 @@ namespace MVCWeb.Controllers
             {
                 OrderRepository.Update(model.Order);
                 OrderRepository.UpdateOrderDetail(orderDetails, model.Order.Id);
-                return Content(orderId.ToString());
+                return Content("");
             }
 
             //Add new
             model.Order.OrderDetails = orderDetails;
             orderId = OrderRepository.Create(model.Order);
-            return RedirectToAction("Edit", new {id = orderId});
+            return Content(orderId.ToString());
         }
         public ActionResult Print()
         {
-            return View();
+            return View("PrintA5");
         }
     }
 }
