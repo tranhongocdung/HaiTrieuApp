@@ -59,9 +59,19 @@ namespace MVCWeb.Controllers
             orderId = OrderRepository.Create(model.Order);
             return Content(orderId.ToString());
         }
-        public ActionResult Print()
+        public ActionResult Print(int id)
         {
-            return View("PrintA5");
+            var model = new OrderPrintModel();
+            if (id != 0)
+            {
+                var order = OrderRepository.GetWithCustomerAndOrderDetails(id);
+                if (order != null)
+                {
+                    model.Order = order;
+                    model.Customer = order.Customer;
+                }
+            }
+            return View(model);
         }
     }
 }

@@ -26,6 +26,9 @@ function initExistingOrder() {
         $("#discount-type").val($("#order-discount-type").val());
         $("#discount-value").val($("#order-discount-value").val());
         calculateTotalCash();
+        $("#btnPrint").click(function() {
+            window.open($("#print-url").val() + "?id=" + $("#order-id").val(), "popupWindow", "width=850, height=600, scrollbars=yes");
+        });
     } else {
         $("#tdPrint").addClass("hidden");
     }

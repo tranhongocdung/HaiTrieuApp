@@ -1,5 +1,7 @@
-﻿
+﻿@model MVCWeb.Models.OrderPrintModel
+
 @{
+    ViewBag.Title = "In đơn hàng";
     Layout = null;
 }
 
@@ -14,17 +16,162 @@
 <body>
     <div>
         <div class="page">
-            <div class="subpage">Page 1</div>
-        </div>
-        <div class="page">
-            <div class="subpage">Page 2</div>
-        </div>
-        <div class="page">
-            <div class="subpage">Page 3</div>
-        </div>
-        <div class="page">
-            <div class="subpage">Page 4</div>
+            <div class="subpage">
+                <div>
+                    <div class="pull-left">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="~/Content/images/logo_sm.png" style="height: 55px" />
+                                </td>
+                                <td>
+                                    <div style="font-weight: bold; font-size: 12pt; margin-bottom: 3px">
+                                        Công ty TNHH TM-DV-SX Ngọc Triều
+                                    </div>
+                                    <div>MST: 0314002079</div>
+                                    <div>Địa chỉ: 96/90 Đường Trục, P. 13, Q. Bình Thạnh, TP. HCM</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pull-right" style="width: 80mm">
+                        <div style="text-align: center; font-weight: bold; font-size: 12pt; margin-bottom: 3px">HÓA ĐƠN BÁN LẺ</div>
+                        <div class="text-center">
+                            Mã hóa đơn: <span style="font-weight: bold; font-style: italic">HT@(Model.Order.Id.ToString().PadLeft(6,'0'))</span> &nbsp; &nbsp; Ngày xuất: <span style="font-weight: bold; font-style: italic">@DateTime.Now.ToString("dd/MM/yyyy")</span>
+                        </div>
+                        <div class="text-center">- - - - - - - - ooo0ooo - - - - - - - -</div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div style="padding-left: 57px; margin: 15px 0">
+                    <div><strong>Khách hàng:</strong> @Model.Customer.CustomerName</div>
+                    <div>
+                        <strong>Địa chỉ:</strong> @Model.Customer.Address @(!string.IsNullOrEmpty(Model.Customer.District) ? "- " + Model.Customer.District : "") @(!string.IsNullOrEmpty(Model.Customer.City) ? "- " + Model.Customer.City : "")
+                    </div>
+                    <div>
+                        <strong>Điện thoại:</strong> @Model.Customer.PhoneNo
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @if (!string.IsNullOrEmpty(Model.Customer.Email))
+                        {
+                            <strong>Email:</strong>
+                            @Model.Customer.Email
+                        }
+                    </div>
+                    <div><strong>Ghi chú: </strong> @Model.Order.Note</div>
+                </div>
+                <div>
+                    <table class="order-detail">
+                        <thead>
+                        <tr>
+                            <th class="text-center" style="width: 20px">
+                                #
+                            </th>
+                            <th class="text-center">
+                                Tên sản phẩm
+                            </th>
+                            <th class="text-center" style="width: 120px">
+                                Quy cách
+                            </th>
+                            <th class="text-center">
+                                Mô tả
+                            </th>
+                            <th class="text-center" style="width: 80px">
+                                Đơn giá
+                            </th>
+                            <th class="text-center" style="width: 60px">
+                                SL
+                            </th>
+                            <th class="text-center" style="width: 100px">
+                                Thành tiền
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @{
+                            var i = 0;
+                        }
+
+                        @foreach (var orderDetail in Model.Order.OrderDetails)
+                        {
+                            i++;
+                            <tr class="product-order-row">
+                                <td class="text-center">@i</td>
+                                <td>
+                                    @orderDetail.Product.ProductName
+                                    <input type="hidden" class="product-id" value="@orderDetail.ProductId"/>
+                                </td>
+                                <td class="text-center">
+                                    @orderDetail.Product.ShortDescription
+                                </td>
+                                <td>
+                                    @orderDetail.Note
+                                </td>
+                                <td class="text-center">
+                                    @orderDetail.UnitPrice.ToString("#,##0")
+                                </td>
+                                <td class="text-center">
+                                    @orderDetail.Quantity
+                                </td>
+                                <td class="text-center">
+                                    <strong>@((orderDetail.Quantity*orderDetail.UnitPrice).ToString("#,##0"))</strong>
+                                    <input type="hidden" class="total-cash" value="@(orderDetail.Quantity*orderDetail.UnitPrice)"/>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    <div class="pull-left">
+                        <table style="margin-top: 5px" class="total-cash-table">
+                            <tr><td>&nbsp;</td></tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td>
+                                    <strong>Số tiền bằng chữ: <span id="numberInWord" style="font-style: italic"></span> <span style="font-style: italic">đồng</span></strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pull-right">
+                        <table style="margin-top: 5px" class="total-cash-table">
+                            <tr>
+                                <td class="text-right">Thành tiền:</td>
+                                <td style="width: 100px" class="text-center">
+                                    <strong>@Model.TotalCash.ToString("#,##0")</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    @if (Model.Order.DiscountType == 0)
+                                    {
+                                        <span>Chiết khấu (@(Model.Order.DiscountValue)%):</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Giảm tiền mặt: </span>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    <strong>@Model.Discount.ToString("#,##0")</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Thực thu:</td>
+                                <td class="text-center">
+                                    <strong>@Model.FinalCash.ToString("#,##0")</strong>
+                                    <input type="hidden" id="final-cash" value="@Model.FinalCash" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="~/Scripts/jquery-2.2.1.min.js"></script>
+    <script src="~/Scripts/lib.js"></script>
+    <script type="text/javascript">
+        $("#numberInWord").html(readNumber($("#final-cash").val()))
+    </script>
 </body>
 </html>
