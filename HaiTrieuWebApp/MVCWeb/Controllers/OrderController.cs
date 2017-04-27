@@ -10,10 +10,14 @@ using Newtonsoft.Json;
 namespace MVCWeb.Controllers
 {
     [WhitespaceFilter]
-    [CustomAuthorize(Roles = "Admin")]
+    //[CustomAuthorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Manage()
         {
             return View();
         }

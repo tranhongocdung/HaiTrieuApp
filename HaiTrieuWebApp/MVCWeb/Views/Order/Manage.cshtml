@@ -1,0 +1,59 @@
+﻿@model MVCWeb.Models.OrderManageModel
+
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+<div class="row">
+    <br />
+    <div class="message-alert" id="alert-container"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Lịch sử đơn hàng
+            </div>
+            <div class="panel-body">
+                @using (Ajax.BeginForm("Manage", "Order", new AjaxOptions
+                {
+                    OnSuccess = "orderManageCallBack",
+                    LoadingElementId = "orderManageLoading"
+                }, new {@id = "frmOrderManage"}))
+                {
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Tìm theo khách hàng</label>
+                                <input type="text" class="form-control" id="txtCustomer" placeholder="Tìm theo khách hàng..." />
+                            </div>
+                            </div>
+                        <div class="col-md-9">
+                            <span class="label label-danger">Danger</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Tìm theo ngày tạo</label>
+                                @Html.TextBoxFor(m => m.CreateOn, new {@class = "form-control datepicker-control", @readonly = "readonly", @id = "txtRunDate"})
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="customer-suggestion-datasource" value="@Url.Action("GetCustomerSuggestion", "DataSource", new {full = false})" />
+
+@section OptionalCss {
+    <link href="~/Content/bootcomplete/bootcomplete.css" rel="stylesheet" />
+}
+@section OptionalJs {
+    <script src="~/Scripts/confirmation/bootstrap-confirmation.min.js"></script>
+    <script src="~/Content/bootcomplete/jquery.bootcomplete.js"></script>
+    <script src="~/Scripts/views/order-manage.js"></script>
+}

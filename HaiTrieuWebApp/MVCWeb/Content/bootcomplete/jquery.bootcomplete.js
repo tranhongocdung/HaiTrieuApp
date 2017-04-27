@@ -21,7 +21,7 @@
             dataParams : {},
             formParams: {},
             fillTextbox: true,
-            onSelect: function (id){}
+            onSelect: function (){}
         }
         
         var settings = $.extend( {}, defaults, options );
@@ -110,7 +110,7 @@
                 }
             }
             $(that).next('.' + settings.menuClass).hide();
-            settings.onSelect($(this).data('id'));
+            settings.onSelect($(this).data('id'), $(this).data('label'));
             return false;
         }
         return this;

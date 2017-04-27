@@ -173,6 +173,7 @@
     <Compile Include="Libraries\RemoveWhiteSpace.cs" />
     <Compile Include="Libraries\Utility.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\OrderManageModel.cs" />
     <Compile Include="Models\OrderPrintModel.cs" />
     <Compile Include="Models\OrderEditModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,6 +221,7 @@
     <Content Include="Content\js\sb-admin.js" />
     <Content Include="Content\print.css" />
     <Content Include="Content\site.css" />
+    <Content Include="Content\typeahead\typeahead-bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -249,7 +251,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\lib.js" />
+    <Content Include="Content\typeahead\typeahead.bundle.js" />
     <Content Include="Scripts\views\order-edit.js" />
+    <Content Include="Scripts\views\order-manage.js" />
     <Content Include="Scripts\x-editable\dist\bootstrap-editable\css\bootstrap-editable.css" />
     <Content Include="Scripts\x-editable\dist\bootstrap-editable\img\clear.png" />
     <Content Include="Scripts\x-editable\dist\bootstrap-editable\img\loading.gif" />
@@ -367,6 +371,7 @@
     <Content Include="Scripts\x-editable\dist\README.md" />
     <Content Include="Views\Order\Print.cshtml" />
     <Content Include="Views\Order\OrderPrint.cshtml" />
+    <Content Include="Views\Order\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppDataLayer\ExtendingEntities\" />

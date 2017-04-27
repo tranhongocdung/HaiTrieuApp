@@ -104,10 +104,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <div class="form-group">
                         <label>Ghi chú cho đơn hàng</label>
                         @Html.TextBoxFor(o => o.Order.Note, new {@class = "form-control", @id = "txtOrderNote"})
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Mẫu ghi chú</label>
+                        <select id="order-note-hint" class="form-control">
+                            <option value="0"></option>
+                            <option value="Giao hàng trước ...">Giao hàng trước ...</option>
+                            <option value="Giao hàng từ thứ ... đến thứ ...">Giao hàng từ thứ ... đến thứ ...</option>
+                        </select>    
                     </div>
                 </div>
             </div>
@@ -296,6 +306,7 @@
     <link href="~/Scripts/x-editable/select2/select2-bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootcomplete/bootcomplete.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+    <link href="~/Content/typeahead/typeahead-bootstrap.css" rel="stylesheet" />
 }
 
 @section OptionalJs
@@ -306,6 +317,7 @@
     <script src="~/Scripts/jquery.numeric.min.js"></script>
     <script src="~/Content/bootcomplete/jquery.bootcomplete.js"></script>
     <script src="~/Content/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script src="~/Content/typeahead/typeahead.bundle.js"></script>
     <script src="~/Scripts/views/order-edit.js"></script>
 }
 

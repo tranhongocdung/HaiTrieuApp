@@ -6,7 +6,7 @@ using MVCWeb.Libraries;
 
 namespace MVCWeb.Controllers
 {
-    [CustomAuthorize(Roles = "Admin")]
+    //[CustomAuthorize(Roles = "Admin")]
     public class DataSourceController : BaseController
     {
         // GET: DataSource
@@ -27,7 +27,7 @@ namespace MVCWeb.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetCustomerSuggestion(string query, int id = 0)
+        public ActionResult GetCustomerSuggestion(string query, int id = 0, bool full = true)
         {
             var db = new DbAppContext();
             if (id != 0)
@@ -37,7 +37,7 @@ namespace MVCWeb.Controllers
             }
             var list =
                 db.Customers.Where(
-                    o => o.CustomerName.Contains(query) || o.Email.Contains(query) || o.PhoneNo.Contains(query)).Take(10).ToList().Select(o=>o.ToReturnLabel());
+                    o => o.CustomerName.Contains(query) || o.Email.Contains(query) || o.PhoneNo.Contains(query)).Take(10).ToList().Select(o=>o.ToReturnLabel(full));
             return Json(list, JsonRequestBehavior.AllowGet);
         }
     }

@@ -24,17 +24,22 @@ namespace MVCWeb.Libraries
                 fi.SetValue(destination, fi.GetValue(source));
             }
         }
-        public static ReturnLabel ToReturnLabel(this Customer source)
+        public static ReturnLabel ToReturnLabel(this Customer source, bool full = true)
         {
-            return new ReturnLabel
+            var label = new ReturnLabel
             {
                 Id = source.Id.ToString(),
                 Label = source.CustomerName +
                         (!string.IsNullOrEmpty(source.PhoneNo) ? " - " + source.PhoneNo : "") +
-                        (!string.IsNullOrEmpty(source.Email) ? " - " + source.Email : "") +
-                        (!string.IsNullOrEmpty(source.District) ? " - " + source.District : "") +
-                        (!string.IsNullOrEmpty(source.City) ? " - " + source.City : "")
+                        (!string.IsNullOrEmpty(source.Email) ? " - " + source.Email : "")
             };
+            if (full)
+            {
+                label.Label +=
+                    (!string.IsNullOrEmpty(source.District) ? " - " + source.District : "") +
+                    (!string.IsNullOrEmpty(source.City) ? " - " + source.City : "");
+            }
+            return label;
         }
     }
 }
