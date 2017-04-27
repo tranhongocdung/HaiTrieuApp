@@ -3,11 +3,27 @@
 });
 
 function initSearchBox() {
-    $("#txtCustomer").bootcomplete({
-        url: $("#customer-suggestion-datasource").val(),
-        onSelect: function (id, label) {
-            $("#txtCustomer").val("");
-            alert(id + " - " + label);
+    var customers = new Bloodhound({
+        datumTokenizer: function (datum) {
+            return Bloodhound.tokenizers.whitespace(datum.value);
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            wildcard: "%QUERY",
+            url: $("#customer-suggestion-datasource").val() + "?query=%QUERY",
+            transform: function (customers) {
+                return $.map(customers, function (customer) {
+                    return customer;
+                });
+            }
+        }
+    });
+    $("#txtCustomer").tagsinput({
+        itemValue: "Id",
+        itemText: "CustomerName",
+        typeaheadjs: {
+            displayKey: "SuggestName",
+            source: customers
         }
     });
 }

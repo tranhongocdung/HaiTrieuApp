@@ -147,8 +147,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Content Include="Content\bootcomplete\bootcomplete.css" />
-    <Content Include="Content\bootcomplete\jquery.bootcomplete.js" />
     <Content Include="Content\bootstrap-toggle\bootstrap-toggle.min.css" />
     <Content Include="Content\bootstrap-toggle\bootstrap-toggle.min.js" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -219,6 +217,9 @@
     <Content Include="Content\js\plugins\morris\morris.js" />
     <Content Include="Content\js\plugins\morris\raphael-2.1.0.min.js" />
     <Content Include="Content\js\sb-admin.js" />
+    <Content Include="Content\bootstrap-tagsinput\bootstrap-tagsinput.css" />
+    <Content Include="Content\bootstrap-tagsinput\bootstrap-tagsinput.js" />
+    <Content Include="Content\bootstrap-tagsinput\bootstrap-tagsinput.min.js" />
     <Content Include="Content\print.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\typeahead\typeahead-bootstrap.css" />
@@ -234,6 +235,7 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-toggle\bootstrap-toggle.min.js.map" />
+    <Content Include="Content\bootstrap-tagsinput\bootstrap-tagsinput.min.js.map" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

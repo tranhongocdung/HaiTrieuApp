@@ -66,65 +66,44 @@ function initCustomerTypeToggle() {
 }
 
 function initSearchCustomerTextbox() {
-    /*$("#txtSearchCustomer").bootcomplete({
-        url: $("#customer-suggestion-datasource").val(),
-        fillTextbox: false,
-        onSelect:function(id) {
-            $("#txtSearchCustomer").val("");
-            loadCustomerDetail(id);
-            $("#chkCustomerType").bootstrapToggle("enable");
-            $("#chkCustomerType").bootstrapToggle("off");
-        }
-    });*/
-    // Instantiate the Bloodhound suggestion engine
     var customers = new Bloodhound({
         datumTokenizer: function (datum) {
             return Bloodhound.tokenizers.whitespace(datum.value);
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            wildcard: '%QUERY',
+            wildcard: "%QUERY",
             url: $("#customer-suggestion-datasource").val() + "?query=%QUERY",
             transform: function (customers) {
-                // Map the remote source JSON array to a JavaScript object array
                 return $.map(customers, function (customer) {
-                    return {
-                        value: customer.Label
-                    };
+                    return customer;
                 });
             }
         }
     });
 
-    // Instantiate the Typeahead UI
     $("#txtSearchCustomer").typeahead(null, {
-        // Use 'value' as the displayKey because the filter function 
-        // returns suggestions in a javascript object with a variable called 'value'
-        displayKey: "value",
+        displayKey: "SuggestNameFull",
         source: customers
     });
-    $("#txtSearchCustomer").bind("typeahead:selected", function(obj, datum, name) {
-        alert(datum.value);
+    $("#txtSearchCustomer").bind("typeahead:selected", function(obj, datum) {
+        loadCustomerDetail(datum);
+        $("#chkCustomerType").bootstrapToggle("enable");
+        $("#chkCustomerType").bootstrapToggle("off");
+        $(this).typeahead("val", "");
     });
 }
 
-function loadCustomerDetail(id) {
-    $.ajax({
-        url: $("#customer-suggestion-datasource").val(),
-        data: {id : id},
-        dataType: "json",
-        success: function (data) {
-            $("#customer-id").val(data.Id);
-            $("#txtCustomerName").val(data.CustomerName);
-            $("#txtPhoneNo").val(data.PhoneNo);
-            $("#txtEmail").val(data.Email);
-            $("#txtAddress").val(data.Address);
-            $("#txtDistrict").val(data.District);
-            $("#txtCity").val(data.City);
-            $("#txtCustomerNote").val(data.Note);
-            $(".customer-info").attr("readonly", "readonly");
-        }
-    });
+function loadCustomerDetail(data) {
+    $("#customer-id").val(data.Id);
+    $("#txtCustomerName").val(data.CustomerName);
+    $("#txtPhoneNo").val(data.PhoneNo);
+    $("#txtEmail").val(data.Email);
+    $("#txtAddress").val(data.Address);
+    $("#txtDistrict").val(data.District);
+    $("#txtCity").val(data.City);
+    $("#txtCustomerNote").val(data.Note);
+    $(".customer-info").attr("readonly", "readonly");
 }
 
 function initDiscountTypeOnChange() {

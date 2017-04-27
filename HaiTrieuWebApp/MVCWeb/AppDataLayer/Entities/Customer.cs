@@ -28,5 +28,26 @@ namespace MVCWeb.AppDataLayer.Entities
         public string City { get; set; }
         public string Note { get; set; }
         public DateTime CreatedOn { get; set; }
+
+        public string SuggestName
+        {
+            get
+            {
+                return CustomerName +
+                        (!string.IsNullOrEmpty(PhoneNo) ? " - " + PhoneNo : "") +
+                        (!string.IsNullOrEmpty(Email) ? " - " + Email : "");
+            }
+        }
+        public string SuggestNameFull
+        {
+            get
+            {
+                return CustomerName +
+                       (!string.IsNullOrEmpty(PhoneNo) ? " - " + PhoneNo : "") +
+                       (!string.IsNullOrEmpty(Email) ? " - " + Email : "") +
+                       (!string.IsNullOrEmpty(District) ? " - " + District : "") +
+                       (!string.IsNullOrEmpty(City) ? " - " + City : "");
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace MVCWeb.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetCustomerSuggestion(string query, int id = 0, bool full = true)
+        public ActionResult GetCustomerSuggestion(string query, int id = 0)
         {
             var db = new DbAppContext();
             if (id != 0)
@@ -37,7 +37,7 @@ namespace MVCWeb.Controllers
             }
             var list =
                 db.Customers.Where(
-                    o => o.CustomerName.Contains(query) || o.Email.Contains(query) || o.PhoneNo.Contains(query)).Take(10).ToList().Select(o=>o.ToReturnLabel(full));
+                    o => o.CustomerName.Contains(query) || o.Email.Contains(query) || o.PhoneNo.Contains(query)).Take(10).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
