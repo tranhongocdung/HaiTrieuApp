@@ -12,7 +12,7 @@
 .page {
     width: 210mm;
     /*min-height: 297mm;*/
-    padding: 5mm 10mm;
+    padding: 5mm 10mm 0 10mm;
     margin: 0 auto;
     border: 1px #000 solid;
     border-radius: 5px;
@@ -25,12 +25,15 @@
     /*outline: 20mm #fff solid;*/
     position: relative
 }
+
+.top-bottom-margin { height: 20px;display: block}
  
 @page {
     size: A4;
     margin: 0;
 }
 @media print {
+    .top-bottom-margin {display: none}
     .page {
         margin: 0;
         border: initial;

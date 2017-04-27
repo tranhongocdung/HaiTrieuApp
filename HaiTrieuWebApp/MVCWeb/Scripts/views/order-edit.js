@@ -27,7 +27,7 @@ function initExistingOrder() {
         $("#discount-value").val($("#order-discount-value").val());
         calculateTotalCash();
         $("#btnPrint").click(function() {
-            window.open($("#print-url").val() + "?id=" + $("#order-id").val(), "popupWindow", "width=850, height=600, scrollbars=yes");
+            window.open($("#print-url").val() + "?id=" + $("#order-id").val(), "popupWindow", "width=840, height=625, scrollbars=yes");
         });
     } else {
         $("#tdPrint").addClass("hidden");

@@ -14,142 +14,141 @@
     <link href="~/Content/print.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        <div class="page">
-            <div class="subpage">
-                <div>
-                    <div class="pull-left">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="~/Content/images/logo_sm.png" style="height: 55px" />
-                                </td>
-                                <td>
-                                    <div style="font-weight: bold; font-size: 12pt; margin-bottom: 3px">
-                                        CÔNG TY TNHH TM-DV-SX NGỌC TRIỀU
-                                    </div>
-                                    <div>Địa chỉ: 96/90 Đường Trục, P. 13, Q. Bình Thạnh, TP. HCM</div>
-                                    <div>MST: 0314002079&nbsp;&nbsp;/&nbsp;&nbsp;Điện thoại: 0938.249.391 - 0988.994.146</div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="pull-right" style="width: 80mm">
-                        <div style="text-align: center; font-weight: bold; font-size: 12pt; margin-bottom: 3px">HÓA ĐƠN BÁN LẺ</div>
-                        <div class="text-center">
-                            Mã hóa đơn: <span style="font-weight: bold; font-style: italic">HT@(Model.Order.Id.ToString().PadLeft(6,'0'))</span> &nbsp; &nbsp; Ngày xuất: <span style="font-weight: bold; font-style: italic">@DateTime.Now.ToString("dd/MM/yyyy")</span>
-                        </div>
-                        <div class="text-center">- - - - - - - - ooo0ooo - - - - - - - -</div>
-                    </div>
+<div class="top-bottom-margin"></div>
+<div class="page">
+    <div class="subpage">
+        <div>
+            <div class="pull-left">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="~/Content/images/logo_sm.png" style="height: 55px" />
+                        </td>
+                        <td>
+                            <div style="font-weight: bold; font-size: 12pt; margin-bottom: 3px">
+                                CÔNG TY TNHH TM-DV-SX NGỌC TRIỀU
+                            </div>
+                            <div>Địa chỉ: 96/90 Đường Trục, P. 13, Q. Bình Thạnh, TP. HCM</div>
+                            <div>MST: 0314002079&nbsp;&nbsp;/&nbsp;&nbsp;Điện thoại: 0938.249.391 - 0988.994.146</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="pull-right" style="width: 80mm">
+                <div style="text-align: center; font-weight: bold; font-size: 12pt; margin-bottom: 3px">HÓA ĐƠN BÁN LẺ</div>
+                <div class="text-center">
+                    Mã hóa đơn: <span style="font-weight: bold; font-style: italic">HT@(Model.Order.Id.ToString().PadLeft(6,'0'))</span> &nbsp; &nbsp; Ngày xuất: <span style="font-weight: bold; font-style: italic">@DateTime.Now.ToString("dd/MM/yyyy")</span>
                 </div>
-                <div class="clearfix"></div>
-                <div style="padding-left: 18px; margin: 15px 0">
-                    <div><strong>KH:</strong> @Model.Customer.CustomerName</div>
-                    <div>
-                        <strong>Địa chỉ:</strong> @Model.Customer.Address @(!string.IsNullOrEmpty(Model.Customer.District) ? "- " + Model.Customer.District : "") @(!string.IsNullOrEmpty(Model.Customer.City) ? "- " + Model.Customer.City : "")
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Điện thoại:</strong> @Model.Customer.PhoneNo
-                    </div>
-                    <div><strong>Ghi chú: </strong> @Model.Order.Note</div>
-                </div>
-                <div>
-                    <table class="order-detail">
-                        <tr>
-                            <td class="text-center" style="width: 30px">
-                                STT
-                            </td>
-                            <td class="text-center">
-                                Tên sản phẩm
-                            </td>
-                            <td class="text-center" style="width: 120px">
-                                Quy cách
-                            </td>
-                            <td class="text-center">
-                                Mô tả
-                            </td>
-                            <td class="text-center" style="width: 80px">
-                                Đơn giá
-                            </td>
-                            <td class="text-center" style="width: 60px">
-                                SL
-                            </td>
-                            <td class="text-center" style="width: 100px">
-                                Thành tiền
-                            </td>
-                        </tr>
-                        @{
-                            var i = 0;
-                        }
+                <div class="text-center">- - - - - - - - ooo0ooo - - - - - - - -</div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div style="padding-left: 18px; margin: 15px 0">
+            <div><strong>KH:</strong> @Model.Customer.CustomerName</div>
+            <div>
+                <strong>Địa chỉ:</strong> @Model.Customer.Address @(!string.IsNullOrEmpty(Model.Customer.District) ? "- " + Model.Customer.District : "") @(!string.IsNullOrEmpty(Model.Customer.City) ? "- " + Model.Customer.City : "")
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Điện thoại:</strong> @Model.Customer.PhoneNo
+            </div>
+            <div><strong>Ghi chú: </strong> @Model.Order.Note</div>
+        </div>
+        <div>
+            <table class="order-detail">
+                <tr>
+                    <td class="text-center" style="width: 30px">
+                        STT
+                    </td>
+                    <td class="text-center">
+                        Tên sản phẩm
+                    </td>
+                    <td class="text-center" style="width: 120px">
+                        Quy cách
+                    </td>
+                    <td class="text-center">
+                        Mô tả
+                    </td>
+                    <td class="text-center" style="width: 80px">
+                        Đơn giá
+                    </td>
+                    <td class="text-center" style="width: 60px">
+                        SL
+                    </td>
+                    <td class="text-center" style="width: 100px">
+                        Thành tiền
+                    </td>
+                </tr>
+                @{
+                    var i = 0;
+                }
 
-                        @foreach (var orderDetail in Model.Order.OrderDetails)
-                        {
-                            i++;
-                            <tr class="product-order-row">
-                                <td class="text-center">@i</td>
-                                <td>
-                                    @orderDetail.Product.ProductName
-                                    <input type="hidden" class="product-id" value="@orderDetail.ProductId"/>
-                                </td>
-                                <td class="text-center">
-                                    @orderDetail.Product.ShortDescription
-                                </td>
-                                <td>
-                                    @orderDetail.Note
-                                </td>
-                                <td class="text-center">
-                                    @orderDetail.UnitPrice.ToString("#,##0")
-                                </td>
-                                <td class="text-center">
-                                    @orderDetail.Quantity
-                                </td>
-                                <td class="text-center">
-                                    <strong>@((orderDetail.Quantity*orderDetail.UnitPrice).ToString("#,##0"))</strong>
-                                    <input type="hidden" class="total-cash" value="@(orderDetail.Quantity*orderDetail.UnitPrice)"/>
-                                </td>
-                            </tr>
-                        }
-                    </table>
-                    <div class="pull-left">
-                        <table style="margin-top: 5px" class="total-cash-table">
-                            <tr>
-                                <td>
-                                    <strong>Số tiền bằng chữ: <span id="numberInWord" style="font-style: italic"></span> <span style="font-style: italic">đồng</span></strong>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="pull-right">
-                        <table style="margin-top: 5px" class="total-cash-table">
-                            <tr>
-                                <td class="text-right">Thành tiền:</td>
-                                <td style="width: 100px" class="text-center">
-                                    <strong>@Model.TotalCash.ToString("#,##0")</strong>
-                                    <input type="hidden" id="final-cash" value="@Model.TotalCash"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div>
-                    <div class="pull-right text-center" style="width: 205px; position: absolute; bottom: 20mm; right: 0">
-                        Người bán
-                        <br /><br /><br /><br />
+                @foreach (var orderDetail in Model.Order.OrderDetails)
+                {
+                    i++;
+                    <tr class="product-order-row">
+                        <td class="text-center">@i</td>
+                        <td>
+                            @orderDetail.Product.ProductName
+                            <input type="hidden" class="product-id" value="@orderDetail.ProductId"/>
+                        </td>
+                        <td class="text-center">
+                            @orderDetail.Product.ShortDescription
+                        </td>
+                        <td>
+                            @orderDetail.Note
+                        </td>
+                        <td class="text-center">
+                            @orderDetail.UnitPrice.ToString("#,##0")
+                        </td>
+                        <td class="text-center">
+                            @orderDetail.Quantity
+                        </td>
+                        <td class="text-center">
+                            <strong>@((orderDetail.Quantity*orderDetail.UnitPrice).ToString("#,##0"))</strong>
+                            <input type="hidden" class="total-cash" value="@(orderDetail.Quantity*orderDetail.UnitPrice)"/>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="pull-left">
+                <table style="margin-top: 5px" class="total-cash-table">
+                    <tr>
+                        <td>
+                            <strong>Số tiền bằng chữ: <span id="numberInWord" style="font-style: italic"></span> <span style="font-style: italic">đồng</span></strong>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="pull-right">
+                <table style="margin-top: 5px" class="total-cash-table">
+                    <tr>
+                        <td class="text-right">Thành tiền:</td>
+                        <td style="width: 100px" class="text-center">
+                            <strong>@Model.TotalCash.ToString("#,##0")</strong>
+                            <input type="hidden" id="final-cash" value="@Model.TotalCash"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div>
+            <div class="pull-right text-center" style="width: 205px; position: absolute; bottom: 20mm; right: 0">
+                Người bán
+                <br /><br /><br /><br />
 
-                        <strong style="font-size: 12pt">Lê Hải Triều</strong>
-                    </div>
-                </div>
-                <div class="welcome-message">
-                    <div class="pull-left">
-                        <strong>--- CÁM ƠN QUÝ KHÁCH ĐÃ ỦNG HỘ ---</strong>
-                    </div>
-                    <div class="pull-right" style="font-style: italic">
-                        Website: http://khacdauhaitrieu.com/
-                    </div>
-                </div>
+                <strong style="font-size: 12pt">Lê Hải Triều</strong>
+            </div>
+        </div>
+        <div class="welcome-message">
+            <div class="pull-left">
+                <strong>--- CÁM ƠN QUÝ KHÁCH ĐÃ ỦNG HỘ ---</strong>
+            </div>
+            <div class="pull-right" style="font-style: italic">
+                Website: http://khacdauhaitrieu.com/
             </div>
         </div>
     </div>
-    <script src="~/Scripts/jquery-2.2.1.min.js"></script>
+</div>
+<script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/lib.js"></script>
     <script type="text/javascript">
         $("#numberInWord").html(readNumber($("#final-cash").val()))
