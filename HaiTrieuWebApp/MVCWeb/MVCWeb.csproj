@@ -137,7 +137,13 @@
     <Compile Include="AppDataLayer\Entities\Product.cs" />
     <Compile Include="AppDataLayer\Entities\User.cs" />
     <Compile Include="AppDataLayer\FilterParams.cs" />
+    <Compile Include="AppDataLayer\IRepositories\IGenericRepository.cs" />
+    <Compile Include="AppDataLayer\IRepositories\IOrderDetailRepository.cs" />
+    <Compile Include="AppDataLayer\IRepositories\ICustomerRepository.cs" />
+    <Compile Include="AppDataLayer\IRepositories\IOrderRepository.cs" />
     <Compile Include="AppDataLayer\Repositories\CustomerRepository.cs" />
+    <Compile Include="AppDataLayer\Repositories\GenericRepository.cs" />
+    <Compile Include="AppDataLayer\Repositories\OrderDetailRepository.cs" />
     <Compile Include="AppDataLayer\Repositories\OrderRepository.cs" />
     <Compile Include="AppDataLayer\ReturnData.cs" />
     <Compile Include="AppDataLayer\ReturnLabel.cs" />
@@ -374,6 +380,7 @@
     <Content Include="Views\Order\Print.cshtml" />
     <Content Include="Views\Order\OrderPrint.cshtml" />
     <Content Include="Views\Order\Manage.cshtml" />
+    <Content Include="Views\Order\_OrderTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppDataLayer\ExtendingEntities\" />

@@ -18,19 +18,25 @@ $(function() {
     $(".clear-text").click(function () {
         $(this).parent().parent().children("input").first().val("");
     });
-    //UILoad.initDatePicker(".datepicker-control");
+    UILoad.initDatePicker(".datepicker-control");
     UILoad.initMVCValidationForBootstrap();
 });
 
 var UILoad = {
-    initDatePicker:function(selector,funcOnDateChanged) {
-        $(selector).datepicker({
-            format: "dd/mm/yyyy",
-            language: "vi",
-            autoclose: true,
-            orientation: "bottom auto",
-            todayHighlight: true
-        }).on("changeDate",funcOnDateChanged);
+    initDatePicker: function (selector, funcOnDateChanged) {
+        $(selector).each(function () {
+            var that = $(this);
+            that.datepicker({
+                format: "dd/mm/yyyy",
+                language: "vi",
+                autoclose: true,
+                orientation: "bottom auto",
+                todayHighlight: true
+            }).on("changeDate", funcOnDateChanged);
+            $(this).parent().find(".remove-date").click(function() {
+                that.val("");
+            });
+        });
     },
     initMVCValidationForBootstrap: function() {
         var defaultOptions = {

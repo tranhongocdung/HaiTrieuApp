@@ -5,7 +5,7 @@
 function initSearchBox() {
     var customers = new Bloodhound({
         datumTokenizer: function (datum) {
-            return Bloodhound.tokenizers.whitespace(datum.value);
+            return Bloodhound.tokenizers.whitespace(datum.SuggestNameFull);
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
@@ -21,9 +21,18 @@ function initSearchBox() {
     $("#txtCustomer").tagsinput({
         itemValue: "Id",
         itemText: "CustomerName",
-        typeaheadjs: {
-            displayKey: "SuggestName",
-            source: customers
-        }
+        typeaheadjs: [{
+            hint: true,
+            highlight: true,
+            minLength: 1
+        }, {
+        displayKey: "SuggestNameFull",
+        name: "customers",
+        source: customers
+        }]
     });
+}
+
+function orderManageCallBack(result) {
+    $("#manager-content").html(result);
 }

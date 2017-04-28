@@ -5,8 +5,9 @@ namespace MVCWeb.Models
 {
     public class OrderManageModel : BasePagingViewModel
     {
-        public string Customer { get; set; }
-        public string CreateOn { get; set; }
+        public string CustomerIds { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
         public List<Order> Orders { get; set; }
     }
 }

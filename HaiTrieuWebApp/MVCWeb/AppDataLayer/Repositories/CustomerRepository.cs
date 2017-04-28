@@ -1,16 +1,19 @@
 ﻿using System;
+using KnowledgeHub.DAL.Repositories;
 using MVCWeb.AppDataLayer.Entities;
+using MVCWeb.AppDataLayer.IRepositories;
 
 namespace MVCWeb.AppDataLayer.Repositories
 {
-    public class CustomerRepository
+    public class CustomerRepository : GenericRepository<Customer>, ICustomerRepository
     {
-        public static int Create(Customer customer)
+        public CustomerRepository(DbAppContext context) : base(context)
+        {
+        }
+        public int Create(Customer customer)
         {
             customer.CreatedOn = DateTime.Now;
-            var db = new DbAppContext();
-            db.Customers.Add(customer);
-            db.SaveChanges();
+            Insert(customer);
             return customer.Id;
         }
     }

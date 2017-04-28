@@ -8,6 +8,7 @@ namespace MVCWeb.AppDataLayer.Entities
             : base("name=HaiTrieuDBConnectionString")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<DbAppContext>());
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<User> Users { get; set; }

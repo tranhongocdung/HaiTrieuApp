@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace MVCWeb.AppDataLayer
 {
@@ -10,15 +7,12 @@ namespace MVCWeb.AppDataLayer
         public string Keyword { get; set; }
         public int Month { get; set; }
         public int Year { get; set; }
-        
-        //For CarTracking
-        public DateTime? RunDate { get; set; }
-        public int DriverId { get; set; }
-        public int CarId { get; set; }
-        public int TripType { get; set; }
 
-        //For Employee
-        public int WorkPos { get; set; }
+        public List<int> CustomerIds { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public int StatusId { get; set; }
+
 
         //For Pagination
         public int PageSize { get; set; }
@@ -31,14 +25,12 @@ namespace MVCWeb.AppDataLayer
             Keyword = "";
             Month = 0;
             Year = 0;
-            DriverId = 0;
-            CarId = 0;
             PageSize = 10;
             PageNumber = 0;
             SortField = "Id";
             SortASC = false;
-            TripType = 0;
-            WorkPos = 0;
+            CustomerIds = new List<int>();
+            StatusId = 0;
         }
     }
 }

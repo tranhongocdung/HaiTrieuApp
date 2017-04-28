@@ -68,7 +68,7 @@ function initCustomerTypeToggle() {
 function initSearchCustomerTextbox() {
     var customers = new Bloodhound({
         datumTokenizer: function (datum) {
-            return Bloodhound.tokenizers.whitespace(datum.value);
+            return Bloodhound.tokenizers.whitespace(datum.SuggestNameFull);
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
@@ -82,8 +82,13 @@ function initSearchCustomerTextbox() {
         }
     });
 
-    $("#txtSearchCustomer").typeahead(null, {
+    $("#txtSearchCustomer").typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    }, {
         displayKey: "SuggestNameFull",
+        name: "customers",
         source: customers
     });
     $("#txtSearchCustomer").bind("typeahead:selected", function(obj, datum) {
