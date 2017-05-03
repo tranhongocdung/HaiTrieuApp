@@ -193,6 +193,8 @@
     <Content Include="Content\css\plugins\social-buttons\social-buttons.css" />
     <Content Include="Content\css\plugins\timeline\timeline.css" />
     <Content Include="Content\css\sb-admin.css" />
+    <Content Include="Content\datatables\datatables.min.css" />
+    <Content Include="Content\datatables\datatables.min.js" />
     <Content Include="Content\datepicker\css\bootstrap-datepicker.css" />
     <Content Include="Content\datepicker\css\bootstrap-datepicker.min.css" />
     <Content Include="Content\datepicker\css\datepicker.css" />

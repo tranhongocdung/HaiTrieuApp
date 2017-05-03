@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using MVCWeb.AppDataLayer;
 using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.IRepositories;
 using MVCWeb.AppDataLayer.Repositories;
@@ -31,12 +32,30 @@ namespace MVCWeb.Controllers
         }
         public ActionResult Manage()
         {
-            return View();
+            var model = new OrderManageModel()
+            {
+                CurrentPage = 1,
+                PageSize = 10
+            };
+            var totalCount = 0;
+            model.Orders = _orderRepository.GetList(new FilterParams(), ref totalCount);
+            model.ItemCount = totalCount;
+            return View(model);
         }
         [HttpPost]
         public ActionResult Manage(OrderManageModel model, int page)
         {
-            return View();
+            model.CurrentPage = page;
+            model.PageSize = 10;
+            var totalCount = 0;
+            model.Orders = _orderRepository.GetList(new FilterParams
+            {
+                PageNumber = page,
+                FromDate = model.FromDate,
+                ToDate = model.ToDate
+            }, ref totalCount);
+            model.ItemCount = totalCount;
+            return View("_OrderTable", model);
         }
         public ActionResult Edit(int id = 0)
         {

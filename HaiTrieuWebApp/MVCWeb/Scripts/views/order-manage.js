@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     initSearchBox();
+    $("#order-table").DataTable();
 });
 
 function initSearchBox() {

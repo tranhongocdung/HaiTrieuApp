@@ -27,20 +27,20 @@
                             <div class="form-group">
                                 <label>Tìm theo khách:</label>
                                 <input type="text" id="txtCustomer" placeholder="Từ khóa..."/>
-                                @Html.HiddenFor(m => m.CustomerIds, new { @id = "txtCustomerIds" })
+                                @Html.HiddenFor(m => m.CustomerIds, new {@id = "txtCustomerIds"})
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>Từ ngày</label>
                                 <div class="input-group">
-                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker-control", @readonly = "readonly", @id = "txtFromDate" })
+                                    @Html.TextBoxFor(m => m.FromDate, new {@class = "form-control datepicker-control", @readonly = "readonly", @id = "txtFromDate"})
                                     <span class="input-group-btn">
                                         <button class="btn btn-danger remove-date" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                     </span>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
@@ -56,14 +56,14 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>&nbsp;</label>
-                                <button class="btn btn-primary btn-block" type="button"><span class="glyphicon glyphicon-search"></span> Lọc kết quả</button>  
+                                <button class="btn btn-primary btn-block" type="button"><span class="glyphicon glyphicon-search"></span> Lọc kết quả</button>
                             </div>
                         </div>
                     </div>
+                    <div class="row" id="manager-content">
+                        @Html.Partial("_OrderTable")
+                    </div>
                 }
-                <div class="row" id="manager-content">
-                    
-                </div>
             </div>
         </div>
     </div>
@@ -75,6 +75,7 @@
     <link href="/Content/datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
     <link href="~/Content/typeahead/typeahead-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/datatables/datatables.min.css" rel="stylesheet" />
 }
 @section OptionalJs {
     <script src="/Content/datepicker/js/bootstrap-datepicker.js"></script>
@@ -82,5 +83,6 @@
     <script src="~/Content/typeahead/typeahead.bundle.js"></script>
     <script src="~/Content/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
     <script src="~/Scripts/confirmation/bootstrap-confirmation.min.js"></script>
+    <script src="~/Content/datatables/datatables.min.js"></script>
     <script src="~/Scripts/views/order-manage.js"></script>
 }

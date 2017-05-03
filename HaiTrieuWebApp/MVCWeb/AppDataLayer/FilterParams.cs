@@ -26,7 +26,7 @@ namespace MVCWeb.AppDataLayer
             Month = 0;
             Year = 0;
             PageSize = 10;
-            PageNumber = 0;
+            PageNumber = 1;
             SortField = "Id";
             SortASC = false;
             CustomerIds = new List<int>();
