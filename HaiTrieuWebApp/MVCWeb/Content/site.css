@@ -1,4 +1,5 @@
-﻿.message-alert {
+﻿.italic {font-style: italic}
+.message-alert {
     width: 100%;
     height: 0;
     position: fixed;
@@ -8,3 +9,21 @@
     font-size: 15px;
 }
 #alert-div { margin-bottom: 15px}
+
+td.details-control {
+    background: url('images/details-open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('images/details-close.png') no-repeat center center;
+}
+.table.table-sm td {
+    padding: 5px
+}
+.table.table-sm th {
+    padding: 5px
+}
+#order-table td[colspan] {background: #fcf8e3}
+#order-table td[colspan] .table {background: none}
+
+/*.details-table td,.details-table th {background: #f5f5dc}*/

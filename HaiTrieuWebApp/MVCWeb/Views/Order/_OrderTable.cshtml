@@ -1,22 +1,28 @@
 ﻿@model MVCWeb.Models.OrderManageModel
 
 <div class="col-md-12">
-    <table id="order-table">
+    <table class="table table-hover" id="order-table">
         <thead>
-            <tr>
-                <th class="text-center">ID</th>
-                <th class="text-center">Khách hàng</th>
-                <th class="text-center">Ngày tạo</th>
-                <th style="width: 92px"></th>
-            </tr>
+        <tr>
+            <th class="text-center"></th>
+            <th class="text-center">ID</th>
+            <th>Khách hàng</th>
+            <th class="text-center">Thành tiền</th>
+            <th class="text-center">Chiết khấu</th>
+            <th class="text-center">Ngày tạo</th>
+            <th style="width: 92px"></th>
+        </tr>
         </thead>
         <tbody>
             @{ var odd = true; }
             @foreach (var item in Model.Orders)
             {
-                <tr>
+                <tr data-order-id="@item.Id">
+                    <td class="details-control"></td>
                     <td class="text-center">@item.Id</td>
-                    <td class="text-center">@item.Customer.SuggestName</td>
+                    <td class="italic">@item.Customer.SuggestName</td>
+                    <td class="text-center text-success"><strong> @item.OrderDetails.Sum(o => o.Quantity * o.UnitPrice).ToString("#,##0")</strong></td>
+                    <td class="text-center">@(item.DiscountValue != 0 ? item.DiscountValue.ToString("#,##0") + (item.DiscountType == 0 ? "%":""):"")</td>
                     <td class="text-center">@item.CreatedOn.ToString("dd/MM/yyyy")</td>
                     <td class="text-center">
                         <button type="button" class="btn btn-primary btn-sm" onclick="loadCarTrackingEditForm(@item.Id)">Cập nhật</button>
@@ -27,5 +33,28 @@
         </tbody>
     </table>
     @Html.PagerBootstrap(Model.ItemCount, Model.PageSize)
+    <table class="table hidden table-sm details-table" id="extend-for-search">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Ghi chú</th>
+                <th class="text-center">Đơn giá</th>
+                <th class="text-center">Số lượng</th>
+                <th class="text-center">Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Orders.SelectMany(o=>o.OrderDetails))
+            {
+                <tr data-order-id="@item.OrderId">
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Note</td>
+                    <td class="text-center text-primary">@item.UnitPrice.ToString("#,##0")</td>
+                    <td class="text-center">@item.Quantity</td>
+                    <td class="text-center text-success">@((item.UnitPrice*item.Quantity).ToString("#,##0"))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 

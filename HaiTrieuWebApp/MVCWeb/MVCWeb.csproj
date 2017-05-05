@@ -209,6 +209,8 @@
     <Content Include="Content\images\ajax-loader-3.gif" />
     <Content Include="Content\images\ajax-loader-2.gif" />
     <Content Include="Content\images\ajax-loader-1.gif" />
+    <Content Include="Content\images\details-close.png" />
+    <Content Include="Content\images\details-open.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo_sm.png" />
     <Content Include="Content\js\demo\dashboard-demo.js" />

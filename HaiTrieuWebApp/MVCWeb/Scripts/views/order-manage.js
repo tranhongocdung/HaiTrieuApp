@@ -1,6 +1,41 @@
-﻿$(document).ready(function () {
+﻿var table;
+
+var tableDefOptions = {
+    "bLengthChange": false,
+    "info": false,
+    "bFilter": false,
+    "bDestroy": true,
+    "order": false,
+    "bPaginate": false,
+    "dom": "<\"search\"f><\"top\"l>rt<\"bottom\"ip><\"clear\">",
+    "aoColumnDefs": [
+            { 'bSortable': false, 'aTargets': [0, 1, 2, 3, 4, 5, 6] }],
+    "fnDrawCallback": function (o) {
+        $(".dataTables_scrollBody").scrollTop(0);
+    }
+};
+
+$(document).ready(function () {
     initSearchBox();
-    $("#order-table").DataTable();
+    var options = $.extend({}, tableDefOptions);
+    table = $("#order-table").DataTable(options);
+});
+
+$(document).on("click", "#order-table td.details-control", function() {
+    var tr = $(this).closest("tr");
+    var row = table.row(tr);
+
+    if (row.child.isShown()) {
+        row.child.hide();
+        tr.removeClass("shown");
+    } else {
+        var extendTable = $("#extend-for-search").clone();
+        extendTable.removeAttr("id");
+        extendTable.removeClass("hidden");
+        $("tbody tr[data-order-id!='" + tr.data("order-id") + "']", extendTable).remove();
+        row.child(extendTable[0].outerHTML).show();
+        tr.addClass("shown");
+    }
 });
 
 function initSearchBox() {
@@ -36,4 +71,6 @@ function initSearchBox() {
 
 function orderManageCallBack(result) {
     $("#manager-content").html(result);
+    var options = $.extend({}, tableDefOptions);
+    table = $("#order-table").DataTable(options);
 }
