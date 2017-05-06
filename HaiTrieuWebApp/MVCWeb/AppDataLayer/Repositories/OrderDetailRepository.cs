@@ -12,7 +12,7 @@ namespace MVCWeb.AppDataLayer.Repositories
         {
             //Delete
             var newOrderDetailIds = orderDetails.Where(o => o.Id != 0).Select(o => o.Id);
-            var removedOrderDetails = Table.Where(o => !newOrderDetailIds.Contains(o.Id));
+            var removedOrderDetails = Table.Where(o => o.OrderId == orderId && !newOrderDetailIds.Contains(o.Id));
             Delete(removedOrderDetails);
             //Update and add new
             orderDetails.ForEach(orderDetail =>
