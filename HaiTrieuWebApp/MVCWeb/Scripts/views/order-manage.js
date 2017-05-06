@@ -9,7 +9,7 @@ var tableDefOptions = {
     "bPaginate": false,
     "dom": "<\"search\"f><\"top\"l>rt<\"bottom\"ip><\"clear\">",
     "aoColumnDefs": [
-            { 'bSortable': false, 'aTargets': [0, 1, 2, 3, 4, 5, 6] }],
+            { 'bSortable': false, 'aTargets': [0, 1, 2, 3, 4, 5, 6, 7] }],
     "fnDrawCallback": function (o) {
         $(".dataTables_scrollBody").scrollTop(0);
     }
@@ -36,6 +36,9 @@ $(document).on("click", "#order-table td.details-control", function() {
         row.child(extendTable[0].outerHTML).show();
         tr.addClass("shown");
     }
+}).on("click", "#btnSubmit", function () {
+    $("#page").val("1");
+    $("#frmOrderManage").submit();
 });
 
 function initSearchBox() {
@@ -54,7 +57,7 @@ function initSearchBox() {
             }
         }
     });
-    $("#txtCustomer").tagsinput({
+    $("#txtCustomerIds").tagsinput({
         itemValue: "Id",
         itemText: "CustomerName",
         typeaheadjs: [{

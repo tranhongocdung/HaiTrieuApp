@@ -26,4 +26,5 @@ tr.shown td.details-control {
 #order-table td[colspan] {background: #fcf8e3}
 #order-table td[colspan] .table {background: none}
 
-/*.details-table td,.details-table th {background: #f5f5dc}*/
+#btnSubmit {position: relative}
+#orderManageLoading { position: absolute;left: 10px;top: 10px}

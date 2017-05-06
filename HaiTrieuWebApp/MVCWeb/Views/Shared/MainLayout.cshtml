@@ -37,7 +37,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
+                    @*<ul class="dropdown-menu dropdown-user">
                         <li>
                             <a href="/Config/ChangePassword"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
                         </li>
@@ -45,7 +45,7 @@
                         <li>
                             <a href="/User/Logout"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
-                    </ul>
+                    </ul>*@
                     <!-- /.dropdown-user -->
                 </li>
             </ul>
@@ -59,17 +59,17 @@
                             <a href="/"><i class="fa fa-dashboard fa-fw"></i> Bảng chính</a>
                         </li>*@
                         <li>
-                            <a href="~/order/edit"><i class="fa fa-hand-o-up fa-fw"></i> Tạo đơn hàng</a>
+                            <a href="@Url.Action("Edit","Order")"><i class="fa fa-hand-o-up fa-fw"></i> Tạo đơn hàng</a>
                         </li>
                         <li>
-                            <a href="/order/manage"><i class="fa fa-user fa-fw"></i> Lịch sử đơn hàng</a>
+                            <a href="@Url.Action("Manage","Order")"><i class="fa fa-user fa-fw"></i> Lịch sử đơn hàng</a>
                         </li>
-                        <li>
+                        @*<li>
                             <a href="/customer/manage"><i class="fa fa-road fa-fw"></i> Khách hàng</a>
                         </li>
                         <li>
                             <a href="/product/manage"><i class="fa fa-user fa-fw"></i> Sản phẩm</a>
-                        </li>
+                        </li>*@
                     </ul>
                     <!-- /#side-menu -->
                     <div class="panel">

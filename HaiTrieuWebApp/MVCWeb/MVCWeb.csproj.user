@@ -17,6 +17,7 @@
     <IISExpressUseClassicPipelineMode />
     <WebStackScaffolding_DbContextTypeFullName>MVCWeb.AppDataLayer.Entities.DbAppContext</WebStackScaffolding_DbContextTypeFullName>
     <UseGlobalApplicationHostFile />
+    <NameOfLastUsedPublishProfile>HaiTrieuWebApp</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

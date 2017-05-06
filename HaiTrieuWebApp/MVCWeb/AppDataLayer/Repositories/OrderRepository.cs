@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Dynamic;
-using KnowledgeHub.DAL.Repositories;
 using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.IRepositories;
 
@@ -54,8 +53,12 @@ namespace MVCWeb.AppDataLayer.Repositories
             }
             if (!string.IsNullOrEmpty(fp.ToDate))
             {
-                var toDate = DateTime.ParseExact(fp.FromDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                list = list.Where(o => o.CreatedOn <= toDate);
+                var toDate = DateTime.ParseExact(fp.ToDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).AddDays(1);
+                list = list.Where(o => o.CreatedOn < toDate);
+            }
+            if (fp.CustomerIds.Any())
+            {
+                list = list.Where(o => fp.CustomerIds.Contains(o.CustomerId));
             }
             totalCount = list.Count();
             list = list.OrderBy(fp.SortField + (fp.SortASC ? " ASC" : " DESC"));

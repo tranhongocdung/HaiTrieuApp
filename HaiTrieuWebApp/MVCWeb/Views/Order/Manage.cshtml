@@ -1,7 +1,7 @@
 ﻿@model MVCWeb.Models.OrderManageModel
 
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Lịch sử đơn hàng";
     Layout = "~/Views/Shared/MainLayout.cshtml";
 }
 
@@ -26,8 +26,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Tìm theo khách:</label>
-                                <input type="text" id="txtCustomer" placeholder="Từ khóa..."/>
-                                @Html.HiddenFor(m => m.CustomerIds, new {@id = "txtCustomerIds"})
+                                @Html.TextBoxFor(m => m.CustomerIds, new {@id = "txtCustomerIds", @placeholder = "Từ khóa..."})
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -56,7 +55,10 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>&nbsp;</label>
-                                <button class="btn btn-primary btn-block" type="button"><span class="glyphicon glyphicon-search"></span> Lọc kết quả</button>
+                                <button class="btn btn-primary btn-block" id="btnSubmit" type="button">
+                                    <img src="~/Content/images/ajax-loader-1.gif" id="orderManageLoading" style="display: none" />
+                                    <span class="glyphicon glyphicon-search"></span> Lọc kết quả
+                                </button>
                             </div>
                         </div>
                     </div>

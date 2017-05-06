@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using MVCWeb.AppDataLayer;
 using MVCWeb.AppDataLayer.Entities;
@@ -35,10 +36,13 @@ namespace MVCWeb.Controllers
             var model = new OrderManageModel()
             {
                 CurrentPage = 1,
-                PageSize = 10
+                PageSize = 10,
             };
             var totalCount = 0;
-            model.Orders = _orderRepository.GetList(new FilterParams(), ref totalCount);
+            model.Orders = _orderRepository.GetList(new FilterParams()
+            {
+                SortField = "CreatedOn"
+            }, ref totalCount);
             model.ItemCount = totalCount;
             return View(model);
         }
@@ -48,11 +52,16 @@ namespace MVCWeb.Controllers
             model.CurrentPage = page;
             model.PageSize = 10;
             var totalCount = 0;
+            var customerIds = !string.IsNullOrWhiteSpace(model.CustomerIds)
+                ? model.CustomerIds.Split(',').Select(int.Parse)
+                : new List<int>();
             model.Orders = _orderRepository.GetList(new FilterParams
             {
                 PageNumber = page,
                 FromDate = model.FromDate,
-                ToDate = model.ToDate
+                ToDate = model.ToDate,
+                CustomerIds = customerIds.ToList(),
+                SortField = "CreatedOn"
             }, ref totalCount);
             model.ItemCount = totalCount;
             return View("_OrderTable", model);

@@ -7,10 +7,11 @@
             <th class="text-center"></th>
             <th class="text-center">ID</th>
             <th>Khách hàng</th>
-            <th class="text-center">Thành tiền</th>
-            <th class="text-center">Chiết khấu</th>
-            <th class="text-center">Ngày tạo</th>
-            <th style="width: 92px"></th>
+            <th class="text-center" style="width: 100px">Thành tiền</th>
+            <th class="text-center" style="width: 100px">Chiết khấu</th>
+            <th class="text-center" style="width: 100px">Thực thu</th>
+            <th class="text-center" style="width: 100px">Ngày tạo</th>
+            <th style="width: 40px"></th>
         </tr>
         </thead>
         <tbody>
@@ -21,11 +22,13 @@
                     <td class="details-control"></td>
                     <td class="text-center">@item.Id</td>
                     <td class="italic">@item.Customer.SuggestName</td>
-                    <td class="text-center text-success"><strong> @item.OrderDetails.Sum(o => o.Quantity * o.UnitPrice).ToString("#,##0")</strong></td>
-                    <td class="text-center">@(item.DiscountValue != 0 ? item.DiscountValue.ToString("#,##0") + (item.DiscountType == 0 ? "%":""):"")</td>
+                    <td class="text-center text-success"><strong> @item.TotalCash.ToString("#,##0")</strong></td>
+                    <td class="text-center">@item.DiscountString</td>
+                    <td class="text-center text-danger"><strong> @item.RealCash.ToString("#,##0")</strong></td>
                     <td class="text-center">@item.CreatedOn.ToString("dd/MM/yyyy")</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-primary btn-sm" onclick="loadCarTrackingEditForm(@item.Id)">Cập nhật</button>
+                    <td class="text-right">
+                        <a href="@Url.Action("Edit",new {id = item.Id})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
+                        
                     </td>
                 </tr>
                 odd = !odd;

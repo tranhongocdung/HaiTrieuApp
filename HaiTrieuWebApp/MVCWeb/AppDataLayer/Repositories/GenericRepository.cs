@@ -7,7 +7,7 @@ using System.Linq;
 using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.IRepositories;
 
-namespace KnowledgeHub.DAL.Repositories
+namespace MVCWeb.AppDataLayer.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

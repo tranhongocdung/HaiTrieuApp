@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace MVCWeb.AppDataLayer.Entities
 {
@@ -23,5 +24,24 @@ namespace MVCWeb.AppDataLayer.Entities
         [ForeignKey("OrderStatusId")]
         public OrderStatus OrderStatus { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        [NotMapped]
+        public string DiscountString
+        {
+            get { return DiscountValue != 0 ? DiscountValue.ToString("#,##0") + (DiscountType == 0 ? "%" : "") : ""; }
+        }
+        [NotMapped]
+        public int TotalCash
+        {
+            get { return OrderDetails != null ? OrderDetails.Sum(o => o.Quantity*o.UnitPrice) : 0; }
+        }
+        [NotMapped]
+        public int RealCash
+        {
+            get
+            {
+                return TotalCash - (DiscountValue != 0 ? (DiscountType == 0 ? TotalCash * DiscountValue / 100 : DiscountValue) : 0);
+            }
+        }
     }
 }

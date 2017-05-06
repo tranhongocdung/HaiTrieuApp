@@ -59,7 +59,7 @@ function initCustomerTypeToggle() {
             $("#txtDistrict").val("");
             $("#txtCity").val("");
             $("#txtCustomerNote").val("");
-            $(".customer-info").attr("readonly", "readonly");
+            $(".customer-info").removeAttr("readonly", "readonly");
             $("#chkCustomerType").bootstrapToggle("disable");
         }
     });

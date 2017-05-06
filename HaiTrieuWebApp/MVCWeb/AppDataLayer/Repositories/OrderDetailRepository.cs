@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using KnowledgeHub.DAL.Repositories;
 using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.IRepositories;
 
