@@ -1,0 +1,2 @@
+ALTER TABLE [Order]
+ADD CompletedRealCash INT NOT NULL DEFAULT(0);

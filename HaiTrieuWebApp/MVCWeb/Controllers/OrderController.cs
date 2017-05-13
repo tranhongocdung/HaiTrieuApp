@@ -124,5 +124,11 @@ namespace MVCWeb.Controllers
             }
             return View(model);
         }
+
+        public ActionResult Complete(int id)
+        {
+            _orderRepository.CompleteOrder(id);
+            return Content("");
+        }
     }
 }

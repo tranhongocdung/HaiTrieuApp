@@ -9,5 +9,10 @@ namespace MVCWeb.Models
         //Order
         public Order Order { get; set; }
         public string OrderDetailJson { get; set; }
+
+        public bool IsCompletedOrder
+        {
+            get { return Order != null && Order.OrderStatusId == OrderStatus.Completed; }
+        }
     }
 }

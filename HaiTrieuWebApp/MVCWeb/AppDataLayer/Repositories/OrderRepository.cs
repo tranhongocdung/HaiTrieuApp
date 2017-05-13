@@ -30,12 +30,30 @@ namespace MVCWeb.AppDataLayer.Repositories
             return true;
         }
 
+        public void CompleteOrder(int orderId)
+        {
+            var order = GetWithOrderDetails(orderId);
+            if (order == null) return;
+            order.OrderStatusId = OrderStatus.Completed;
+            var totalCash = order.OrderDetails.Sum(o => o.UnitPrice*o.Quantity);
+            var realCash = totalCash -
+                           (order.DiscountType == 0 ? totalCash*order.DiscountValue/100 : order.DiscountValue);
+            order.CompletedRealCash = realCash;
+            Update(order);
+        }
+
         public Order GetWithCustomerAndOrderDetails(int id)
         {
             return
                 TableNoTracking.Include(o => o.Customer)
                     .Include(o => o.OrderDetails.Select(p => p.Product))
                     .FirstOrDefault(o => o.Id == id);
+        }
+
+        public Order GetWithOrderDetails(int id)
+        {
+            return
+                Table.Include(o => o.OrderDetails).FirstOrDefault(o => o.Id == id);
         }
 
         public List<Order> GetList(FilterParams fp, ref int totalCount)

@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <label>Từ ngày</label>
                                 <div class="input-group">
-                                    @Html.TextBoxFor(m => m.FromDate, new {@class = "form-control datepicker-control", @readonly = "readonly", @id = "txtFromDate"})
+                                    @Html.TextBoxFor(m => m.FromDate, new {@class = "form-control datepicker-control", @readonly = "readonly", @id = "txtFromDate", @placeholder = "Ngày bắt đầu..."})
                                     <span class="input-group-btn">
                                         <button class="btn btn-danger remove-date" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                     </span>
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label>Đến ngày</label>
                                 <div class="input-group">
-                                    @Html.TextBoxFor(m => m.ToDate, new {@class = "form-control datepicker-control", @readonly = "readonly", @id = "txtToDate"})
+                                    @Html.TextBoxFor(m => m.ToDate, new {@class = "form-control datepicker-control", @readonly = "readonly", @id = "txtToDate", @placeholder = "Ngày kết thúc..."})
                                     <span class="input-group-btn">
                                         <button class="btn btn-danger remove-date" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                                     </span>

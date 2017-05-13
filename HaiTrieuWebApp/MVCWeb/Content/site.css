@@ -23,6 +23,13 @@ tr.shown td.details-control {
 .table.table-sm th {
     padding: 5px
 }
+.table-success {background: #fcffd4}
+.table-success:hover {background: #faffba !important}
+
+.order-btn-group .dropdown-menu { left: auto; right: 0 !important}
+
+.confirmation h3 {text-align: center}
+
 #order-table td[colspan] {background: #fcf8e3}
 #order-table td[colspan] .table {background: none}
 

@@ -1,4 +1,5 @@
-﻿@model MVCWeb.Models.OrderManageModel
+﻿@using MVCWeb.AppDataLayer.Entities
+@model MVCWeb.Models.OrderManageModel
 
 <div class="col-md-12">
     <table class="table table-hover" id="order-table">
@@ -11,14 +12,14 @@
             <th class="text-center" style="width: 100px">Chiết khấu</th>
             <th class="text-center" style="width: 100px">Thực thu</th>
             <th class="text-center" style="width: 100px">Ngày tạo</th>
-            <th style="width: 40px"></th>
+            <th style="width: 42px"></th>
         </tr>
         </thead>
         <tbody>
             @{ var odd = true; }
             @foreach (var item in Model.Orders)
             {
-                <tr data-order-id="@item.Id">
+                <tr data-order-id="@item.Id" class="@(item.OrderStatusId == OrderStatus.Completed ? "table-success" : "")">
                     <td class="details-control"></td>
                     <td class="text-center">@item.Id</td>
                     <td class="italic">@item.Customer.SuggestName</td>
@@ -27,8 +28,9 @@
                     <td class="text-center text-danger"><strong> @item.RealCash.ToString("#,##0")</strong></td>
                     <td class="text-center">@item.CreatedOn.ToString("dd/MM/yyyy")</td>
                     <td class="text-right">
-                        <a href="@Url.Action("Edit",new {id = item.Id})" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span></a>
-                        
+                        <div class="btn-group order-btn-group" role="group" aria-label="...">
+                            <a href="@Url.Action("Edit", new {id = item.Id})" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                        </div>
                     </td>
                 </tr>
                 odd = !odd;

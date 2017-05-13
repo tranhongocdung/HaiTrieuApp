@@ -19,6 +19,7 @@ namespace MVCWeb.AppDataLayer.Entities
         public int DiscountType { get; set; }
         public int DiscountValue { get; set; }
         public int OrderStatusId { get; set; }
+        public int CompletedRealCash { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
         [ForeignKey("OrderStatusId")]

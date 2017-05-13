@@ -36,8 +36,28 @@ function initExistingOrder() {
         $("#btnPrint").click(function() {
             window.open($("#print-url").val() + "?id=" + $("#order-id").val(), "popupWindow", "width=840, height=625, scrollbars=yes");
         });
-    } else {
-        $("#tdPrint").addClass("hidden");
+
+        $("#btnComplete").confirmation({
+            singleton: true,
+            onConfirm: function () {
+                $("#orderEditLoading").show();
+                $.ajax({
+                    url: $("#complete-order-url").val(),
+                    data: {
+                        id: $("#order-id").val()
+                    },
+                    beforeSend: function () {
+                        $("#orderEditLoading").show();
+                    },
+                    success: function() {
+                        location.reload();
+                    }
+                });
+            },
+            placement: "left",
+            title: "Không thể sửa đơn hàng đã hoàn tất, chắc không?"
+        });
+
     }
 }
 
@@ -150,6 +170,7 @@ function initRemoveProductRowButton(container) {
         var container = $("body");
     }
     container.find(".remove-row").confirmation({
+        singleton: true,
         onConfirm: function() {
             $(this).parent().parent().remove();
             numberProductRow();
