@@ -14,8 +14,8 @@ namespace MVCWeb.AppDataLayer.Entities
             PhoneNo = string.Empty;
             Email = string.Empty;
             Address = string.Empty;
-            District = string.Empty;
-            City = string.Empty;
+            Region = string.Empty;
+            Area = string.Empty;
             Note = string.Empty;
         }
         [Key]
@@ -24,8 +24,8 @@ namespace MVCWeb.AppDataLayer.Entities
         public string PhoneNo { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public string District { get; set; }
-        public string City { get; set; }
+        public string Region { get; set; }
+        public string Area { get; set; }
         public string Note { get; set; }
         public DateTime CreatedOn { get; set; }
 
@@ -45,8 +45,19 @@ namespace MVCWeb.AppDataLayer.Entities
                 return CustomerName +
                        (!string.IsNullOrEmpty(PhoneNo) ? " - " + PhoneNo : "") +
                        (!string.IsNullOrEmpty(Email) ? " - " + Email : "") +
-                       (!string.IsNullOrEmpty(District) ? " - " + District : "") +
-                       (!string.IsNullOrEmpty(City) ? " - " + City : "");
+                       (!string.IsNullOrEmpty(Region) ? " - " + Region : "") +
+                       (!string.IsNullOrEmpty(Area) ? " - " + Area : "");
+            }
+        }
+
+        public string FullAddress
+        {
+            get
+            {
+                return CustomerName +
+                       (!string.IsNullOrEmpty(Address) ? Address : "") +
+                       (!string.IsNullOrEmpty(Region) ? " - " + Region : "") +
+                       (!string.IsNullOrEmpty(Area) ? " - " + Area : "");
             }
         }
     }

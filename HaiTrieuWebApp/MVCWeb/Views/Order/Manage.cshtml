@@ -19,7 +19,7 @@
                 @using (Ajax.BeginForm("Manage", "Order", new AjaxOptions
                 {
                     OnSuccess = "orderManageCallBack",
-                    LoadingElementId = "orderManageLoading"
+                    LoadingElementId = "manageLoading"
                 }, new {@id = "frmOrderManage"}))
                 {
                     <div class="row">
@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label>&nbsp;</label>
                                 <button class="btn btn-primary btn-block" id="btnSubmit" type="button">
-                                    <img src="~/Content/images/ajax-loader-1.gif" id="orderManageLoading" style="display: none" />
+                                    <img src="~/Content/images/ajax-loader-1.gif" id="manageLoading" style="display: none" />
                                     <span class="glyphicon glyphicon-search"></span> Lọc kết quả
                                 </button>
                             </div>
@@ -79,6 +79,7 @@
     <link href="~/Content/typeahead/typeahead-bootstrap.css" rel="stylesheet" />
     <link href="~/Content/datatables/datatables.min.css" rel="stylesheet" />
 }
+
 @section OptionalJs {
     <script src="/Content/datepicker/js/bootstrap-datepicker.js"></script>
     <script src="/Content/datepicker/js/bootstrap-datepicker.vi.js"></script>

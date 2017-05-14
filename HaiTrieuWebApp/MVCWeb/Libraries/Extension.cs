@@ -1,8 +1,10 @@
 ﻿using System;
-using System.ComponentModel.Design;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
-using System.Web.UI.WebControls;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using MVCWeb.AppDataLayer;
 using MVCWeb.AppDataLayer.Entities;
 
@@ -36,8 +38,8 @@ namespace MVCWeb.Libraries
             if (full)
             {
                 label.Label +=
-                    (!string.IsNullOrEmpty(source.District) ? " - " + source.District : "") +
-                    (!string.IsNullOrEmpty(source.City) ? " - " + source.City : "");
+                    (!string.IsNullOrEmpty(source.Region) ? " - " + source.Region : "") +
+                    (!string.IsNullOrEmpty(source.Area) ? " - " + source.Area : "");
             }
             return label;
         }

@@ -59,14 +59,15 @@
                             <a href="/"><i class="fa fa-dashboard fa-fw"></i> Bảng chính</a>
                         </li>*@
                         <li>
-                            <a href="@Url.Action("Edit","Order", new {id = ""})"><i class="fa fa-hand-o-up fa-fw"></i> Tạo đơn hàng</a>
+                            <a href="@Url.Action("Edit","Order", new {id = ""})"><i class="fa fa-list-alt fa-fw"></i> Tạo đơn hàng</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Manage","Order")"><i class="fa fa-user fa-fw"></i> Lịch sử đơn hàng</a>
+                            <a href="@Url.Action("Manage", "Order")"><i class="fa fa-book fa-fw"></i> Lịch sử đơn hàng</a>
                         </li>
-                        @*<li>
-                            <a href="/customer/manage"><i class="fa fa-road fa-fw"></i> Khách hàng</a>
+                        <li>
+                            <a href="@Url.Action("Manage", "Customer")"><i class="fa fa-user fa-fw"></i> Khách hàng</a>
                         </li>
+                        @*
                         <li>
                             <a href="/product/manage"><i class="fa fa-user fa-fw"></i> Sản phẩm</a>
                         </li>*@

@@ -9,6 +9,7 @@
     font-size: 15px;
 }
 #alert-div { margin-bottom: 15px}
+.form-group .twitter-typeahead {display: block !important}
 
 td.details-control {
     background: url('images/details-open.png') no-repeat center center;
@@ -34,4 +35,4 @@ tr.shown td.details-control {
 #order-table td[colspan] .table {background: none}
 
 #btnSubmit {position: relative}
-#orderManageLoading { position: absolute;left: 10px;top: 10px}
+#manageLoading { position: absolute;left: 10px;top: 10px}

@@ -46,7 +46,7 @@
         <div style="padding-left: 18px; margin: 15px 0">
             <div><strong>KH:</strong> @Model.Customer.CustomerName</div>
             <div>
-                <strong>Địa chỉ:</strong> @Model.Customer.Address @(!string.IsNullOrEmpty(Model.Customer.District) ? "- " + Model.Customer.District : "") @(!string.IsNullOrEmpty(Model.Customer.City) ? "- " + Model.Customer.City : "")
+                <strong>Địa chỉ:</strong> @Model.Customer.Address @(!string.IsNullOrEmpty(Model.Customer.Region) ? "- " + Model.Customer.Region : "") @(!string.IsNullOrEmpty(Model.Customer.Area) ? "- " + Model.Customer.Area : "")
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Điện thoại:</strong> @Model.Customer.PhoneNo
             </div>
             <div><strong>Ghi chú: </strong> @Model.Order.Note</div>

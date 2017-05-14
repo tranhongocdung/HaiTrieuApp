@@ -1,0 +1,51 @@
+﻿@model MVCWeb.Models.CustomerManageModel
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+<div class="row">
+    <br />
+    <div class="message-alert" id="alert-container"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Danh sách khách hàng
+            </div>
+            <div class="panel-body">
+                @using (Ajax.BeginForm("Manage", "Customer", new AjaxOptions
+                {
+                    OnSuccess = "customerManageCallBack",
+                    LoadingElementId = "manageLoading"
+                }, new { @id = "frmCustomerManage" }))
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Từ khóa:</label>
+                                @Html.TextBoxFor(m => m.Keyword, new { @class = "form-control", @id = "txtKeyword", @placeholder = "Từ khóa tìm theo tên KH, email, số ĐT..." })
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button class="btn btn-primary btn-block" id="btnSubmit" type="button">
+                                    <img src="~/Content/images/ajax-loader-1.gif" id="manageLoading" style="display: none" />
+                                    <span class="glyphicon glyphicon-search"></span> Lọc kết quả
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="manager-content">
+                        @Html.Partial("_CustomerTable")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section OptionalJs {
+    <script src="~/Scripts/views/customer-manage.js"></script>
+}

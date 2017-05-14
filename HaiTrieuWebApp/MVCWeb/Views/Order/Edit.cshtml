@@ -104,13 +104,13 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Quận/Huyện</label>
-                        @Html.TextBoxFor(o => o.Customer.District, new {@class = "form-control customer-info", @id = "txtDistrict"})
+                        @Html.TextBoxFor(o => o.Customer.Region, new {@class = "form-control customer-info", @id = "txtRegion"})
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Tỉnh/Thành phố</label>
-                        @Html.TextBoxFor(o => o.Customer.City, new {@class = "form-control customer-info", @id = "txtCity"})
+                        @Html.TextBoxFor(o => o.Customer.Area, new {@class = "form-control customer-info", @id = "txtArea"})
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                 <div class="col-md-9">
                     <div class="form-group">
                         <label>Ghi chú cho khách hàng</label>
-                        @Html.TextBoxFor(o => o.Customer.Note, new {@class = "form-control customer-info", @id = "txtCustomerNote"})
+                        @Html.TextAreaFor(o => o.Customer.Note, 3, 10, new { @class = "form-control", @id = "txtCustomerNote" })
                     </div>
                 </div>
             </div>
@@ -326,6 +326,7 @@
     <link href="~/Scripts/x-editable/select2/select2-bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
     <link href="~/Content/typeahead/typeahead-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/summernote/summernote.css" rel="stylesheet" />
 }
 
 @section OptionalJs
@@ -336,6 +337,7 @@
     <script src="~/Scripts/jquery.numeric.min.js"></script>
     <script src="~/Content/bootstrap-toggle/bootstrap-toggle.min.js"></script>
     <script src="~/Content/typeahead/typeahead.bundle.js"></script>
+    <script src="~/Content/summernote/summernote.min.js"></script>
     <script src="~/Scripts/views/order-edit.js"></script>
 }
 

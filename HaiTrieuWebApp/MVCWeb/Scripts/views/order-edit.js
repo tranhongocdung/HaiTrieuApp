@@ -16,6 +16,67 @@ $(document).ready(function () {
     initOrderNoteHint();
 });
 
+function destroyRegionAreaHint() {
+    $("#txtRegion").typeahead("destroy");
+    $("#txtArea").typeahead("destroy");
+}
+
+function initRegionAreaHint() {
+    var region = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace("region"),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        identify: function (obj) { return obj.region; },
+        prefetch: "../content/json/region.json"
+    });
+
+    function regionsWithDefaults(q, sync) {
+        if (q === "") {
+            sync(region.get("Bình Thạnh"));
+        }
+
+        else {
+            region.search(q, sync);
+        }
+    }
+
+    $("#txtRegion").typeahead({
+        minLength: 0,
+        highlight: true
+    },
+    {
+        name: "region",
+        display: "region",
+        source: regionsWithDefaults
+    });
+
+    var area = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace("area"),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        identify: function (obj) { return obj.area; },
+        prefetch: "../content/json/area.json"
+    });
+
+    function areasWithDefaults(q, sync) {
+        if (q === "") {
+            sync(area.get("TP.HCM"));
+        }
+
+        else {
+            area.search(q, sync);
+        }
+    }
+
+    $("#txtArea").typeahead({
+        minLength: 0,
+        highlight: true
+    },
+    {
+        name: "area",
+        display: "area",
+        source: areasWithDefaults
+    });
+}
+
 function initOrderNoteHint() {
     $("#order-note-hint").change(function() {
         $("#txtOrderNote").val($(this).val());
@@ -23,10 +84,15 @@ function initOrderNoteHint() {
 }
 
 function initExistingOrder() {
+    $("#txtCustomerNote").summernote({
+        toolbar: false,
+        height: 90
+    });
     if ($("#order-id").val() != "") {
         $(".customer-info").attr("readonly", "readonly");
         $("#chkCustomerType").bootstrapToggle("off");
         $("#chkCustomerType").bootstrapToggle("disable");
+        $("#txtCustomerNote").summernote("disable");
         $(".product-order-row").each(function() {
             calculateCashForProductRow($(this));
         });
@@ -39,14 +105,14 @@ function initExistingOrder() {
 
         $("#btnComplete").confirmation({
             singleton: true,
-            onConfirm: function () {
+            onConfirm: function() {
                 $("#orderEditLoading").show();
                 $.ajax({
                     url: $("#complete-order-url").val(),
                     data: {
                         id: $("#order-id").val()
                     },
-                    beforeSend: function () {
+                    beforeSend: function() {
                         $("#orderEditLoading").show();
                     },
                     success: function() {
@@ -58,6 +124,9 @@ function initExistingOrder() {
             title: "Không thể sửa đơn hàng đã hoàn tất, chắc không?"
         });
 
+    } else {
+        $("#txtCustomerNote").summernote("enable");
+        initRegionAreaHint();
     }
 }
 
@@ -76,11 +145,14 @@ function initCustomerTypeToggle() {
             $("#txtPhoneNo").val("");
             $("#txtEmail").val("");
             $("#txtAddress").val("");
-            $("#txtDistrict").val("");
-            $("#txtCity").val("");
+            $("#txtRegion").val("");
+            $("#txtArea").val("");
             $("#txtCustomerNote").val("");
+            $("#txtCustomerNote").summernote("code","");
+            $("#txtCustomerNote").summernote("enable");
             $(".customer-info").removeAttr("readonly", "readonly");
             $("#chkCustomerType").bootstrapToggle("disable");
+            initRegionAreaHint();
         }
     });
 }
@@ -115,7 +187,9 @@ function initSearchCustomerTextbox() {
         loadCustomerDetail(datum);
         $("#chkCustomerType").bootstrapToggle("enable");
         $("#chkCustomerType").bootstrapToggle("off");
+        $("#txtCustomerNote").summernote("disable");
         $(this).typeahead("val", "");
+        destroyRegionAreaHint();
     });
 }
 
@@ -125,9 +199,9 @@ function loadCustomerDetail(data) {
     $("#txtPhoneNo").val(data.PhoneNo);
     $("#txtEmail").val(data.Email);
     $("#txtAddress").val(data.Address);
-    $("#txtDistrict").val(data.District);
-    $("#txtCity").val(data.City);
-    $("#txtCustomerNote").val(data.Note);
+    $("#txtRegion").val(data.Region);
+    $("#txtArea").val(data.Area);
+    $("#txtCustomerNote").summernote("code", data.Note);
     $(".customer-info").attr("readonly", "readonly");
 }
 
@@ -308,5 +382,5 @@ function validateOrderBeforeSend() {
 function orderEditCallBack(result) {
     if (result == "")
         showMessage("Đã lưu đơn hàng thành công!", "success");
-    else window.location = location.protocol + "//" + location.host + location.pathname + "?id=" + result;
+    //else window.location = location.protocol + "//" + location.host + location.pathname + "?id=" + result;
 }
