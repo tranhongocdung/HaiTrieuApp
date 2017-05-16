@@ -382,5 +382,8 @@ function validateOrderBeforeSend() {
 function orderEditCallBack(result) {
     if (result == "")
         showMessage("Đã lưu đơn hàng thành công!", "success");
-    //else window.location = location.protocol + "//" + location.host + location.pathname + "?id=" + result;
+    else {
+        $("#order-id").val(result);
+        window.location = location.protocol + "//" + location.host + location.pathname + "?id=" + result;
+    }
 }

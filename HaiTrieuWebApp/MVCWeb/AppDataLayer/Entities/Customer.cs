@@ -54,8 +54,7 @@ namespace MVCWeb.AppDataLayer.Entities
         {
             get
             {
-                return CustomerName +
-                       (!string.IsNullOrEmpty(Address) ? Address : "") +
+                return Address +
                        (!string.IsNullOrEmpty(Region) ? " - " + Region : "") +
                        (!string.IsNullOrEmpty(Area) ? " - " + Area : "");
             }
