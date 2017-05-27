@@ -1,4 +1,4 @@
-﻿@model MVCWeb.Models.OrderManageModel
+﻿@model MVCWeb.Models.OrderManageViewModel
 
 @{
     ViewBag.Title = "Lịch sử đơn hàng";
@@ -71,6 +71,7 @@
     </div>
 </div>
 
+<input type="hidden" id="complete-order-url" value="@Url.Action("Complete","Order")" />
 <input type="hidden" id="customer-suggestion-datasource" value="@Url.Action("GetCustomerSuggestion", "DataSource")" />
 
 @section OptionalCss {

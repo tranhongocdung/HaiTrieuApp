@@ -30,7 +30,7 @@ namespace MVCWeb.Controllers
         public ActionResult Manage()
         {
 
-            var model = new CustomerManageModel()
+            var model = new CustomerManageViewModel()
             {
                 CurrentPage = 1,
                 PageSize = 10,
@@ -42,7 +42,7 @@ namespace MVCWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Manage(CustomerManageModel model, int page)
+        public ActionResult Manage(CustomerManageViewModel model, int page)
         {
             model.CurrentPage = page;
             model.PageSize = 10;
@@ -57,12 +57,38 @@ namespace MVCWeb.Controllers
         }
         public ActionResult Edit(int id = 0)
         {
-            return View();
+            var model = new CustomerEditViewModel();
+            if (id != 0)
+            {
+                var customer = _customerRepository.GetById(id);
+                if (customer != null)
+                {
+                    model.Customer = customer;
+                }
+            }
+            return View(model);
         }
         [HttpPost]
-        public ActionResult Edit(OrderEditModel model)
+        [ValidateInput(false)]
+        public ActionResult Edit(OrderEditViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var message = "";
+                var obj = _customerRepository.GetById(model.Customer.Id);
+                if (obj == null)
+                {
+                    _customerRepository.Insert(model.Customer);
+                    message = "Đã thêm thành công!";
+                }
+                else
+                {
+                    _customerRepository.UpdateCustomer(model.Customer);
+                    message = "Đã cập nhật thành công!";
+                }
+                return Json(new ReturnData { Success = true, Message = message, Data = obj.Id.ToString() });
+            }
+            return Json(new ReturnData { Success = false, Message = "Lỗi!" });
         }
     }
 }

@@ -225,7 +225,7 @@ function initNumericTextbox(selector, container) {
 
 function initAddProductRowButton() {
     $("#add-product-row").click(function() {
-        var productRow = "<td class=\"text-center count-no\"></td><td><a href=\"#\" class=\"product-name\" data-value=\"0\">Chọn sản phẩm</a><input type=\"hidden\" class=\"product-id\"/><input type=\"hidden\" class=\"order-detail-id\" value=\"0\"/></td><td class=\"text-center\"><span class=\"text-danger short-description\"></span></td><td><input type=\"text\" placeholder=\"Mô tả\" class=\"form-control product-note\"/></td><td><input type=\"text\" placeholder=\"Đơn giá\" class=\"form-control unit-price\"/></td><td><input type=\"text\" placeholder=\"Số lượng\" class=\"form-control quantity\"/></td><td><input type=\"text\" placeholder=\"Thành tiền\" class=\"form-control product-cash\" readonly=\"readonly\"/></td><td><button class=\"btn btn-danger btn-sm remove-row\" data-toggle=\"confirmation\"><span class=\"glyphicon glyphicon-remove\"></span></button></td>";
+        var productRow = "<td class=\"text-center count-no\"></td><td><a href=\"#\" class=\"product-name\" data-value=\"0\">Chọn sản phẩm</a><input type=\"hidden\" class=\"product-id\"/><input type=\"hidden\" class=\"order-detail-id\" value=\"0\"/></td><td class=\"text-center\"><span class=\"text-danger short-description\"></span></td><td><input type=\"text\" placeholder=\"Mô tả\" class=\"form-control product-note\"/></td><td><input type=\"text\" placeholder=\"Giá gốc\" class=\"form-control original-price\" readonly=\"readonly\"/></td><td><input type=\"text\" placeholder=\"Đơn giá\" class=\"form-control unit-price\"/></td><td><input type=\"text\" placeholder=\"Số lượng\" class=\"form-control quantity\"/></td><td><input type=\"text\" placeholder=\"Thành tiền\" class=\"form-control product-cash\" readonly=\"readonly\"/></td><td><button class=\"btn btn-danger btn-sm remove-row\" data-toggle=\"confirmation\"><span class=\"glyphicon glyphicon-remove\"></span></button></td>";
         var appendRow = $("#tr-for-append");
         appendRow.append(productRow);
         appendRow.removeAttr("id");
@@ -291,6 +291,7 @@ function initXEditable(container) {
             },
             formatSelection: function (item) {
                 localStorage.setItem("unitPrice", item.UnitPrice);
+                localStorage.setItem("originalPrice", item.OriginalPrice);
                 localStorage.setItem("productId", item.Id);
                 localStorage.setItem("shortDescription", item.ShortDescription);
                 return item.ProductName;
@@ -304,6 +305,7 @@ function initXEditable(container) {
         success: function () {
             var row = $(this).parent().parent();
             row.find(".unit-price").val(localStorage.getItem("unitPrice"));
+            row.find(".original-price").val(localStorage.getItem("originalPrice"));
             row.find(".product-id").val(localStorage.getItem("productId"));
             row.find(".short-description").html(localStorage.getItem("shortDescription"));
             calculateCashForProductRow(row);

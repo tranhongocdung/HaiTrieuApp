@@ -1,0 +1,2 @@
+ALTER TABLE [Product]
+ADD OriginalPrice INT NOT NULL DEFAULT(0);

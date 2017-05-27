@@ -3,7 +3,7 @@ using MVCWeb.AppDataLayer.Entities;
 
 namespace MVCWeb.Models
 {
-    public class OrderPrintModel
+    public class OrderPrintViewModel
     {
         //Customer
         public Customer Customer { get; set; }

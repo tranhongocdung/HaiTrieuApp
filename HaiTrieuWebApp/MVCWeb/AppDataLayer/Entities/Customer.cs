@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,7 +19,9 @@ namespace MVCWeb.AppDataLayer.Entities
         }
         [Key]
         public int Id { get; set; }
+        [Required]
         public string CustomerName { get; set; }
+        [Required]
         public string PhoneNo { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }

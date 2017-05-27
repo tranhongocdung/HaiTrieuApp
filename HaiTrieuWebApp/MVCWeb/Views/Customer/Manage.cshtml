@@ -1,4 +1,4 @@
-﻿@model MVCWeb.Models.CustomerManageModel
+﻿@model MVCWeb.Models.CustomerManageViewModel
 @{
     ViewBag.Title = "Danh sách khách hàng";
     Layout = "~/Views/Shared/MainLayout.cshtml";
@@ -18,20 +18,20 @@
                 {
                     OnSuccess = "customerManageCallBack",
                     LoadingElementId = "manageLoading"
-                }, new { @id = "frmCustomerManage" }))
+                }, new {@id = "frmCustomerManage"}))
                 {
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Từ khóa:</label>
-                                @Html.TextBoxFor(m => m.Keyword, new { @class = "form-control", @id = "txtKeyword", @placeholder = "Từ khóa tìm theo tên KH, email, số ĐT..." })
+                                @Html.TextBoxFor(m => m.Keyword, new {@class = "form-control", @id = "txtKeyword", @placeholder = "Từ khóa tìm theo tên KH, email, số ĐT..."})
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>&nbsp;</label>
                                 <button class="btn btn-primary btn-block" id="btnSubmit" type="button">
-                                    <img src="~/Content/images/ajax-loader-1.gif" id="manageLoading" style="display: none" />
+                                    <img src="~/Content/images/ajax-loader-1.gif" id="manageLoading" style="display: none"/>
                                     <span class="glyphicon glyphicon-search"></span> Lọc kết quả
                                 </button>
                             </div>
@@ -46,6 +46,17 @@
     </div>
 </div>
 
+<div id="hidden-content"></div>
+<input type="hidden" id="edit-customer-url" value="@Url.Action("Edit", "Customer")"/>
+
+@section OptionalCss
+{
+    <link href="~/Content/typeahead/typeahead-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/summernote/summernote.css" rel="stylesheet" />
+}
+
 @section OptionalJs {
+    <script src="~/Content/typeahead/typeahead.bundle.js"></script>
+    <script src="~/Content/summernote/summernote.min.js"></script>
     <script src="~/Scripts/views/customer-manage.js"></script>
 }

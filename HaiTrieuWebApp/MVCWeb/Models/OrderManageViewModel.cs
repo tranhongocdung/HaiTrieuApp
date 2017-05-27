@@ -3,7 +3,7 @@ using MVCWeb.AppDataLayer.Entities;
 
 namespace MVCWeb.Models
 {
-    public class OrderManageModel : BasePagingViewModel
+    public class OrderManageViewModel : BasePagingViewModel
     {
         public string CustomerIds { get; set; }
         public string FromDate { get; set; }

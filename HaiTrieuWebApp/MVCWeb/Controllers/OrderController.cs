@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using MVCWeb.AppDataLayer;
@@ -34,7 +33,7 @@ namespace MVCWeb.Controllers
         }
         public ActionResult Manage()
         {
-            var model = new OrderManageModel()
+            var model = new OrderManageViewModel()
             {
                 CurrentPage = 1,
                 PageSize = 10,
@@ -48,7 +47,7 @@ namespace MVCWeb.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Manage(OrderManageModel model, int page)
+        public ActionResult Manage(OrderManageViewModel model, int page)
         {
             model.CurrentPage = page;
             model.PageSize = 10;
@@ -69,7 +68,7 @@ namespace MVCWeb.Controllers
         }
         public ActionResult Edit(int id = 0)
         {
-            var model = new OrderEditModel();
+            var model = new OrderEditViewModel();
             if (id != 0)
             {
                 var order = _orderRepository.GetWithCustomerAndOrderDetails(id);
@@ -83,7 +82,7 @@ namespace MVCWeb.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(OrderEditModel model)
+        public ActionResult Edit(OrderEditViewModel model)
         {
             var customerId = model.Customer.Id;
             var orderId = model.Order.Id;
@@ -114,7 +113,7 @@ namespace MVCWeb.Controllers
         }
         public ActionResult Print(int id)
         {
-            var model = new OrderPrintModel();
+            var model = new OrderPrintViewModel();
             if (id != 0)
             {
                 var order = _orderRepository.GetWithCustomerAndOrderDetails(id);

@@ -2,7 +2,7 @@
 
 namespace MVCWeb.Models
 {
-    public class OrderEditModel
+    public class OrderEditViewModel
     {
         //Customer
         public Customer Customer { get; set; }

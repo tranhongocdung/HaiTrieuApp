@@ -28,7 +28,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/27/2016 11:31:14</publishTime>
     </File>
     <File Include="bin/MVCWeb.dll">
-      <publishTime>05/06/2017 18:04:15</publishTime>
+      <publishTime>05/14/2017 18:43:43</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>02/27/2016 11:31:15</publishTime>
@@ -324,11 +324,167 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/js/sb-admin.js">
       <publishTime>04/30/2017 18:33:21</publishTime>
     </File>
+    <File Include="Content/json/region.json">
+      <publishTime>05/13/2017 12:15:13</publishTime>
+    </File>
     <File Include="Content/print.css">
       <publishTime>04/27/2017 19:16:01</publishTime>
     </File>
     <File Include="Content/site.css">
-      <publishTime>05/06/2017 17:14:08</publishTime>
+      <publishTime>05/14/2017 18:18:04</publishTime>
+    </File>
+    <File Include="Content/summernote/font/summernote.eot">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/font/summernote.ttf">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/font/summernote.woff">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-ar-AR.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-bg-BG.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-ca-ES.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-cs-CZ.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-da-DK.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-de-DE.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-el-GR.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-es-ES.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-es-EU.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-fa-IR.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-fi-FI.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-fr-FR.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-gl-ES.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-he-IL.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-hr-HR.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-hu-HU.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-id-ID.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-it-IT.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-ja-JP.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-ko-KR.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-lt-LT.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-lt-LV.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-nb-NO.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-nl-NL.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-pl-PL.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-pt-BR.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-pt-PT.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-ro-RO.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-ru-RU.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-sk-SK.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-sl-SI.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-sr-RS-Latin.js">
+      <publishTime>05/13/2017 17:14:41</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-sr-RS.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-sv-SE.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-ta-IN.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-th-TH.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-tr-TR.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-uk-UA.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-vi-VN.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-zh-CN.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/lang/summernote-zh-TW.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/plugin/databasic/summernote-ext-databasic.css">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/plugin/databasic/summernote-ext-databasic.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/plugin/hello/summernote-ext-hello.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/plugin/specialchars/summernote-ext-specialchars.js">
+      <publishTime>05/13/2017 17:14:42</publishTime>
+    </File>
+    <File Include="Content/summernote/summernote.css">
+      <publishTime>05/13/2017 17:14:44</publishTime>
+    </File>
+    <File Include="Content/summernote/summernote.js">
+      <publishTime>05/13/2017 18:00:31</publishTime>
+    </File>
+    <File Include="Content/summernote/summernote.min.js">
+      <publishTime>05/13/2017 17:14:44</publishTime>
     </File>
     <File Include="Content/typeahead/typeahead-bootstrap.css">
       <publishTime>04/30/2017 18:33:21</publishTime>
@@ -408,8 +564,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/lib.js">
       <publishTime>04/26/2017 20:00:56</publishTime>
     </File>
+    <File Include="Scripts/views/customer-manage.js">
+      <publishTime>05/14/2017 18:13:22</publishTime>
+    </File>
     <File Include="Scripts/views/order-edit.js">
-      <publishTime>05/06/2017 17:30:53</publishTime>
+      <publishTime>05/13/2017 18:09:10</publishTime>
     </File>
     <File Include="Scripts/views/order-manage.js">
       <publishTime>05/06/2017 12:11:36</publishTime>
@@ -816,6 +975,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Config/ChangePassword.cshtml">
       <publishTime>05/01/2016 12:32:12</publishTime>
     </File>
+    <File Include="Views/Customer/Manage.cshtml">
+      <publishTime>05/14/2017 18:26:45</publishTime>
+    </File>
+    <File Include="Views/Customer/_CustomerTable.cshtml">
+      <publishTime>05/14/2017 18:31:46</publishTime>
+    </File>
     <File Include="Views/Error/AccessDenied.cshtml">
       <publishTime>03/13/2016 21:54:57</publishTime>
     </File>
@@ -823,25 +988,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/13/2016 20:20:43</publishTime>
     </File>
     <File Include="Views/Order/Edit.cshtml">
-      <publishTime>05/06/2017 17:32:38</publishTime>
+      <publishTime>05/13/2017 18:04:12</publishTime>
     </File>
     <File Include="Views/Order/Index.cshtml">
       <publishTime>04/22/2017 15:48:48</publishTime>
     </File>
     <File Include="Views/Order/Manage.cshtml">
-      <publishTime>05/06/2017 17:38:02</publishTime>
+      <publishTime>05/14/2017 18:18:25</publishTime>
     </File>
     <File Include="Views/Order/OrderPrint.cshtml">
       <publishTime>04/26/2017 20:00:56</publishTime>
     </File>
     <File Include="Views/Order/Print.cshtml">
-      <publishTime>04/27/2017 19:16:01</publishTime>
+      <publishTime>05/13/2017 11:01:08</publishTime>
     </File>
     <File Include="Views/Order/_OrderTable.cshtml">
       <publishTime>05/06/2017 16:42:00</publishTime>
     </File>
     <File Include="Views/Shared/MainLayout.cshtml">
-      <publishTime>05/06/2017 16:48:16</publishTime>
+      <publishTime>05/13/2017 15:39:45</publishTime>
     </File>
     <File Include="Views/Shared/_Pager.cshtml">
       <publishTime>02/27/2016 11:34:17</publishTime>

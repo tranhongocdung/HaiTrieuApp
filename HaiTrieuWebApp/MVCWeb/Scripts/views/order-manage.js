@@ -19,6 +19,7 @@ $(document).ready(function () {
     initSearchBox();
     var options = $.extend({}, tableDefOptions);
     table = $("#order-table").DataTable(options);
+    initCompleteOrderButton();
 });
 
 $(document).on("click", "#order-table td.details-control", function() {
@@ -40,6 +41,31 @@ $(document).on("click", "#order-table td.details-control", function() {
     $("#page").val("1");
     $("#frmOrderManage").submit();
 });
+
+function initCompleteOrderButton() {
+    $(".complete-order").confirmation({
+        singleton: true,
+        onConfirm: function () {
+            var that = $(this);
+            $.ajax({
+                url: $("#complete-order-url").val(),
+                data: {
+                    id: that.closest("tr").data("order-id")
+                },
+                beforeSend: function () {
+                    that.find("span").remove();
+                    that.find("img").show();
+                },
+                success: function () {
+                    that.closest("tr").addClass("table-success");
+                    that.remove();
+                }
+            });
+        },
+        placement: "left",
+        title: "Hoàn tất đơn này?"
+    });
+}
 
 function initSearchBox() {
     var customers = new Bloodhound({
@@ -76,4 +102,5 @@ function orderManageCallBack(result) {
     $("#manager-content").html(result);
     var options = $.extend({}, tableDefOptions);
     table = $("#order-table").DataTable(options);
+    initCompleteOrderButton();
 }

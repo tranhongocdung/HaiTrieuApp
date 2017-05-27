@@ -18,6 +18,20 @@ namespace MVCWeb.AppDataLayer.Repositories
             Insert(customer);
             return customer.Id;
         }
+        public bool UpdateCustomer(Customer customer)
+        {
+            var currentCustomer = GetById(customer.Id);
+            if (currentCustomer == null) return false;
+            currentCustomer.CustomerName = customer.CustomerName;
+            currentCustomer.PhoneNo = customer.PhoneNo;
+            currentCustomer.Email = customer.Email;
+            currentCustomer.Address= customer.Address;
+            currentCustomer.Region = customer.Region;
+            currentCustomer.Area = customer.Area;
+            currentCustomer.Note = customer.Note;
+            Update(customer);
+            return true;
+        }
         public List<Customer> GetList(FilterParams fp, ref int totalCount)
         {
             var list = TableNoTracking;

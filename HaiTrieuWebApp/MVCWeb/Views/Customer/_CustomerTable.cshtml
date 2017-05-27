@@ -1,4 +1,4 @@
-﻿@model MVCWeb.Models.CustomerManageModel
+﻿@model MVCWeb.Models.CustomerManageViewModel
 
 <div class="col-md-12">
     <table class="table table-hover" id="customer-table">
@@ -8,7 +8,7 @@
             <th class="text-center">Điện thoại</th>
             <th class="text-center">Email</th>
             <th class="text-center">Địa chỉ</th>
-            @*<th style="width: 42px"></th>*@
+            <th style="width: 42px"></th>
         </tr>
         </thead>
         <tbody>
@@ -20,11 +20,11 @@
                     <td class="text-center text-success">@item.PhoneNo</td>
                     <td class="text-center text-primary">@item.Email</td>
                     <td class="text-center text-danger">@item.FullAddress</td>
-                    @*<td class="text-right">
+                    <td class="text-right">
                         <div class="btn-group order-btn-group" role="group" aria-label="...">
-                            <a href="@Url.Action("Edit", new {id = item.Id})" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                            <button type="button" class="btn btn-primary edit-customer" data-customer-id="@item.Id"><span class="glyphicon glyphicon-edit"></span></button>
                         </div>
-                    </td>*@
+                    </td>
                 </tr>
                 odd = !odd;
             }

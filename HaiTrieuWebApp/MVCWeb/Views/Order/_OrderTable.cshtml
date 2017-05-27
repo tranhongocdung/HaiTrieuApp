@@ -1,5 +1,5 @@
 ﻿@using MVCWeb.AppDataLayer.Entities
-@model MVCWeb.Models.OrderManageModel
+@model MVCWeb.Models.OrderManageViewModel
 
 <div class="col-md-12">
     <table class="table table-hover" id="order-table">
@@ -12,7 +12,7 @@
             <th class="text-center" style="width: 100px">Chiết khấu</th>
             <th class="text-center" style="width: 100px">Thực thu</th>
             <th class="text-center" style="width: 100px">Ngày tạo</th>
-            <th style="width: 42px"></th>
+            <th style="width: 85px"></th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +29,13 @@
                     <td class="text-center">@item.CreatedOn.ToString("dd/MM/yyyy")</td>
                     <td class="text-right">
                         <div class="btn-group order-btn-group" role="group" aria-label="...">
+                            @if (item.OrderStatusId != OrderStatus.Completed)
+                            {
+                                <button type="button" class="btn btn-success complete-order" title="Hoàn tất">
+                                    <img src="~/Content/images/ajax-loader-1.gif" style="display: none" />
+                                    <span class="glyphicon glyphicon-ok-circle"></span>
+                                </button>
+                            }
                             <a href="@Url.Action("Edit", new {id = item.Id})" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
                         </div>
                     </td>
