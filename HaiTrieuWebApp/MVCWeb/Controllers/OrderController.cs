@@ -15,9 +15,9 @@ namespace MVCWeb.Controllers
     //[CustomAuthorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
-        private IOrderDetailRepository _orderDetailRepository;
-        private IOrderRepository _orderRepository;
-        private ICustomerRepository _customerRepository;
+        private readonly IOrderDetailRepository _orderDetailRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly ICustomerRepository _customerRepository;
 
         public OrderController()
         {

@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using MVCWeb.AppDataLayer;
 using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.IRepositories;
 using MVCWeb.AppDataLayer.Repositories;
 using MVCWeb.Libraries;
 using MVCWeb.Models;
-using Newtonsoft.Json;
 
 namespace MVCWeb.Controllers
 {
@@ -15,7 +12,7 @@ namespace MVCWeb.Controllers
     //[CustomAuthorize(Roles = "Admin")]
     public class CustomerController : BaseController
     {
-        private ICustomerRepository _customerRepository;
+        private readonly ICustomerRepository _customerRepository;
 
         public CustomerController()
         {
