@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace MVCWeb.AppDataLayer.IRepositories
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> : IWebAppRepository where T : class
     {
         /// <summary>
         /// Get entity by identifier

@@ -1,8 +1,13 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace MVCWeb.AppDataLayer.Entities
 {
-    public class DbAppContext : DbContext
+    public interface IDbAppContext : IDisposable
+    {
+
+    }
+    public class DbAppContext : DbContext, IDbAppContext
     {
         public DbAppContext()
             : base("name=HaiTrieuDBConnectionString")

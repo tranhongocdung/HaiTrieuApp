@@ -28,7 +28,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/27/2016 11:31:14</publishTime>
     </File>
     <File Include="bin/MVCWeb.dll">
-      <publishTime>05/14/2017 18:43:43</publishTime>
+      <publishTime>05/27/2017 16:41:14</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>02/27/2016 11:31:15</publishTime>
@@ -565,13 +565,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/26/2017 20:00:56</publishTime>
     </File>
     <File Include="Scripts/views/customer-manage.js">
-      <publishTime>05/14/2017 18:13:22</publishTime>
+      <publishTime>05/27/2017 16:34:59</publishTime>
     </File>
     <File Include="Scripts/views/order-edit.js">
-      <publishTime>05/13/2017 18:09:10</publishTime>
+      <publishTime>05/26/2017 22:41:17</publishTime>
     </File>
     <File Include="Scripts/views/order-manage.js">
-      <publishTime>05/06/2017 12:11:36</publishTime>
+      <publishTime>05/26/2017 23:21:01</publishTime>
     </File>
     <File Include="Scripts/x-editable/dist/bootstrap-editable/css/bootstrap-editable.css">
       <publishTime>04/19/2017 10:39:38</publishTime>
@@ -975,11 +975,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Config/ChangePassword.cshtml">
       <publishTime>05/01/2016 12:32:12</publishTime>
     </File>
+    <File Include="Views/Customer/Edit.cshtml">
+      <publishTime>05/27/2017 16:27:01</publishTime>
+    </File>
     <File Include="Views/Customer/Manage.cshtml">
-      <publishTime>05/14/2017 18:26:45</publishTime>
+      <publishTime>05/27/2017 16:11:12</publishTime>
     </File>
     <File Include="Views/Customer/_CustomerTable.cshtml">
-      <publishTime>05/14/2017 18:31:46</publishTime>
+      <publishTime>05/27/2017 16:11:02</publishTime>
     </File>
     <File Include="Views/Error/AccessDenied.cshtml">
       <publishTime>03/13/2016 21:54:57</publishTime>
@@ -988,22 +991,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/13/2016 20:20:43</publishTime>
     </File>
     <File Include="Views/Order/Edit.cshtml">
-      <publishTime>05/13/2017 18:04:12</publishTime>
+      <publishTime>05/27/2017 16:11:25</publishTime>
     </File>
     <File Include="Views/Order/Index.cshtml">
       <publishTime>04/22/2017 15:48:48</publishTime>
     </File>
     <File Include="Views/Order/Manage.cshtml">
-      <publishTime>05/14/2017 18:18:25</publishTime>
+      <publishTime>05/27/2017 16:11:35</publishTime>
     </File>
     <File Include="Views/Order/OrderPrint.cshtml">
       <publishTime>04/26/2017 20:00:56</publishTime>
     </File>
     <File Include="Views/Order/Print.cshtml">
-      <publishTime>05/13/2017 11:01:08</publishTime>
+      <publishTime>05/27/2017 16:11:44</publishTime>
     </File>
     <File Include="Views/Order/_OrderTable.cshtml">
-      <publishTime>05/06/2017 16:42:00</publishTime>
+      <publishTime>05/27/2017 16:11:18</publishTime>
     </File>
     <File Include="Views/Shared/MainLayout.cshtml">
       <publishTime>05/13/2017 15:39:45</publishTime>

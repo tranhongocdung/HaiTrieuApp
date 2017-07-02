@@ -14,9 +14,9 @@ namespace MVCWeb.AppDataLayer.Repositories
         private readonly DbAppContext _context;
         private IDbSet<T> _entities;
 
-        public GenericRepository(DbAppContext context)
+        public GenericRepository(IDbAppContext context)
         {
-            this._context = context;
+            _context = context as DbAppContext;
         }
 
         #region Utilities

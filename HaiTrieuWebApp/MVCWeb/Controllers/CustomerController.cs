@@ -1,8 +1,7 @@
 ﻿using System.Web.Mvc;
 using MVCWeb.AppDataLayer;
-using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.IRepositories;
-using MVCWeb.AppDataLayer.Repositories;
+using MVCWeb.AppDataLayer.IServices;
 using MVCWeb.Libraries;
 using MVCWeb.Models;
 
@@ -13,11 +12,15 @@ namespace MVCWeb.Controllers
     public class CustomerController : BaseController
     {
         private readonly ICustomerRepository _customerRepository;
+        private readonly ICustomerService _customerService;
 
-        public CustomerController()
+        public CustomerController(
+            ICustomerService customerService,
+            ICustomerRepository customerRepository
+            )
         {
-            var context = new DbAppContext();
-            _customerRepository = new CustomerRepository(context);
+            _customerService = customerService;
+            _customerRepository = customerRepository;
         }
 
         public ActionResult Index()
@@ -33,7 +36,7 @@ namespace MVCWeb.Controllers
                 PageSize = 10,
             };
             var totalCount = 0;
-            model.Customers = _customerRepository.GetList(new FilterParams(), ref totalCount);
+            model.Customers = _customerService.GetList(new FilterParams(), ref totalCount);
             model.ItemCount = totalCount;
             return View(model);
         }
@@ -44,7 +47,7 @@ namespace MVCWeb.Controllers
             model.CurrentPage = page;
             model.PageSize = 10;
             var totalCount = 0;
-            model.Customers = _customerRepository.GetList(new FilterParams
+            model.Customers = _customerService.GetList(new FilterParams
             {
                 PageNumber = page,
                 Keyword = model.Keyword
@@ -80,7 +83,7 @@ namespace MVCWeb.Controllers
                 }
                 else
                 {
-                    _customerRepository.UpdateCustomer(model.Customer);
+                    _customerService.UpdateCustomer(model.Customer);
                     message = "Đã cập nhật thành công!";
                 }
                 return Json(new ReturnData { Success = true, Message = message, Data = obj.Id.ToString() });

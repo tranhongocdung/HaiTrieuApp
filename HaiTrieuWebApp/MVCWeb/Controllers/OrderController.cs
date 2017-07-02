@@ -3,8 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using MVCWeb.AppDataLayer;
 using MVCWeb.AppDataLayer.Entities;
-using MVCWeb.AppDataLayer.IRepositories;
-using MVCWeb.AppDataLayer.Repositories;
+using MVCWeb.AppDataLayer.IServices;
 using MVCWeb.Libraries;
 using MVCWeb.Models;
 using Newtonsoft.Json;
@@ -15,16 +14,16 @@ namespace MVCWeb.Controllers
     //[CustomAuthorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
-        private readonly IOrderDetailRepository _orderDetailRepository;
-        private readonly IOrderRepository _orderRepository;
-        private readonly ICustomerRepository _customerRepository;
+        private readonly IOrderService _orderService;
+        private readonly ICustomerService _customerService;
 
-        public OrderController()
+        public OrderController(
+            IOrderService orderService,
+            ICustomerService customerService
+            )
         {
-            var context = new DbAppContext();
-            _orderRepository = new OrderRepository(context);
-            _orderDetailRepository = new OrderDetailRepository(context);
-            _customerRepository = new CustomerRepository(context);
+            _orderService = orderService;
+            _customerService = customerService;
         }
 
         public ActionResult Index()
@@ -39,7 +38,7 @@ namespace MVCWeb.Controllers
                 PageSize = 10,
             };
             var totalCount = 0;
-            model.Orders = _orderRepository.GetList(new FilterParams()
+            model.Orders = _orderService.GetList(new FilterParams()
             {
                 SortField = "CreatedOn"
             }, ref totalCount);
@@ -55,7 +54,7 @@ namespace MVCWeb.Controllers
             var customerIds = !string.IsNullOrWhiteSpace(model.CustomerIds)
                 ? model.CustomerIds.Split(',').Select(int.Parse)
                 : new List<int>();
-            model.Orders = _orderRepository.GetList(new FilterParams
+            model.Orders = _orderService.GetList(new FilterParams
             {
                 PageNumber = page,
                 FromDate = model.FromDate,
@@ -71,7 +70,7 @@ namespace MVCWeb.Controllers
             var model = new OrderEditViewModel();
             if (id != 0)
             {
-                var order = _orderRepository.GetWithCustomerAndOrderDetails(id);
+                var order = _orderService.GetWithCustomerAndOrderDetails(id);
                 if (order != null)
                 {
                     model.Order = order;
@@ -88,7 +87,7 @@ namespace MVCWeb.Controllers
             var orderId = model.Order.Id;
             if (customerId == 0)
             {
-                customerId = _customerRepository.Create(model.Customer);
+                customerId = _customerService.Create(model.Customer);
             }
 
             model.Order.CustomerId = customerId;
@@ -101,14 +100,14 @@ namespace MVCWeb.Controllers
             //Update
             if (model.Order.Id != 0)
             {
-                _orderRepository.UpdateOrder(model.Order);
-                _orderDetailRepository.UpdateOrderDetail(orderDetails, model.Order.Id);
+                _orderService.UpdateOrder(model.Order);
+                _orderService.UpdateOrderDetail(orderDetails, model.Order.Id);
                 return Content("");
             }
 
             //Add new
             model.Order.OrderDetails = orderDetails;
-            orderId = _orderRepository.Create(model.Order);
+            orderId = _orderService.Create(model.Order);
             return Content(orderId.ToString());
         }
         public ActionResult Print(int id)
@@ -116,7 +115,7 @@ namespace MVCWeb.Controllers
             var model = new OrderPrintViewModel();
             if (id != 0)
             {
-                var order = _orderRepository.GetWithCustomerAndOrderDetails(id);
+                var order = _orderService.GetWithCustomerAndOrderDetails(id);
                 if (order != null)
                 {
                     model.Order = order;
@@ -128,7 +127,7 @@ namespace MVCWeb.Controllers
 
         public ActionResult Complete(int id)
         {
-            _orderRepository.CompleteOrder(id);
+            _orderService.CompleteOrder(id);
             return Content("");
         }
     }
