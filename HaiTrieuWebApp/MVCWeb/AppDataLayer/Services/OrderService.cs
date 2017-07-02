@@ -47,8 +47,8 @@ namespace MVCWeb.AppDataLayer.Services
             var order = GetWithOrderDetails(orderId);
             if (order == null) return;
             order.OrderStatusId = OrderStatus.Completed;
-            var totalCash = order.OrderDetails.Sum(o => o.UnitPrice * o.Quantity);
-            var realCash = totalCash -
+            var totalCash = (decimal)order.OrderDetails.Sum(o => o.UnitPrice * o.Quantity);
+            decimal realCash = totalCash -
                            (order.DiscountType == 0 ? totalCash * order.DiscountValue / 100 : order.DiscountValue);
             order.CompletedRealCash = realCash;
             _orderRepository.Update(order);

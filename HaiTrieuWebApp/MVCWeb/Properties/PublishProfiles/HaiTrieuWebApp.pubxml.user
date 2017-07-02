@@ -24,11 +24,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
       <publishTime>03/13/2016 22:12:45</publishTime>
     </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
+      <publishTime>05/05/2014 11:25:44</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.Configuration.dll">
+      <publishTime>10/05/2015 09:37:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.dll">
+      <publishTime>10/05/2015 09:37:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.RegistrationByConvention.dll">
+      <publishTime>10/05/2015 09:37:20</publishTime>
+    </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>02/27/2016 11:31:14</publishTime>
     </File>
     <File Include="bin/MVCWeb.dll">
-      <publishTime>05/27/2017 16:41:14</publishTime>
+      <publishTime>07/02/2017 16:49:55</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>02/27/2016 11:31:15</publishTime>
@@ -53,6 +65,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
       <publishTime>02/27/2016 11:31:13</publishTime>
+    </File>
+    <File Include="bin/Unity.Mvc5.dll">
+      <publishTime>10/29/2015 01:53:36</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>02/27/2016 11:31:14</publishTime>
@@ -115,7 +130,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/27/2016 11:34:01</publishTime>
     </File>
     <File Include="Content/css/sb-admin.css">
-      <publishTime>04/23/2017 18:34:54</publishTime>
+      <publishTime>07/02/2017 14:01:17</publishTime>
     </File>
     <File Include="Content/datatables/datatables.min.css">
       <publishTime>05/06/2017 09:03:03</publishTime>
@@ -514,7 +529,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/27/2016 11:31:11</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>04/23/2017 16:09:22</publishTime>
+      <publishTime>07/02/2017 11:45:45</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>04/23/2017 16:09:20</publishTime>
@@ -571,7 +586,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/26/2017 22:41:17</publishTime>
     </File>
     <File Include="Scripts/views/order-manage.js">
-      <publishTime>05/26/2017 23:21:01</publishTime>
+      <publishTime>07/02/2017 16:48:47</publishTime>
     </File>
     <File Include="Scripts/x-editable/dist/bootstrap-editable/css/bootstrap-editable.css">
       <publishTime>04/19/2017 10:39:38</publishTime>
@@ -997,13 +1012,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/22/2017 15:48:48</publishTime>
     </File>
     <File Include="Views/Order/Manage.cshtml">
-      <publishTime>05/27/2017 16:11:35</publishTime>
+      <publishTime>07/02/2017 16:32:06</publishTime>
     </File>
     <File Include="Views/Order/OrderPrint.cshtml">
       <publishTime>04/26/2017 20:00:56</publishTime>
     </File>
     <File Include="Views/Order/Print.cshtml">
       <publishTime>05/27/2017 16:11:44</publishTime>
+    </File>
+    <File Include="Views/Order/_OrderStatistic.cshtml">
+      <publishTime>07/02/2017 16:45:54</publishTime>
+    </File>
+    <File Include="Views/Order/_OrderStatisticDetail.cshtml">
+      <publishTime>07/02/2017 16:20:27</publishTime>
     </File>
     <File Include="Views/Order/_OrderTable.cshtml">
       <publishTime>05/27/2017 16:11:18</publishTime>
@@ -1024,7 +1045,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/13/2016 23:06:43</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/06/2017 10:48:59</publishTime>
+      <publishTime>07/02/2017 15:46:46</publishTime>
     </File>
   </ItemGroup>
 </Project>

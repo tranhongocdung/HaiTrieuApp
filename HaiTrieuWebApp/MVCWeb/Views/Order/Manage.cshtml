@@ -1,4 +1,5 @@
-﻿@model MVCWeb.Models.OrderManageViewModel
+﻿@using MVCWeb.AppDataLayer.Entities
+@model MVCWeb.Models.OrderManageViewModel
 
 @{
     ViewBag.Title = "Lịch sử đơn hàng";
@@ -23,11 +24,22 @@
                 }, new {@id = "frmOrderManage"}))
                 {
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>Tìm theo khách:</label>
                                 @Html.TextBoxFor(m => m.CustomerIds, new {@id = "txtCustomerIds", @placeholder = "Từ khóa..."})
                             </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <select class="form-control" name="StatusId" id="ddlStatusId">
+                                    <option value="0">Tất cả</option>
+                                    <option value="@OrderStatus.Pending">Chưa hoàn tất</option>
+                                    <option value="@OrderStatus.Completed">Đã hoàn tất</option>
+                                </select>
+                            </div>
+
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
@@ -56,7 +68,7 @@
                             <div class="form-group">
                                 <label>&nbsp;</label>
                                 <button class="btn btn-primary btn-block" id="btnSubmit" type="button">
-                                    <img src="~/Content/images/ajax-loader-1.gif" id="manageLoading" style="display: none" />
+                                    <img src="~/Content/images/ajax-loader-1.gif" id="manageLoading" style="display: none"/>
                                     <span class="glyphicon glyphicon-search"></span> Lọc kết quả
                                 </button>
                             </div>
@@ -68,6 +80,7 @@
                 }
             </div>
         </div>
+        @Html.Partial("_OrderStatistic")
     </div>
 </div>
 

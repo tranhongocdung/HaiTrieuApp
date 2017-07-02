@@ -19,7 +19,7 @@ namespace MVCWeb.AppDataLayer.Entities
         public int DiscountType { get; set; }
         public int DiscountValue { get; set; }
         public int OrderStatusId { get; set; }
-        public int CompletedRealCash { get; set; }
+        public decimal CompletedRealCash { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
         [ForeignKey("OrderStatusId")]
@@ -32,12 +32,12 @@ namespace MVCWeb.AppDataLayer.Entities
             get { return DiscountValue != 0 ? DiscountValue.ToString("#,##0") + (DiscountType == 0 ? "%" : "") : ""; }
         }
         [NotMapped]
-        public int TotalCash
+        public decimal TotalCash
         {
             get { return OrderDetails != null ? OrderDetails.Sum(o => o.Quantity*o.UnitPrice) : 0; }
         }
         [NotMapped]
-        public int RealCash
+        public decimal RealCash
         {
             get
             {

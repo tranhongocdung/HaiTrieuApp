@@ -1,0 +1,69 @@
+﻿@model MVCWeb.Models.OrderStatisticViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="bs-callout bs-callout-info">
+            <strong>Doanh thu và đơn hàng</strong>
+        </div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="text-danger"><strong>Tổng đơn hàng</strong></td>
+                    <td class="text-info italic"><strong>@Model.OrderCount</strong></td>
+                </tr>
+                <tr>
+                    <td class="text-danger"><strong>Tổng thu</strong></td>
+                    <td class="italic text-success"><strong>@Model.TotalCash đ</strong></td>
+                </tr>
+                <tr>
+                    <td class="text-danger"><strong>Chưa thu</strong></td>
+                    <td class="italic text-success"><strong>@Model.IncompletedTotalCash đ</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <div class="bs-callout bs-callout-info">
+            <strong>Lượng sản phẩm bán ra</strong>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stat in Model.SoldProductStat)
+                {
+                    <tr>
+                        <td class="text-info"><strong>@stat.Label</strong></td>
+                        <td class="text-success italic">@stat.Value</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-5">
+        <div class="bs-callout bs-callout-info">
+            <strong>Top 5 khách hàng mua nhiều (tính trên doanh thu)</strong>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Khách hàng</th>
+                    <th>Doanh số</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stat in Model.Top5BestCustomerStat)
+                {
+                    <tr>
+                        <td class="text-info"><strong>@stat.Label</strong></td>
+                        <td class="text-success italic">@stat.Value đ</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

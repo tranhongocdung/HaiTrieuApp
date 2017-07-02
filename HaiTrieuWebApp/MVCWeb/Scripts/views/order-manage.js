@@ -40,6 +40,28 @@ $(document).on("click", "#order-table td.details-control", function() {
 }).on("click", "#btnSubmit", function () {
     $("#page").val("1");
     $("#frmOrderManage").submit();
+}).on("click", "#btnSubmitStatistic", function () {
+    var fromDate = $("#txtFromDate").val();
+    var toDate = $("#txtToDate").val();
+    if (fromDate != "" || toDate != "") {
+        var text = "Thông tin bán hàng ";
+        if (fromDate != "") {
+            text += "từ ngày <strong>" + fromDate + "</strong> ";
+        }
+        if (toDate != "") {
+            text += "đến hết ngày <strong>" + toDate + "</strong>";
+        }
+        $("#divStatisticInfo").removeClass("hidden");
+        $("#divStatisticInfo").html(text);
+    } else {
+        $("#divStatisticInfo").addClass("hidden");
+    }
+    
+    $("#txtFromDateStatistic").val(fromDate);
+    $("#txtToDateStatistic").val(toDate);
+
+    $("#txtStatusIdStatistic").val($("#ddlStatusId").val());
+    $("#frmOrderStatistic").submit();
 });
 
 function initCompleteOrderButton() {
@@ -103,4 +125,8 @@ function orderManageCallBack(result) {
     var options = $.extend({}, tableDefOptions);
     table = $("#order-table").DataTable(options);
     initCompleteOrderButton();
+}
+
+function orderStatisticCallBack(result) {
+    $("#statistic-content").html(result);;
 }

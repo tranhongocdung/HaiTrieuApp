@@ -60,7 +60,8 @@ namespace MVCWeb.Controllers
                 FromDate = model.FromDate,
                 ToDate = model.ToDate,
                 CustomerIds = customerIds.ToList(),
-                SortField = "CreatedOn"
+                SortField = "CreatedOn",
+                StatusId = model.StatusId
             }, ref totalCount);
             model.ItemCount = totalCount;
             return View("_OrderTable", model);
@@ -129,6 +130,60 @@ namespace MVCWeb.Controllers
         {
             _orderService.CompleteOrder(id);
             return Content("");
+        }
+
+        public ActionResult LoadStatistic(string fromDate, string toDate, int statusId = 0)
+        {
+            var model = new OrderStatisticViewModel();
+            var totalCount = 0;
+            var orders = _orderService.GetList(new FilterParams
+            {
+                PageNumber = 0,
+                FromDate = fromDate,
+                ToDate = toDate,
+                StatusId = statusId
+            }, ref totalCount);
+            var completedOrders = orders.Where(o => o.OrderStatusId == OrderStatus.Completed).ToList();
+            //Total cash
+            model.TotalCash = completedOrders.Sum(o => o.CompletedRealCash).ToString("#,##0");
+            //Incompleted total cash
+            model.IncompletedTotalCash = orders.Where(o => o.OrderStatusId != OrderStatus.Completed).Sum(o => o.RealCash).ToString("#,##0");
+            //Order count
+            model.OrderCount = completedOrders.Count() + "/" + orders.Count();
+            //Sold product stat
+            var productQuantityStat = orders.SelectMany(o => o.OrderDetails).GroupBy(o => o.ProductId).Select(o => new
+            {
+                ProductId = o.Key,
+                Quantity = o.Sum(x => x.Quantity)
+            });
+            var products = orders.SelectMany(o => o.OrderDetails).Select(o => o.Product).Select(o  =>new
+            {
+                o.ProductName, o.Id
+            }).Distinct().ToList();
+            model.SoldProductStat = products.Join(productQuantityStat, p => p.Id, s => s.ProductId, (p, s) => new {p, s})
+                .OrderByDescending(o => o.s.Quantity).Select(o => new LabelValueViewModel
+                {
+                    Label = o.p.ProductName,
+                    Value = o.s.Quantity.ToString()
+                }).ToList();
+            //Top 5 best customer stat
+            var customerCashStat = completedOrders.GroupBy(o => o.CustomerId).Select(o => new
+            {
+                CustomerId = o.Key,
+                TotalCash = o.Sum(x => x.CompletedRealCash)
+            }).OrderByDescending(o => o.TotalCash).Take(5);
+            var customer = completedOrders.Select(o => o.Customer).Select(o => new
+            {
+                o.CustomerName,
+                o.Id
+            }).Distinct().ToList();
+            model.Top5BestCustomerStat = customer.Join(customerCashStat, c => c.Id, s => s.CustomerId, (c, s) => new { c, s })
+                .OrderByDescending(o => o.s.TotalCash).Select(o => new LabelValueViewModel
+                {
+                    Label = o.c.CustomerName,
+                    Value = o.s.TotalCash.ToString("#,##0")
+                }).ToList();
+            return View("_OrderStatisticDetail", model);
         }
     }
 }

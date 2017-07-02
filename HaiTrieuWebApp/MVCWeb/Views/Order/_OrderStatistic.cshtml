@@ -1,0 +1,30 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        Thống kê bán hàng
+    </div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("LoadStatistic", "Order", new AjaxOptions
+        {
+            OnSuccess = "orderStatisticCallBack",
+            LoadingElementId = "statisticLoading"
+        }, new { @id = "frmOrderStatistic" }))
+        {
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="bs-callout bs-callout-danger hidden" style="margin-top: 0; padding-top: 7px; padding-bottom:7px" id="divStatisticInfo"></div>
+                    <input type="hidden" name="FromDate" id="txtFromDateStatistic"/>
+                    <input type="hidden" name="ToDate" id="txtToDateStatistic"/>
+                    <input type="hidden" name="StatusId" id="txtStatusIdStatistic"/>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-success btn-block" id="btnSubmitStatistic" type="button">
+                        <img src="~/Content/images/ajax-loader-1.gif" id="statisticLoading" style="display: none" />
+                        <span class="glyphicon glyphicon-equalizer"></span> Tính thống kê
+                    </button>
+                </div>
+            </div>
+        }
+        <div id="statistic-content"></div>
+    </div>
+</div>
+
