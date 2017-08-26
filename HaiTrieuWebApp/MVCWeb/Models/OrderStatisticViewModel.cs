@@ -8,6 +8,6 @@ namespace MVCWeb.Models
         public string IncompletedTotalCash { get; set; }
         public string OrderCount { get; set; }
         public ICollection<LabelValueViewModel> SoldProductStat { get; set; }
-        public ICollection<LabelValueViewModel> Top5BestCustomerStat { get; set; }
+        public ICollection<LabelValueViewModel> Top10BestCustomerStat { get; set; }
     }
 }

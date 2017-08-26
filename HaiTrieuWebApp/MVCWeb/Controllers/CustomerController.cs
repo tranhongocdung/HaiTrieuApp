@@ -70,7 +70,7 @@ namespace MVCWeb.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(OrderEditViewModel model)
+        public ActionResult Edit(CustomerEditViewModel model)
         {
             if (ModelState.IsValid)
             {

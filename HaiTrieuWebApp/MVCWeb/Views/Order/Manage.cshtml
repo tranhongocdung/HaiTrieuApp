@@ -37,6 +37,7 @@
                                     <option value="0">Tất cả</option>
                                     <option value="@OrderStatus.Pending">Chưa hoàn tất</option>
                                     <option value="@OrderStatus.Completed">Đã hoàn tất</option>
+                                    <option value="@OrderStatus.Cancelled">Đã hủy</option>
                                 </select>
                             </div>
 
@@ -84,7 +85,9 @@
     </div>
 </div>
 
-<input type="hidden" id="complete-order-url" value="@Url.Action("Complete","Order")" />
+<input type="hidden" id="complete-order-url" value="@Url.Action("Complete", "Order")" />
+<input type="hidden" id="restore-order-url" value="@Url.Action("Restore", "Order")"/>
+<input type="hidden" id="cancel-order-url" value="@Url.Action("Cancel","Order")" />
 <input type="hidden" id="customer-suggestion-datasource" value="@Url.Action("GetCustomerSuggestion", "DataSource")" />
 
 @section OptionalCss {

@@ -27,6 +27,9 @@ tr.shown td.details-control {
 .table-success {background: #fcffd4}
 .table-success:hover {background: #faffba !important}
 
+.table-danger {background: #ffd4d4}
+.table-danger:hover {background: #ffbaba !important}
+
 .order-btn-group .dropdown-menu { left: auto; right: 0 !important}
 
 .confirmation h3 {text-align: center}

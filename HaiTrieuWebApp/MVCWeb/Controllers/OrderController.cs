@@ -90,6 +90,10 @@ namespace MVCWeb.Controllers
             {
                 customerId = _customerService.Create(model.Customer);
             }
+            else
+            {
+                _customerService.UpdateCustomer(model.Customer);
+            }
 
             model.Order.CustomerId = customerId;
             var orderDetails = new List<OrderDetail>();
@@ -129,6 +133,16 @@ namespace MVCWeb.Controllers
         public ActionResult Complete(int id)
         {
             _orderService.CompleteOrder(id);
+            return Content("");
+        }
+        public ActionResult Cancel(int id)
+        {
+            _orderService.CancelOrder(id);
+            return Content("");
+        }
+        public ActionResult Restore(int id)
+        {
+            _orderService.RestoreOrder(id);
             return Content("");
         }
 
@@ -171,13 +185,13 @@ namespace MVCWeb.Controllers
             {
                 CustomerId = o.Key,
                 TotalCash = o.Sum(x => x.CompletedRealCash)
-            }).OrderByDescending(o => o.TotalCash).Take(5);
+            }).OrderByDescending(o => o.TotalCash).Take(10);
             var customer = completedOrders.Select(o => o.Customer).Select(o => new
             {
                 o.CustomerName,
                 o.Id
             }).Distinct().ToList();
-            model.Top5BestCustomerStat = customer.Join(customerCashStat, c => c.Id, s => s.CustomerId, (c, s) => new { c, s })
+            model.Top10BestCustomerStat = customer.Join(customerCashStat, c => c.Id, s => s.CustomerId, (c, s) => new { c, s })
                 .OrderByDescending(o => o.s.TotalCash).Select(o => new LabelValueViewModel
                 {
                     Label = o.c.CustomerName,

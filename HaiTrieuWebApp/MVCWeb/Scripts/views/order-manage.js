@@ -19,7 +19,7 @@ $(document).ready(function () {
     initSearchBox();
     var options = $.extend({}, tableDefOptions);
     table = $("#order-table").DataTable(options);
-    initCompleteOrderButton();
+    initOrderActionButtons();
 });
 
 $(document).on("click", "#order-table td.details-control", function() {
@@ -64,7 +64,7 @@ $(document).on("click", "#order-table td.details-control", function() {
     $("#frmOrderStatistic").submit();
 });
 
-function initCompleteOrderButton() {
+function initOrderActionButtons() {
     $(".complete-order").confirmation({
         singleton: true,
         onConfirm: function () {
@@ -80,12 +80,55 @@ function initCompleteOrderButton() {
                 },
                 success: function () {
                     that.closest("tr").addClass("table-success");
+                    that.closest(".order-btn-group").find(".cancel-order").remove();
                     that.remove();
                 }
             });
         },
         placement: "left",
         title: "Hoàn tất đơn này?"
+    });
+    $(".cancel-order").confirmation({
+        singleton: true,
+        onConfirm: function () {
+            var that = $(this);
+            $.ajax({
+                url: $("#cancel-order-url").val(),
+                data: {
+                    id: that.closest("tr").data("order-id")
+                },
+                beforeSend: function () {
+                    that.find("span").remove();
+                    that.find("img").show();
+                },
+                success: function () {
+                    reloadCurrentPage();
+                }
+            });
+        },
+        placement: "left",
+        title: "Hủy đơn này?"
+    });
+    $(".restore-order").confirmation({
+        singleton: true,
+        onConfirm: function () {
+            var that = $(this);
+            $.ajax({
+                url: $("#restore-order-url").val(),
+                data: {
+                    id: that.closest("tr").data("order-id")
+                },
+                beforeSend: function () {
+                    that.find("span").remove();
+                    that.find("img").show();
+                },
+                success: function () {
+                    reloadCurrentPage();
+                }
+            });
+        },
+        placement: "left",
+        title: "Khôi phục đơn này?"
     });
 }
 
@@ -124,9 +167,14 @@ function orderManageCallBack(result) {
     $("#manager-content").html(result);
     var options = $.extend({}, tableDefOptions);
     table = $("#order-table").DataTable(options);
-    initCompleteOrderButton();
+    initOrderActionButtons();
 }
 
 function orderStatisticCallBack(result) {
     $("#statistic-content").html(result);;
+}
+
+function reloadCurrentPage() {
+    $("#page").val($("#current-page").val());
+    $("#frmOrderManage").submit();
 }

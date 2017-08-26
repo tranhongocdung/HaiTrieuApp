@@ -92,7 +92,7 @@ function initExistingOrder() {
         $(".customer-info").attr("readonly", "readonly");
         $("#chkCustomerType").bootstrapToggle("off");
         $("#chkCustomerType").bootstrapToggle("disable");
-        $("#txtCustomerNote").summernote("disable");
+        /*$("#txtCustomerNote").summernote("disable");*/
         $(".product-order-row").each(function() {
             calculateCashForProductRow($(this));
         });
@@ -125,7 +125,7 @@ function initExistingOrder() {
         });
 
     } else {
-        $("#txtCustomerNote").summernote("enable");
+        /*$("#txtCustomerNote").summernote("enable");*/
         initRegionAreaHint();
     }
 }
@@ -149,7 +149,7 @@ function initCustomerTypeToggle() {
             $("#txtArea").val("");
             $("#txtCustomerNote").val("");
             $("#txtCustomerNote").summernote("code","");
-            $("#txtCustomerNote").summernote("enable");
+            /*$("#txtCustomerNote").summernote("enable");*/
             $(".customer-info").removeAttr("readonly", "readonly");
             $("#chkCustomerType").bootstrapToggle("disable");
             initRegionAreaHint();
@@ -187,7 +187,7 @@ function initSearchCustomerTextbox() {
         loadCustomerDetail(datum);
         $("#chkCustomerType").bootstrapToggle("enable");
         $("#chkCustomerType").bootstrapToggle("off");
-        $("#txtCustomerNote").summernote("disable");
+        /*$("#txtCustomerNote").summernote("disable");*/
         $(this).typeahead("val", "");
         destroyRegionAreaHint();
     });

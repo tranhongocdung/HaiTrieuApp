@@ -54,6 +54,21 @@ namespace MVCWeb.AppDataLayer.Services
             _orderRepository.Update(order);
         }
 
+        public void CancelOrder(int orderId)
+        {
+            var order = _orderRepository.GetById(orderId);
+            if (order == null) return;
+            order.OrderStatusId = OrderStatus.Cancelled;
+            _orderRepository.Update(order);
+        }
+        public void RestoreOrder(int orderId)
+        {
+            var order = _orderRepository.GetById(orderId);
+            if (order == null) return;
+            order.OrderStatusId = OrderStatus.Pending;
+            _orderRepository.Update(order);
+        }
+
         public Order GetWithCustomerAndOrderDetails(int id)
         {
             return
