@@ -28,6 +28,7 @@ namespace MVCWeb.AppDataLayer.Entities
         public string Region { get; set; }
         public string Area { get; set; }
         public string Note { get; set; }
+        public bool IsVIP { get; set; }
         public DateTime CreatedOn { get; set; }
 
         public string SuggestName

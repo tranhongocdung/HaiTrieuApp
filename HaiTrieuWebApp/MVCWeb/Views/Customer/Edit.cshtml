@@ -17,11 +17,16 @@
                 }, new {id = "frmCustomerEdit"}))
                 {
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="form-group">
                                 <label>Tên khách hàng</label>
                                 @Html.TextBoxFor(o => o.Customer.CustomerName, new {@class = "form-control", @id = "txtCustomerName"})
-                                @Html.HiddenFor(o => o.Customer.Id, new { @id = "ObjId" })
+                                @Html.HiddenFor(o => o.Customer.Id, new {@id = "ObjId"})
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="checkbox" style="margin-top: 30px">
+                                <label>@Html.CheckBoxFor(o => o.Customer.IsVIP, new {@id = "chkIsVIP" })Khách VIP</label>
                             </div>
                         </div>
                     </div>

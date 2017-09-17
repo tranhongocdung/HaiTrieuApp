@@ -21,10 +21,19 @@
                 }, new {@id = "frmCustomerManage"}))
                 {
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <div class="form-group">
                                 <label>Từ khóa:</label>
                                 @Html.TextBoxFor(m => m.Keyword, new {@class = "form-control", @id = "txtKeyword", @placeholder = "Từ khóa tìm theo tên KH, email, số ĐT..."})
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Độ thân thiết</label>
+                                <select class="form-control" name="IsVIP">
+                                    <option value="0">Chuẩn và VIP</option>
+                                    <option value="1">Chỉ VIP</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-2">

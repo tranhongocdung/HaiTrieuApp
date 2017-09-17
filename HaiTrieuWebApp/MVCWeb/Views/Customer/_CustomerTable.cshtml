@@ -3,19 +3,26 @@
 <div class="col-md-12">
     <table class="table table-hover" id="customer-table">
         <thead>
-        <tr>
-            <th>Tên KH</th>
-            <th class="text-center">Điện thoại</th>
-            <th class="text-center">Email</th>
-            <th class="text-center">Địa chỉ</th>
-            <th style="width: 42px"></th>
-        </tr>
+            <tr>
+                <th style="width: 42px"></th>
+                <th>Tên KH</th>
+                <th class="text-center">Điện thoại</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Địa chỉ</th>
+                <th style="width: 42px"></th>
+            </tr>
         </thead>
         <tbody>
             @{ var odd = true; }
             @foreach (var item in Model.Customers)
             {
                 <tr>
+                    <td>
+                        @if (item.IsVIP)
+                        {
+                            <img src="~/Content/images/vip-icon.png"/>
+                        }
+                    </td>
                     <td class="italic">@item.CustomerName</td>
                     <td class="text-center text-success">@item.PhoneNo</td>
                     <td class="text-center text-primary">@item.Email</td>

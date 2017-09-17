@@ -1,0 +1,3 @@
+USE HaiTrieuApp
+ALTER TABLE Customer
+ADD IsVIP bit NOT NULL DEFAULT(0);

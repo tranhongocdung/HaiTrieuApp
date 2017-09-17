@@ -13,6 +13,7 @@ namespace MVCWeb.AppDataLayer
         public string ToDate { get; set; }
         public int StatusId { get; set; }
 
+        public int IsVIP { get; set; }
 
         //For Pagination
         public int PageSize { get; set; }
@@ -31,6 +32,7 @@ namespace MVCWeb.AppDataLayer
             SortASC = false;
             CustomerIds = new List<int>();
             StatusId = 0;
+            IsVIP = 0;
         }
     }
 }

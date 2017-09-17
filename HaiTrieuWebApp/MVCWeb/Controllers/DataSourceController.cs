@@ -9,12 +9,6 @@ namespace MVCWeb.Controllers
     //[CustomAuthorize(Roles = "Admin")]
     public class DataSourceController : BaseController
     {
-        // GET: DataSource
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult GetProductName(string query, int id = 0)
         {
             var db = new DbAppContext();

@@ -146,16 +146,20 @@ namespace MVCWeb.Controllers
             return Content("");
         }
 
-        public ActionResult LoadStatistic(string fromDate, string toDate, int statusId = 0)
+        public ActionResult LoadStatistic(string customerIds, string fromDate, string toDate, int statusId = 0)
         {
             var model = new OrderStatisticViewModel();
             var totalCount = 0;
+            var customerIdsInStr = !string.IsNullOrWhiteSpace(customerIds)
+               ? customerIds.Split(',').Select(int.Parse)
+               : new List<int>();
             var orders = _orderService.GetList(new FilterParams
             {
                 PageNumber = 0,
                 FromDate = fromDate,
                 ToDate = toDate,
-                StatusId = statusId
+                StatusId = statusId,
+                CustomerIds = customerIdsInStr.ToList()
             }, ref totalCount);
             var completedOrders = orders.Where(o => o.OrderStatusId == OrderStatus.Completed).ToList();
             //Total cash
@@ -168,7 +172,8 @@ namespace MVCWeb.Controllers
             var productQuantityStat = orders.SelectMany(o => o.OrderDetails).GroupBy(o => o.ProductId).Select(o => new
             {
                 ProductId = o.Key,
-                Quantity = o.Sum(x => x.Quantity)
+                Quantity = o.Sum(x => x.Quantity),
+                LatestUnitPrice = orders.SelectMany(od => od.OrderDetails).OrderByDescending(od => od.OrderId).First(od => od.ProductId == o.Key).UnitPrice
             });
             var products = orders.SelectMany(o => o.OrderDetails).Select(o => o.Product).Select(o  =>new
             {
@@ -178,7 +183,8 @@ namespace MVCWeb.Controllers
                 .OrderByDescending(o => o.s.Quantity).Select(o => new LabelValueViewModel
                 {
                     Label = o.p.ProductName,
-                    Value = o.s.Quantity.ToString()
+                    Value = o.s.Quantity.ToString(),
+                    Value1 = o.s.LatestUnitPrice.ToString("#,##0")
                 }).ToList();
             //Top 5 best customer stat
             var customerCashStat = completedOrders.GroupBy(o => o.CustomerId).Select(o => new

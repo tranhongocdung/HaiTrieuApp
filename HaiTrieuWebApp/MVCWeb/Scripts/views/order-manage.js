@@ -43,13 +43,23 @@ $(document).on("click", "#order-table td.details-control", function() {
 }).on("click", "#btnSubmitStatistic", function () {
     var fromDate = $("#txtFromDate").val();
     var toDate = $("#txtToDate").val();
-    if (fromDate != "" || toDate != "") {
+    var customerIds = $("#txtCustomerIds").val();
+    if (fromDate != "" || toDate != "" || customerIds != "") {
         var text = "Thông tin bán hàng ";
         if (fromDate != "") {
             text += "từ ngày <strong>" + fromDate + "</strong> ";
         }
         if (toDate != "") {
             text += "đến hết ngày <strong>" + toDate + "</strong>";
+        }
+        if (customerIds != "") {
+            var strArr = [];
+            $(".bootstrap-tagsinput .label-info").each(function() {
+                if ($(this) != "undefined") {
+                    strArr.push($(this).text());
+                }
+            });
+            text += "cho khách hàng <strong>" + strArr.join(", ") + "</strong>";
         }
         $("#divStatisticInfo").removeClass("hidden");
         $("#divStatisticInfo").html(text);
@@ -59,6 +69,8 @@ $(document).on("click", "#order-table td.details-control", function() {
     
     $("#txtFromDateStatistic").val(fromDate);
     $("#txtToDateStatistic").val(toDate);
+    $("#txtCustomerIdsStatistic").val(customerIds);
+    
 
     $("#txtStatusIdStatistic").val($("#ddlStatusId").val());
     $("#frmOrderStatistic").submit();

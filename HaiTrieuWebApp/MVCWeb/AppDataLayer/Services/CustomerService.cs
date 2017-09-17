@@ -36,6 +36,7 @@ namespace MVCWeb.AppDataLayer.Services
             currentCustomer.Region = customer.Region;
             currentCustomer.Area = customer.Area;
             currentCustomer.Note = customer.Note;
+            currentCustomer.IsVIP = customer.IsVIP;
             _customerRepository.Update(customer);
             return true;
         }
@@ -45,6 +46,10 @@ namespace MVCWeb.AppDataLayer.Services
             if (!string.IsNullOrEmpty(fp.Keyword))
             {
                 list = list.Where(o => o.CustomerName.Contains(fp.Keyword) || o.Email.Contains(fp.Keyword) || o.PhoneNo.Contains(fp.Keyword));
+            }
+            if (fp.IsVIP != 0)
+            {
+                list = list.Where(o => o.IsVIP);
             }
             totalCount = list.Count();
             list = list.OrderBy(fp.SortField + (fp.SortASC ? " ASC" : " DESC"));

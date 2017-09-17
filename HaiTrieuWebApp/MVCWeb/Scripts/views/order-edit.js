@@ -152,6 +152,7 @@ function initCustomerTypeToggle() {
             /*$("#txtCustomerNote").summernote("enable");*/
             $(".customer-info").removeAttr("readonly", "readonly");
             $("#chkCustomerType").bootstrapToggle("disable");
+            $("#divVipIcon").addClass("hidden");
             initRegionAreaHint();
         }
     });
@@ -191,6 +192,23 @@ function initSearchCustomerTextbox() {
         $(this).typeahead("val", "");
         destroyRegionAreaHint();
     });
+
+    $("#txtPhoneNo").typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    }, {
+        displayKey: "SuggestNameFull",
+        name: "customers",
+        source: customers
+    });
+    $("#txtPhoneNo").bind("typeahead:selected", function (obj, datum) {
+        loadCustomerDetail(datum);
+        $("#chkCustomerType").bootstrapToggle("enable");
+        $("#chkCustomerType").bootstrapToggle("off");
+        $(this).typeahead("val", datum.PhoneNo);
+        destroyRegionAreaHint();
+    });
 }
 
 function loadCustomerDetail(data) {
@@ -201,6 +219,11 @@ function loadCustomerDetail(data) {
     $("#txtAddress").val(data.Address);
     $("#txtRegion").val(data.Region);
     $("#txtArea").val(data.Area);
+    if (data.IsVIP) {
+        $("#divVipIcon").removeClass("hidden");
+    } else {
+        $("#divVipIcon").addClass("hidden");
+    }
     $("#txtCustomerNote").summernote("code", data.Note);
     $(".customer-info").attr("readonly", "readonly");
 }

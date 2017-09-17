@@ -50,7 +50,8 @@ namespace MVCWeb.Controllers
             model.Customers = _customerService.GetList(new FilterParams
             {
                 PageNumber = page,
-                Keyword = model.Keyword
+                Keyword = model.Keyword,
+                IsVIP = model.IsVIP
             }, ref totalCount);
             model.ItemCount = totalCount;
             return View("_CustomerTable", model);

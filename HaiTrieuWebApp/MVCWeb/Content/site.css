@@ -34,6 +34,8 @@ tr.shown td.details-control {
 
 .confirmation h3 {text-align: center}
 
+.customer-info[readonly=readonly] {background-color: #eee !important}
+
 #order-table td[colspan] {background: #fcf8e3}
 #order-table td[colspan] .table {background: none}
 
