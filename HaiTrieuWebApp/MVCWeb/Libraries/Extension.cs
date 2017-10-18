@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using MVCWeb.AppDataLayer;
@@ -42,6 +44,18 @@ namespace MVCWeb.Libraries
                     (!string.IsNullOrEmpty(source.Area) ? " - " + source.Area : "");
             }
             return label;
+        }
+
+        public static string ToMD5(this string str)
+        {
+            var md5 = new MD5CryptoServiceProvider();
+            var bHash = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
+            var sbHash = new StringBuilder();
+            foreach (byte b in bHash)
+            {
+                sbHash.Append($"{b:x2}");
+            }
+            return sbHash.ToString();
         }
     }
 }

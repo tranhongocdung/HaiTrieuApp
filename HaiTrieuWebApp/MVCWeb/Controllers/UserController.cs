@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.Security;
+using MVCWeb.Libraries;
 using MVCWeb.Models;
 using Newtonsoft.Json;
 
@@ -24,10 +25,11 @@ namespace MVCWeb.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
+            var encryptedPassword = (model.Password + Constant.PasswordSuffix).ToMD5();
             var db = new DbAppContext();
             if (ModelState.IsValid)
             {
-                var user = db.Users.FirstOrDefault(u => u.Username == model.Username && u.Password == model.Password);
+                var user = db.Users.FirstOrDefault(u => u.Username == model.Username && u.Password == encryptedPassword);
                 if (user != null)
                 {
                     var roles = new[] {"Admin"};
@@ -59,6 +61,11 @@ namespace MVCWeb.Controllers
 
                 ModelState.AddModelError("", "Incorrect username and/or password");
             }
+            return View();
+        }
+
+        public ActionResult ChangePassword()
+        {
             return View();
         }
 

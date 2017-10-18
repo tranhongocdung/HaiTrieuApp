@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using MVCWeb.AppDataLayer;
 using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.IServices;
+using MVCWeb.AppDataLayer.Security;
 using MVCWeb.Libraries;
 using MVCWeb.Models;
 using Newtonsoft.Json;
@@ -11,7 +12,7 @@ using Newtonsoft.Json;
 namespace MVCWeb.Controllers
 {
     [WhitespaceFilter]
-    //[CustomAuthorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "Admin")]
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;

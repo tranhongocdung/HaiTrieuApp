@@ -37,15 +37,15 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
-                    @*<ul class="dropdown-menu dropdown-user">
+                    <ul class="dropdown-menu dropdown-user">
                         <li>
-                            <a href="/Config/ChangePassword"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
+                            <a href="@Url.Action("ChangePassword", "Config")"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="/User/Logout"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                            <a href="@Url.Action("Logout", "User")"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
                         </li>
-                    </ul>*@
+                    </ul>
                     <!-- /.dropdown-user -->
                 </li>
             </ul>
@@ -67,10 +67,9 @@
                         <li>
                             <a href="@Url.Action("Manage", "Customer")"><i class="fa fa-user fa-fw"></i> Khách hàng</a>
                         </li>
-                        @*
                         <li>
                             <a href="/product/manage"><i class="fa fa-user fa-fw"></i> Sản phẩm</a>
-                        </li>*@
+                        </li>
                     </ul>
                     <!-- /#side-menu -->
                     <div class="panel">

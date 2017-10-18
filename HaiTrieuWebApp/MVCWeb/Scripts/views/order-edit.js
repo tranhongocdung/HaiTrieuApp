@@ -26,7 +26,7 @@ function initRegionAreaHint() {
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace("region"),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         identify: function (obj) { return obj.region; },
-        prefetch: "../content/json/region.json"
+        prefetch: "../content/json/region.js"
     });
 
     function regionsWithDefaults(q, sync) {
@@ -53,7 +53,7 @@ function initRegionAreaHint() {
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace("area"),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         identify: function (obj) { return obj.area; },
-        prefetch: "../content/json/area.json"
+        prefetch: "../content/json/area.js"
     });
 
     function areasWithDefaults(q, sync) {
