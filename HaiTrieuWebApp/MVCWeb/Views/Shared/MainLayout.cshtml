@@ -33,30 +33,30 @@
                 <span class="navbar-brand">Khắc dấu Hải Triều</span>
             </div>
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li>
-                            <a href="@Url.Action("ChangePassword", "Config")"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="@Url.Action("Logout", "User")"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
+                @if (User != null)
+                {
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i> @User.DisplayName &nbsp; <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="@Url.Action("ChangePassword", "Config")"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="@Url.Action("Logout", "User")"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                }
             </ul>
             <div class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="side-menu">
                         @*<li class="sidebar-search">
                             <img src="/Content/images/logo.png" class="center-block" style="width: 130px"/>
-                        </li>*@
-                        @*<li>
-                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> Bảng chính</a>
                         </li>*@
                         <li>
                             <a href="@Url.Action("Edit","Order", new {id = ""})"><i class="fa fa-list-alt fa-fw"></i> Tạo đơn hàng</a>
@@ -68,13 +68,16 @@
                             <a href="@Url.Action("Manage", "Customer")"><i class="fa fa-user fa-fw"></i> Khách hàng</a>
                         </li>
                         <li>
-                            <a href="/product/manage"><i class="fa fa-user fa-fw"></i> Sản phẩm</a>
+                            <a href="@Url.Action("Manage", "Product")"><i class="fa fa-shopping-cart fa-fw"></i> Sản phẩm</a>
+                        </li>
+                        <li>
+                            <a href="/"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê</a>
                         </li>
                     </ul>
                     <!-- /#side-menu -->
-                    <div class="panel">
+                    @*<div class="panel">
                         <div class="panel-body"></div>
-                    </div>
+                    </div>*@
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
