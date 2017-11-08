@@ -30,9 +30,9 @@ namespace MVCWeb.AppDataLayer.Security
                 {
                     if (!CurrentUser.IsInRole(Roles))
                     {
-                        /*filterContext.Result = new RedirectToRouteResult(new
-                            RouteValueDictionary(new {controller = "Error", action = "AccessDenied"}));*/
-                        base.OnAuthorization(filterContext);
+                        filterContext.Result = new RedirectToRouteResult(new
+                            RouteValueDictionary(new {controller = "Error", action = "AccessDenied"}));
+                        //base.OnAuthorization(filterContext);
                     }
                 }
 
@@ -40,9 +40,9 @@ namespace MVCWeb.AppDataLayer.Security
                 {
                     if (!Users.Contains(CurrentUser.UserId.ToString()))
                     {
-                        /*filterContext.Result = new RedirectToRouteResult(new
-                            RouteValueDictionary(new {controller = "Error", action = "AccessDenied"}));*/
-                        base.OnAuthorization(filterContext);
+                        filterContext.Result = new RedirectToRouteResult(new
+                            RouteValueDictionary(new {controller = "Error", action = "AccessDenied"}));
+                        //base.OnAuthorization(filterContext);
                     }
                 }
             }

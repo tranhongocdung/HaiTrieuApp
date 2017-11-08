@@ -467,7 +467,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
-    <Content Include="Views\Config\ChangePassword.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Scripts\x-editable\dist\LICENSE-MIT" />
@@ -486,6 +486,7 @@
     <Folder Include="AppDataLayer\ExtendingEntities\" />
     <Folder Include="App_Data\" />
     <Folder Include="Files\" />
+    <Folder Include="Views\Config\" />
     <Folder Include="Views\DataSource\" />
   </ItemGroup>
   <ItemGroup>

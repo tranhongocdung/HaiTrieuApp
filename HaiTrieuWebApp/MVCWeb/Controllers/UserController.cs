@@ -32,7 +32,7 @@ namespace MVCWeb.Controllers
                 var user = db.Users.FirstOrDefault(u => u.Username == model.Username && u.Password == encryptedPassword);
                 if (user != null)
                 {
-                    var roles = new[] {"Admin"};
+                    var roles = new[] { user.Role };
                     var serializeModel = new CustomPrincipalSerializeModel
                     {
                         UserId = user.Id,
@@ -45,7 +45,7 @@ namespace MVCWeb.Controllers
                              1,
                             user.Username,
                              DateTime.Now,
-                             DateTime.Now.AddMinutes(15),
+                             DateTime.Now.AddMinutes(30),
                              false,
                              userData);
 
@@ -53,17 +53,19 @@ namespace MVCWeb.Controllers
                     var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
                     Response.Cookies.Add(faCookie);
 
-                    if (roles.Contains("Admin"))
+                    /*if (roles.Contains("Admin"))
                     {
                         return RedirectToAction("Edit", "Order");
-                    }
+                    }*/
+
+                    return RedirectToAction("Edit", "Order");
                 }
 
                 ModelState.AddModelError("", "Incorrect username and/or password");
             }
             return View();
         }
-
+        [CustomAuthorize(Roles = "*")]
         public ActionResult ChangePassword()
         {
             return View();

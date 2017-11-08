@@ -10,7 +10,10 @@ namespace MVCWeb.AppDataLayer.Security
         {
             return Roles.Any(role.Contains);
         }
-
+        public bool IsAdmin()
+        {
+            return IsInRole("Admin");
+        }
         public CustomPrincipal(string username)
         {
             Identity = new GenericIdentity(username);

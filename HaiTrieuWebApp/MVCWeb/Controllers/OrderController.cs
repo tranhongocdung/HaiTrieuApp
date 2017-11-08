@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 namespace MVCWeb.Controllers
 {
     [WhitespaceFilter]
-    [CustomAuthorize(Roles = "Admin")]
+    [CustomAuthorize(Roles = "*")]
     public class OrderController : BaseController
     {
         private readonly IOrderService _orderService;
@@ -31,6 +31,7 @@ namespace MVCWeb.Controllers
         {
             return View();
         }
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Manage()
         {
             var model = new OrderManageViewModel()
