@@ -210,6 +210,7 @@
     <Compile Include="Libraries\Pager\ListPager.cs" />
     <Compile Include="Libraries\RemoveWhiteSpace.cs" />
     <Compile Include="Libraries\Utility.cs" />
+    <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ProductEditViewModel.cs" />
     <Compile Include="Models\CustomerEditViewModel.cs" />
     <Compile Include="Models\ProductManageViewModel.cs" />
