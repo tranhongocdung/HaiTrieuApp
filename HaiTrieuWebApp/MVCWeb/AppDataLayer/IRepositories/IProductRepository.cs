@@ -2,7 +2,7 @@
 
 namespace MVCWeb.AppDataLayer.IRepositories
 {
-    public interface IOrderRepository : IGenericRepository<Order>
+    public interface IProductRepository : IGenericRepository<Product>
     {
         
     }

@@ -160,20 +160,24 @@
     <Compile Include="AppDataLayer\IRepositories\IGenericRepository.cs" />
     <Compile Include="AppDataLayer\IRepositories\IOrderDetailRepository.cs" />
     <Compile Include="AppDataLayer\IRepositories\ICustomerRepository.cs" />
+    <Compile Include="AppDataLayer\IRepositories\IProductRepository.cs" />
     <Compile Include="AppDataLayer\IRepositories\IOrderRepository.cs" />
     <Compile Include="AppDataLayer\IRepositories\IWebAppRepository.cs" />
     <Compile Include="AppDataLayer\IServices\ICustomerService.cs" />
+    <Compile Include="AppDataLayer\IServices\IProductService.cs" />
     <Compile Include="AppDataLayer\IServices\IOrderService.cs" />
     <Compile Include="AppDataLayer\IServices\IWebAppService.cs" />
     <Compile Include="AppDataLayer\Repositories\CustomerRepository.cs" />
     <Compile Include="AppDataLayer\Repositories\GenericRepository.cs" />
     <Compile Include="AppDataLayer\Repositories\OrderDetailRepository.cs" />
+    <Compile Include="AppDataLayer\Repositories\ProductRepository.cs" />
     <Compile Include="AppDataLayer\Repositories\OrderRepository.cs" />
     <Compile Include="AppDataLayer\ReturnData.cs" />
     <Compile Include="AppDataLayer\ReturnLabel.cs" />
     <Compile Include="AppDataLayer\Security\BaseViewPage.cs" />
     <Compile Include="AppDataLayer\Security\CustomAuthorizeAttribute.cs" />
     <Compile Include="AppDataLayer\Security\CustomPrincipal.cs" />
+    <Compile Include="AppDataLayer\Services\ProductService.cs" />
     <Compile Include="AppDataLayer\Services\CustomerService.cs" />
     <Compile Include="AppDataLayer\Services\OrderService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -184,6 +188,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\DataSourceController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -205,7 +210,9 @@
     <Compile Include="Libraries\Pager\ListPager.cs" />
     <Compile Include="Libraries\RemoveWhiteSpace.cs" />
     <Compile Include="Libraries\Utility.cs" />
+    <Compile Include="Models\ProductEditViewModel.cs" />
     <Compile Include="Models\CustomerEditViewModel.cs" />
+    <Compile Include="Models\ProductManageViewModel.cs" />
     <Compile Include="Models\LabelValueViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\CustomerManageViewModel.cs" />
@@ -354,6 +361,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\lib.js" />
     <Content Include="Content\typeahead\typeahead.bundle.js" />
+    <Content Include="Scripts\views\product-manage.js" />
     <Content Include="Scripts\views\order-edit.js" />
     <Content Include="Scripts\views\customer-manage.js" />
     <Content Include="Scripts\views\order-manage.js" />
@@ -481,6 +489,9 @@
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Order\_OrderStatistic.cshtml" />
     <Content Include="Views\Order\_OrderStatisticDetail.cshtml" />
+    <Content Include="Views\Product\_ProductTable.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppDataLayer\ExtendingEntities\" />
