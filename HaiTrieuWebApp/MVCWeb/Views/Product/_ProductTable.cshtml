@@ -18,8 +18,8 @@
                 <tr>
                     <td class="italic">@item.ProductName</td>
                     <td class="text-center text-success">@item.ShortDescription</td>
-                    <td class="text-center text-primary">@item.OriginalPrice</td>
-                    <td class="text-center text-danger">@item.UnitPrice</td>
+                    <td class="text-center text-primary">@item.OriginalPrice.ToString("#,##0 VNĐ ")</td>
+                    <td class="text-center text-danger">@item.UnitPrice.ToString("#,##0 VNĐ ")</td>
                     <td class="text-right">
                         <div class="btn-group order-btn-group" role="group" aria-label="...">
                             <button type="button" class="btn btn-primary edit-product" data-product-id="@item.Id"><span class="glyphicon glyphicon-edit"></span></button>
