@@ -8,7 +8,7 @@ $(document).on("click", "#btnSubmit", function () {
 });
 
 function initProductEditButton() {
-    $(".edit-product").click(function() {
+    $(".edit-product, .add-product").click(function () {
         $.ajax({
             method: "GET",
             url: $("#edit-product-url").val(),

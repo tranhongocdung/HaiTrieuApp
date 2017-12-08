@@ -29,6 +29,9 @@ namespace MVCWeb.AppDataLayer.Services
             var currentProduct = _productRepository.GetById(product.Id);
             if (currentProduct == null) return false;
             currentProduct.ProductName = product.ProductName;
+            currentProduct.ShortDescription = product.ShortDescription;
+            currentProduct.OriginalPrice = product.OriginalPrice;
+            currentProduct.UnitPrice = product.UnitPrice;
             _productRepository.Update(product);
             return true;
         }

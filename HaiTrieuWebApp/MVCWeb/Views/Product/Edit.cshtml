@@ -19,12 +19,35 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Tên khách hàng</label>
+                                <label>Tên sản phẩm</label>
                                 @Html.TextBoxFor(o => o.Product.ProductName, new {@class = "form-control", @id = "txtProductName"})
                                 @Html.HiddenFor(o => o.Product.Id, new {@id = "ObjId"})
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Mô tả sản phẩm</label>
+                                @Html.TextBoxFor(o => o.Product.ShortDescription, new { @class = "form-control", @id = "txtShortDescription" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Giá gốc</label>
+                                @Html.TextBoxFor(o => o.Product.OriginalPrice, new { @class = "form-control", @id = "txtOriginalPrice" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Giá bán</label>
+                                @Html.TextBoxFor(o => o.Product.UnitPrice, new { @class = "form-control", @id = "txtUnitPrice" })
+                            </div>
+                        </div>
+                    </div>
+                   
 @*                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">

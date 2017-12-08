@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using MVCWeb.AppDataLayer;
+using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.IRepositories;
 using MVCWeb.AppDataLayer.IServices;
 using MVCWeb.AppDataLayer.Security;
@@ -63,6 +64,13 @@ namespace MVCWeb.Controllers
                     model.Product = product;
                 }
             }
+            else
+            {
+                model.Product = new Product
+                {
+                    Id = 0
+                };
+            }
             return View(model);
         }
         [HttpPost]
@@ -75,7 +83,8 @@ namespace MVCWeb.Controllers
                 var obj = _productRepository.GetById(model.Product.Id);
                 if (obj == null)
                 {
-                    _productRepository.Insert(model.Product);
+                    obj = new Product();
+                    obj.Id = _productService.Create(model.Product);
                     message = "Đã thêm thành công!";
                 }
                 else
