@@ -31,7 +31,6 @@ namespace MVCWeb.Controllers
         {
             return View();
         }
-        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Manage()
         {
             var model = new OrderManageViewModel()

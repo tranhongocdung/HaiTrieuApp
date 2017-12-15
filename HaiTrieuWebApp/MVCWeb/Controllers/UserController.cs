@@ -71,6 +71,13 @@ namespace MVCWeb.Controllers
             return View();
         }
 
+        [CustomAuthorize(Roles = "*")]
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            return View();
+        }
+
         [AllowAnonymous]
         public ActionResult Logout()
         {

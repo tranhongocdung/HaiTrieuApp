@@ -41,7 +41,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="@Url.Action("ChangePassword", "User")"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
+                                <a href="#" class="change-password"><i class="fa fa-gear fa-fw"></i> Đổi mật khẩu</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -92,6 +92,9 @@
         </div>
     </div>
 
+    <input type="hidden" id="change-password-url" value="@Url.Action("ChangePassword", "User")"/>
+    <div id="hidden-content"></div>
+
     <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -100,6 +103,7 @@
     <script src="~/Content/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="~/Content/js/sb-admin.js"></script>
     <script src="~/Scripts/lib.js"></script>
+    <script src="~/Scripts/views/change-password.js"></script>
     @RenderSection("OptionalJs", false)
 </body>
 

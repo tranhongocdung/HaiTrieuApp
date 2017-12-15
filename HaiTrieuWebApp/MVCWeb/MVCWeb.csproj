@@ -362,6 +362,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\lib.js" />
     <Content Include="Content\typeahead\typeahead.bundle.js" />
+    <Content Include="Scripts\views\change-password.js" />
     <Content Include="Scripts\views\product-manage.js" />
     <Content Include="Scripts\views\order-edit.js" />
     <Content Include="Scripts\views\customer-manage.js" />
