@@ -3,6 +3,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using MVCWeb.AppDataLayer;
 using MVCWeb.AppDataLayer.Entities;
 using MVCWeb.AppDataLayer.Security;
 using MVCWeb.Libraries;
@@ -75,7 +77,17 @@ namespace MVCWeb.Controllers
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordViewModel model)
         {
-            return View();
+            var db = new DbAppContext();
+            var encryptedPassword = (model.OldPassword + Constant.PasswordSuffix).ToMD5();
+            var userName = User.Identity.GetUserName();
+            var user = db.Users.FirstOrDefault(o => o.Username == userName && o.Password == encryptedPassword);
+            if (user == null)
+                return Json(new ReturnData { Success = false, Message = "Mật khẩu cũ không đúng!" });
+            if (model.NewPassword != model.ConfirmNewPassword)
+                return Json(new ReturnData { Success = false, Message = "Xác nhận mật khẩu mới không đúng!" });
+            user.Password = (model.NewPassword + Constant.PasswordSuffix).ToMD5();
+            db.SaveChanges();
+            return Json(new ReturnData { Success = true, Message = "Đã đổi mật khẩu thành công!" });
         }
 
         [AllowAnonymous]
