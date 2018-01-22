@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <span class="navbar-brand">Khắc dấu Hải Triều</span>
+                <span class="navbar-brand">Khánh An Kids Shop</span>
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 @if (User != null)
@@ -67,16 +67,9 @@
                         <li>
                             <a href="@Url.Action("Manage", "Customer")"><i class="fa fa-user fa-fw"></i> Khách hàng</a>
                         </li>
-                        @if (User.IsAdmin())
-                        {
-                            <li>
-                                <a href="@Url.Action("Manage", "Product")"><i class="fa fa-shopping-cart fa-fw"></i> Sản phẩm</a>
-                            </li>
-                            <li>
-                                <a href="/"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê</a>
-                            </li>
-                        }
-                        
+                        <li>
+                            <a href="@Url.Action("Manage", "Product")"><i class="fa fa-shopping-cart fa-fw"></i> Sản phẩm</a>
+                        </li>
                     </ul>
                     <!-- /#side-menu -->
                     @*<div class="panel">

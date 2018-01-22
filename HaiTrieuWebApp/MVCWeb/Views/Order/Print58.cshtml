@@ -25,58 +25,56 @@
             151A Thủ Khoa Huân - Phan Thiết<br/>
             Hotline: <strong>0932.495.592</strong><br/>
             Facebook: <strong>Khánh An Kids PT</strong><br/>
-            ~ www.facebook.com/khanhankidsPT ~<br/>
+            www.facebook.com/khanhankidsPT<br/>
             --------------------------------------<br/>
         </div>
         <div style="font-size: 8pt">
             <table style="width: 100%">
+                @{
+                    var i = 0;
+                }
                 <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
+                    <td class="text-center">STT</td>
+                    <td>
+                        Tên SP
+                    </td>
+                    <td class="text-center">
+                       Đơn giá
+                    </td>
+                    <td class="text-center">
+                       SL
+                    </td>
+                    <td class="text-right">
+                        Thành tiền
+                    </td>
                 </tr>
+                @foreach (var orderDetail in Model.Order.OrderDetails)
+                {
+                    i++;
+                    <tr>
+                        <td class="text-center">@i</td>
+                        <td>
+                            @orderDetail.Product.ProductName
+                            <input type="hidden" class="product-id" value="@orderDetail.ProductId"/>
+                        </td>
+                        <td class="text-center">
+                            @orderDetail.UnitPrice.ToString("#,##0")
+                        </td>
+                        <td class="text-center">
+                            @orderDetail.Quantity
+                        </td>
+                        <td class="text-right">
+                            <strong>@((orderDetail.Quantity*orderDetail.UnitPrice).ToString("#,##0"))</strong>
+                            <input type="hidden" class="total-cash" value="@(orderDetail.Quantity*orderDetail.UnitPrice)"/>
+                        </td>
+                    </tr>
+                }
                 <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
-                </tr>
-                <tr>
-                    <td>Quần jean nam PKL XL</td>
-                    <td class="text-right">60.000đ</td>
+                    <td colspan="3" class="text-right"><strong>Thành tiền:</strong></td>
+                    <td colspan="2" class="text-right">
+                        <strong>@Model.TotalCash.ToString("#,##0")</strong>
+                        <input type="hidden" id="final-cash" value="@Model.TotalCash" />
+                    </td>
                 </tr>
             </table>
         </div>
