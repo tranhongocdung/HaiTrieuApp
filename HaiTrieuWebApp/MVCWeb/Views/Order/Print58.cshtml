@@ -1,0 +1,103 @@
+﻿@model MVCWeb.Models.OrderPrintViewModel
+
+@{
+    ViewBag.Title = "In đơn hàng";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Print</title>
+    <link href="~/Content/print58.css" rel="stylesheet" />
+</head>
+<body>
+<div class="top-bottom-margin"></div>
+<div class="page">
+    <div class="subpage">
+        <div class="text-center">
+            <strong style="font-size: 12pt">
+                Shop Khánh An Kids<br/>
+                Thời Trang cho Bé<br/>
+            </strong>
+            151A Thủ Khoa Huân - Phan Thiết<br/>
+            Hotline: <strong>0932.495.592</strong><br/>
+            Facebook: <strong>Khánh An Kids PT</strong><br/>
+            ~ www.facebook.com/khanhankidsPT ~<br/>
+            --------------------------------------<br/>
+        </div>
+        <div style="font-size: 8pt">
+            <table style="width: 100%">
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+                <tr>
+                    <td>Quần jean nam PKL XL</td>
+                    <td class="text-right">60.000đ</td>
+                </tr>
+            </table>
+        </div>
+        <div class="text-center" style="font-style: italic">
+            --------------------------------------<br/>
+            <strong>
+                Quý khách vui lòng kiểm tra<br />hàng trước khi rời khỏi Shop<br />
+            </strong>
+            ~~ Giữ hoá đơn khi đổi hàng ~~<br/>
+            <strong style="font-size: 10pt">
+                Xin cảm ơn quý khách hàng!                
+            </strong>
+        </div>
+
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-2.2.1.min.js"></script>
+    <script src="~/Scripts/lib.js"></script>
+    <script type="text/javascript">
+        $("#numberInWord").html(readNumber($("#final-cash").val()))
+    </script>
+</body>
+</html>

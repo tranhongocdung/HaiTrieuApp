@@ -128,7 +128,8 @@ namespace MVCWeb.Controllers
                     model.Customer = order.Customer;
                 }
             }
-            return View(model);
+            return View("Print58",model);
+            /*return View(model);*/
         }
 
         public ActionResult Complete(int id)

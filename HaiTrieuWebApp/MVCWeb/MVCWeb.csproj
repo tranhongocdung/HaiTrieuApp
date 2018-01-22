@@ -276,6 +276,7 @@
     <Content Include="Content\bootstrap-tagsinput\bootstrap-tagsinput.css" />
     <Content Include="Content\bootstrap-tagsinput\bootstrap-tagsinput.js" />
     <Content Include="Content\bootstrap-tagsinput\bootstrap-tagsinput.min.js" />
+    <Content Include="Content\print58.css" />
     <Content Include="Content\print.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\summernote\lang\summernote-ar-AR.js" />
@@ -494,6 +495,7 @@
     <Content Include="Views\Product\_ProductTable.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Manage.cshtml" />
+    <Content Include="Views\Order\Print58.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppDataLayer\ExtendingEntities\" />
