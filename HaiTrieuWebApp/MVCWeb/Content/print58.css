@@ -10,7 +10,7 @@
     -moz-box-sizing: border-box;
 }
 .page {
-    width: 58mm;
+    width: 80mm;
     min-height: 100mm;
     padding: 0;
     margin: 0 auto;
@@ -20,7 +20,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 .subpage {
-    /*padding: 10mm;*/
+    padding: 0 10mm 0 5mm;
     /*outline: 20mm #fff solid;*/
     position: relative
 }
@@ -28,7 +28,7 @@
 .top-bottom-margin { height: 20px;display: block}
  
 @page {
-    size: 58mm 0;
+    size: 80mm 0;
     margin: 0;
 }
 @media print {

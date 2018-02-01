@@ -41,13 +41,13 @@ namespace MVCWeb.Controllers
                         DisplayName = user.DisplayName,
                         Roles = roles
                     };
-
+                    var deadLine = model.RememberMe ? DateTime.Now.AddMonths(2) : DateTime.Now.AddMinutes(60);
                     var userData = JsonConvert.SerializeObject(serializeModel);
                     var authTicket = new FormsAuthenticationTicket(
                              1,
                             user.Username,
                              DateTime.Now,
-                             DateTime.Now.AddMinutes(30),
+                             deadLine,
                              false,
                              userData);
 
