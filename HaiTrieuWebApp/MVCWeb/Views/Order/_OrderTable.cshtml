@@ -12,6 +12,7 @@
             <th class="text-center" style="width: 100px">Chiết khấu</th>
             <th class="text-center" style="width: 100px">Thực thu</th>
             <th class="text-center" style="width: 100px">Ngày tạo</th>
+            <th class="text-center" style="width: 120px">Tạo bởi</th>
             <th style="width: 135px"></th>
         </tr>
         </thead>
@@ -30,6 +31,16 @@
                     <td class="text-center">@item.DiscountString</td>
                     <td class="text-center text-danger"><strong> @item.RealCash.ToString("#,##0")</strong></td>
                     <td class="text-center">@item.CreatedOn.ToString("dd/MM/yyyy")</td>
+                    <td class="text-center">
+                        @if (item.CreatedBy != null)
+                        {
+                            <strong class="text-primary italic">@item.CreatedBy.DisplayName</strong>
+                        }
+                        else
+                        {
+                            <strong class="text-primary">...</strong>
+                        }
+                    </td>
                     <td class="text-right">
                         <div class="btn-group order-btn-group" role="group" aria-label="...">
                             @if (item.OrderStatusId == OrderStatus.Pending)

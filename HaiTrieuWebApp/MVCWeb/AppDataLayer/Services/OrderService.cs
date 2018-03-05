@@ -84,7 +84,7 @@ namespace MVCWeb.AppDataLayer.Services
 
         public List<Order> GetList(FilterParams fp, ref int totalCount)
         {
-            var list = _orderRepository.TableNoTracking.Include(o => o.Customer)
+            var list = _orderRepository.TableNoTracking.Include(o => o.Customer).Include(o => o.CreatedBy)
                 .Include(o => o.OrderDetails.Select(p => p.Product));
             if (fp.StatusId != 0)
             {

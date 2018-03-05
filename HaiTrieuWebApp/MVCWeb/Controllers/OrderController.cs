@@ -113,6 +113,7 @@ namespace MVCWeb.Controllers
 
             //Add new
             model.Order.OrderDetails = orderDetails;
+            model.Order.CreatedById = User.UserId;
             orderId = _orderService.Create(model.Order);
             return Content(orderId.ToString());
         }

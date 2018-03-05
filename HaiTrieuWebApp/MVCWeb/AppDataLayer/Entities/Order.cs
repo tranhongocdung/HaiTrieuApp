@@ -19,11 +19,14 @@ namespace MVCWeb.AppDataLayer.Entities
         public int DiscountType { get; set; }
         public int DiscountValue { get; set; }
         public int OrderStatusId { get; set; }
+        public int? CreatedById { get; set; }
         public decimal CompletedRealCash { get; set; }
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
         [ForeignKey("OrderStatusId")]
         public OrderStatus OrderStatus { get; set; }
+        [ForeignKey("CreatedById")]
+        public User CreatedBy { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         [NotMapped]
