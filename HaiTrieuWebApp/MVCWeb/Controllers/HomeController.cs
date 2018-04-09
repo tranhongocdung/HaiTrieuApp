@@ -6,7 +6,7 @@ namespace MVCWeb.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("Index","User");
+            return RedirectToAction("Edit","Order");
         }
 
     }

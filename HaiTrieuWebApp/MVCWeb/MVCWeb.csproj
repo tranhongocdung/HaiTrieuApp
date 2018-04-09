@@ -151,6 +151,8 @@
   <ItemGroup>
     <Compile Include="AppDataLayer\Entities\Customer.cs" />
     <Compile Include="AppDataLayer\Entities\DbAppContext.cs" />
+    <Compile Include="AppDataLayer\Entities\ProductImportDetail.cs" />
+    <Compile Include="AppDataLayer\Entities\ProductImport.cs" />
     <Compile Include="AppDataLayer\Entities\Order.cs" />
     <Compile Include="AppDataLayer\Entities\OrderDetail.cs" />
     <Compile Include="AppDataLayer\Entities\OrderStatus.cs" />
@@ -194,6 +196,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductImportController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -501,6 +504,7 @@
     <Folder Include="Files\" />
     <Folder Include="Views\Config\" />
     <Folder Include="Views\DataSource\" />
+    <Folder Include="Views\ProductImport\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

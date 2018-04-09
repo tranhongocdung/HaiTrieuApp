@@ -41,18 +41,19 @@ namespace MVCWeb.Controllers
                         DisplayName = user.DisplayName,
                         Roles = roles
                     };
-					var deadLine = model.RememberMe ? DateTime.Now.AddMonths(2) : DateTime.Now.AddMinutes(60);
+					var timeOut = model.RememberMe ? DateTime.Now.AddMonths(2) : DateTime.Now.AddMinutes(60);
                     var userData = JsonConvert.SerializeObject(serializeModel);
                     var authTicket = new FormsAuthenticationTicket(
                              1,
                             user.Username,
                              DateTime.Now,
-                             deadLine,
-                             false,
+                             timeOut,
+                             true,
                              userData);
 
                     var encTicket = FormsAuthentication.Encrypt(authTicket);
                     var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+                    faCookie.Expires = timeOut;
                     Response.Cookies.Add(faCookie);
 
                     /*if (roles.Contains("Admin"))
