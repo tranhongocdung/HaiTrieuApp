@@ -101,11 +101,14 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Content/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/Content/datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="/Content/datepicker/js/bootstrap-datepicker.vi.js"></script>
+    <script src="~/Content/datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/datepicker/js/bootstrap-datepicker.vi.js"></script>
     <script src="~/Content/js/sb-admin.js"></script>
     <script src="~/Scripts/lib.js"></script>
     <script src="~/Scripts/views/change-password.js"></script>
+    <script type="text/javascript">
+        SessionUpdater.Setup('@Url.Action("KeepSessionAlive","Home")');
+    </script>
     @RenderSection("OptionalJs", false)
 </body>
 

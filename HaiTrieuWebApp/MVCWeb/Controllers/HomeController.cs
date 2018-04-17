@@ -9,5 +9,11 @@ namespace MVCWeb.Controllers
             return RedirectToAction("Edit","Order");
         }
 
+        [HttpPost]
+        public JsonResult KeepSessionAlive()
+        {
+            return new JsonResult { Data = "Success" };
+        }
+
     }
 }

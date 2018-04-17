@@ -94,3 +94,42 @@ function readNumber(number) {
     str = str.substr(1);
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+var SessionUpdater = (function () {
+    var keepSessionAliveUrl = null;
+    var timeout = 2 * 1000 * 60; // 2 minutes
+
+    function keepSessionAlive() {
+        // if we've had any movement since last run, ping the server
+        if (keepSessionAliveUrl != null) {
+            $.ajax({
+                type: "POST",
+                url: keepSessionAliveUrl,
+                success: function(data) {
+                    checkToKeepSessionAlive();
+                },
+                error: function (data) {
+                    console.log("Error posting to " & keepSessionAliveUrl);
+                }
+            });
+        }
+    }
+
+    // fires every n minutes - if there's been movement ping server and restart timer
+    function checkToKeepSessionAlive() {
+        setTimeout(function () { keepSessionAlive(); }, timeout);
+    }
+
+    function setupSessionUpdater(actionUrl) {
+        // store local value
+        keepSessionAliveUrl = actionUrl;
+        // start timeout - it'll run after n minutes
+        checkToKeepSessionAlive();
+    }
+
+    // export setup method
+    return {
+        Setup: setupSessionUpdater
+    };
+
+})();
