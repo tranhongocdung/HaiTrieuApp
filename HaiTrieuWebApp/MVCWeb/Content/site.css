@@ -36,6 +36,15 @@ tr.shown td.details-control {
 
 .customer-info[readonly=readonly] {background-color: #eee !important}
 
+.panel-heading h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 75%;
+    padding-top: 8px;
+}
+
 #order-table td[colspan] {background: #fcf8e3}
 #order-table td[colspan] .table {background: none}
 
