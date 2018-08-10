@@ -149,15 +149,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppDataLayer\AdvancedEntities\Customer.cs" />
+    <Compile Include="AppDataLayer\AdvancedEntities\Order.cs" />
+    <Compile Include="AppDataLayer\Entities\Category.cs" />
     <Compile Include="AppDataLayer\Entities\Customer.cs" />
     <Compile Include="AppDataLayer\Entities\DbAppContext.cs" />
-    <Compile Include="AppDataLayer\Entities\ProductImportDetail.cs" />
-    <Compile Include="AppDataLayer\Entities\ProductImport.cs" />
     <Compile Include="AppDataLayer\Entities\Order.cs" />
     <Compile Include="AppDataLayer\Entities\OrderDetail.cs" />
     <Compile Include="AppDataLayer\Entities\OrderStatus.cs" />
     <Compile Include="AppDataLayer\Entities\Product.cs" />
     <Compile Include="AppDataLayer\Entities\User.cs" />
+    <Compile Include="AppDataLayer\EntityConfigurations\UserConfiguration.cs" />
+    <Compile Include="AppDataLayer\EntityConfigurations\OrderStatusConfiguration.cs" />
+    <Compile Include="AppDataLayer\EntityConfigurations\OrderDetailConfiguration.cs" />
+    <Compile Include="AppDataLayer\EntityConfigurations\OrderConfiguration.cs" />
+    <Compile Include="AppDataLayer\EntityConfigurations\CustomerConfiguration.cs" />
+    <Compile Include="AppDataLayer\EntityConfigurations\CategoryConfiguration.cs" />
+    <Compile Include="AppDataLayer\EntityConfigurations\ProductConfiguration.cs" />
     <Compile Include="AppDataLayer\FilterParams.cs" />
     <Compile Include="AppDataLayer\IRepositories\IGenericRepository.cs" />
     <Compile Include="AppDataLayer\IRepositories\IOrderDetailRepository.cs" />
@@ -499,7 +507,6 @@
     <Content Include="Views\Product\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppDataLayer\ExtendingEntities\" />
     <Folder Include="App_Data\" />
     <Folder Include="Files\" />
     <Folder Include="Views\Config\" />

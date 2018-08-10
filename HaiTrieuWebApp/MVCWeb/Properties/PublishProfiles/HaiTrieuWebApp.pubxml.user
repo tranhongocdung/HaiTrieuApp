@@ -13,37 +13,37 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 08:43:40</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>03/02/2015 09:32:26</publishTime>
+      <publishTime>02/03/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>03/02/2015 09:32:26</publishTime>
+      <publishTime>02/03/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
-      <publishTime>04/03/2015 17:07:22</publishTime>
+      <publishTime>03/04/2015 17:07:22</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
-      <publishTime>04/03/2015 17:07:22</publishTime>
+      <publishTime>03/04/2015 17:07:22</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
       <publishTime>05/05/2014 11:25:44</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.Unity.Configuration.dll">
-      <publishTime>05/10/2015 09:37:20</publishTime>
+      <publishTime>10/05/2015 09:37:20</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.Unity.dll">
-      <publishTime>05/10/2015 09:37:20</publishTime>
+      <publishTime>10/05/2015 09:37:20</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.Unity.RegistrationByConvention.dll">
-      <publishTime>05/10/2015 09:37:20</publishTime>
+      <publishTime>10/05/2015 09:37:20</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/25/2012 11:48:56</publishTime>
     </File>
     <File Include="bin/MVCWeb.dll">
-      <publishTime>12/15/2017 09:49:14</publishTime>
+      <publishTime>04/17/2018 17:13:59</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/03/2014 20:33:56</publishTime>
+      <publishTime>03/08/2014 20:33:56</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/28/2015 04:04:30</publishTime>
@@ -52,7 +52,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/28/2015 04:02:18</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
-      <publishTime>02/11/2014 15:26:04</publishTime>
+      <publishTime>11/02/2014 15:26:04</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
       <publishTime>01/28/2015 04:02:32</publishTime>
@@ -133,10 +133,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/07/2017 11:33:58</publishTime>
     </File>
     <File Include="Content/datatables/datatables.min.css">
-      <publishTime>05/03/2017 13:59:56</publishTime>
+      <publishTime>03/05/2017 13:59:56</publishTime>
     </File>
     <File Include="Content/datatables/datatables.min.js">
-      <publishTime>05/03/2017 13:59:56</publishTime>
+      <publishTime>03/05/2017 13:59:56</publishTime>
     </File>
     <File Include="Content/datepicker/css/bootstrap-datepicker.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -346,10 +346,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/28/2017 13:19:06</publishTime>
     </File>
     <File Include="Content/json/area.js">
-      <publishTime>05/17/2017 11:25:04</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/json/region.js">
-      <publishTime>05/17/2017 11:25:04</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/json/region.json">
       <publishTime>05/13/2017 12:15:13</publishTime>
@@ -589,7 +589,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 14:07:01</publishTime>
     </File>
     <File Include="Scripts/lib.js">
-      <publishTime>04/26/2017 16:30:27</publishTime>
+      <publishTime>04/17/2018 16:59:40</publishTime>
+    </File>
+    <File Include="Scripts/views/change-password.js">
+      <publishTime>12/15/2017 11:02:20</publishTime>
     </File>
     <File Include="Scripts/views/customer-manage.js">
       <publishTime>10/18/2017 14:39:55</publishTime>
@@ -1021,13 +1024,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 14:07:01</publishTime>
     </File>
     <File Include="Views/Order/Edit.cshtml">
-      <publishTime>11/08/2017 09:42:43</publishTime>
+      <publishTime>08/11/2017 09:42:43</publishTime>
     </File>
     <File Include="Views/Order/Index.cshtml">
       <publishTime>04/24/2017 14:07:01</publishTime>
     </File>
     <File Include="Views/Order/Manage.cshtml">
-      <publishTime>10/18/2017 10:57:45</publishTime>
+      <publishTime>12/15/2017 12:00:03</publishTime>
     </File>
     <File Include="Views/Order/OrderPrint.cshtml">
       <publishTime>04/26/2017 14:04:44</publishTime>
@@ -1042,19 +1045,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/18/2017 10:57:45</publishTime>
     </File>
     <File Include="Views/Order/_OrderTable.cshtml">
-      <publishTime>11/08/2017 09:36:46</publishTime>
+      <publishTime>03/05/2018 15:55:53</publishTime>
     </File>
     <File Include="Views/Product/Edit.cshtml">
-      <publishTime>12/15/2017 09:40:09</publishTime>
+      <publishTime>12/15/2017 10:07:49</publishTime>
     </File>
     <File Include="Views/Product/Manage.cshtml">
-      <publishTime>12/15/2017 09:40:09</publishTime>
+      <publishTime>12/15/2017 11:09:39</publishTime>
     </File>
     <File Include="Views/Product/_ProductTable.cshtml">
       <publishTime>11/14/2017 16:33:11</publishTime>
     </File>
     <File Include="Views/Shared/MainLayout.cshtml">
-      <publishTime>11/08/2017 11:13:22</publishTime>
+      <publishTime>04/17/2018 16:54:31</publishTime>
     </File>
     <File Include="Views/Shared/_Pager.cshtml">
       <publishTime>04/24/2017 14:07:01</publishTime>
@@ -1063,7 +1066,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/05/2017 10:30:22</publishTime>
     </File>
     <File Include="Views/User/ChangePassword.cshtml">
-      <publishTime>11/08/2017 17:14:47</publishTime>
+      <publishTime>12/15/2017 10:47:09</publishTime>
     </File>
     <File Include="Views/User/Login.cshtml">
       <publishTime>04/24/2017 14:18:04</publishTime>
@@ -1072,7 +1075,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/24/2017 14:07:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/14/2017 10:51:51</publishTime>
+      <publishTime>03/05/2018 16:01:24</publishTime>
     </File>
   </ItemGroup>
 </Project>

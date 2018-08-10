@@ -17,6 +17,8 @@
     <WebStackScaffolding_DbContextTypeFullName>MVCWeb.AppDataLayer.Entities.DbAppContext</WebStackScaffolding_DbContextTypeFullName>
     <UseGlobalApplicationHostFile />
     <NameOfLastUsedPublishProfile>HaiTrieuWebApp</NameOfLastUsedPublishProfile>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

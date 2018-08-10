@@ -50,7 +50,7 @@ namespace MVCWeb.Controllers
                              timeOut,
                              true,
                              userData);
-
+                    //FormsAuthentication.SetAuthCookie(username, persistent);
                     var encTicket = FormsAuthentication.Encrypt(authTicket);
                     var faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
                     faCookie.Expires = timeOut;

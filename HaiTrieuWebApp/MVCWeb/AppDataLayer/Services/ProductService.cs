@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Dynamic;
 using MVCWeb.AppDataLayer.Entities;
@@ -37,7 +38,7 @@ namespace MVCWeb.AppDataLayer.Services
         }
         public List<Product> GetList(FilterParams fp, ref int totalCount)
         {
-            var list = _productRepository.TableNoTracking;
+            var list = _productRepository.TableNoTracking.Include(o => o.Categories);
             if (!string.IsNullOrEmpty(fp.Keyword))
             {
                 list = list.Where(o => o.ProductName.Contains(fp.Keyword));
