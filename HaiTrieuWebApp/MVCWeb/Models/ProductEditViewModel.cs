@@ -1,4 +1,4 @@
-﻿using MVCWeb.AppDataLayer.Entities;
+﻿using MVCWeb.Cores.Entities;
 
 namespace MVCWeb.Models
 {

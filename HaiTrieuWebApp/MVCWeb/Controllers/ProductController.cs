@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
-using MVCWeb.AppDataLayer;
-using MVCWeb.AppDataLayer.Entities;
-using MVCWeb.AppDataLayer.IRepositories;
-using MVCWeb.AppDataLayer.IServices;
-using MVCWeb.AppDataLayer.Security;
+using MVCWeb.Cores;
+using MVCWeb.Cores.Entities;
+using MVCWeb.Cores.IRepositories;
+using MVCWeb.Cores.IServices;
+using MVCWeb.Cores.Security;
 using MVCWeb.Libraries;
 using MVCWeb.Models;
 

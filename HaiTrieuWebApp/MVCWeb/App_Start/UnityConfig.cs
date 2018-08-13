@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
-using MVCWeb.AppDataLayer.Entities;
-using MVCWeb.AppDataLayer.IRepositories;
-using MVCWeb.AppDataLayer.IServices;
+using MVCWeb.Cores.Entities;
+using MVCWeb.Cores.IRepositories;
+using MVCWeb.Cores.IServices;
 using Unity.Mvc5;
 
 namespace MVCWeb

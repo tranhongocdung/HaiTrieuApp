@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using MVCWeb.AppDataLayer.Security;
+using MVCWeb.Cores.Security;
 
 namespace MVCWeb.Controllers
 {

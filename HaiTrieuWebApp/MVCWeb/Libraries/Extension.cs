@@ -7,8 +7,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using MVCWeb.AppDataLayer;
-using MVCWeb.AppDataLayer.Entities;
+using MVCWeb.Cores;
+using MVCWeb.Cores.Entities;
 
 namespace MVCWeb.Libraries
 {

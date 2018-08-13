@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
-using MVCWeb.AppDataLayer.Security;
+using MVCWeb.Cores.Security;
 using Newtonsoft.Json;
 
 namespace MVCWeb

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using MVCWeb.AppDataLayer.Entities;
-using MVCWeb.AppDataLayer.Security;
+using MVCWeb.Cores.Entities;
+using MVCWeb.Cores.Security;
 using MVCWeb.Libraries;
 
 namespace MVCWeb.Controllers
