@@ -151,6 +151,8 @@
   <ItemGroup>
     <Compile Include="Cores\AdvancedEntities\Customer.cs" />
     <Compile Include="Cores\AdvancedEntities\Order.cs" />
+    <Compile Include="Cores\AdvancedEntities\Product.cs" />
+    <Compile Include="Cores\Entities\Config.cs" />
     <Compile Include="Cores\Entities\Category.cs" />
     <Compile Include="Cores\Entities\Customer.cs" />
     <Compile Include="Cores\Entities\DbAppContext.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="Cores\Entities\OrderStatus.cs" />
     <Compile Include="Cores\Entities\Product.cs" />
     <Compile Include="Cores\Entities\User.cs" />
+    <Compile Include="Cores\EntityConfigurations\ConfigConfiguration.cs" />
     <Compile Include="Cores\EntityConfigurations\UserConfiguration.cs" />
     <Compile Include="Cores\EntityConfigurations\OrderStatusConfiguration.cs" />
     <Compile Include="Cores\EntityConfigurations\OrderDetailConfiguration.cs" />
@@ -167,16 +170,19 @@
     <Compile Include="Cores\EntityConfigurations\CategoryConfiguration.cs" />
     <Compile Include="Cores\EntityConfigurations\ProductConfiguration.cs" />
     <Compile Include="Cores\FilterParams.cs" />
+    <Compile Include="Cores\IRepositories\ICategoryRepository.cs" />
     <Compile Include="Cores\IRepositories\IGenericRepository.cs" />
     <Compile Include="Cores\IRepositories\IOrderDetailRepository.cs" />
     <Compile Include="Cores\IRepositories\ICustomerRepository.cs" />
     <Compile Include="Cores\IRepositories\IProductRepository.cs" />
     <Compile Include="Cores\IRepositories\IOrderRepository.cs" />
     <Compile Include="Cores\IRepositories\IWebAppRepository.cs" />
+    <Compile Include="Cores\IServices\ICategoryService.cs" />
     <Compile Include="Cores\IServices\ICustomerService.cs" />
     <Compile Include="Cores\IServices\IProductService.cs" />
     <Compile Include="Cores\IServices\IOrderService.cs" />
     <Compile Include="Cores\IServices\IWebAppService.cs" />
+    <Compile Include="Cores\Repositories\CategoryRepository.cs" />
     <Compile Include="Cores\Repositories\CustomerRepository.cs" />
     <Compile Include="Cores\Repositories\GenericRepository.cs" />
     <Compile Include="Cores\Repositories\OrderDetailRepository.cs" />
@@ -187,6 +193,8 @@
     <Compile Include="Cores\Security\BaseViewPage.cs" />
     <Compile Include="Cores\Security\CustomAuthorizeAttribute.cs" />
     <Compile Include="Cores\Security\CustomPrincipal.cs" />
+    <Compile Include="Cores\AppSetting.cs" />
+    <Compile Include="Cores\Services\CategoryService.cs" />
     <Compile Include="Cores\Services\ProductService.cs" />
     <Compile Include="Cores\Services\CustomerService.cs" />
     <Compile Include="Cores\Services\OrderService.cs" />

@@ -23,10 +23,17 @@
                 }, new {@id = "frmProductManage"}))
                 {
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Từ khóa:</label>
                                 @Html.TextBoxFor(m => m.Keyword, new {@class = "form-control", @id = "txtKeyword", @placeholder = "Từ khóa tìm theo tên sản phẩm..."})
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Nhóm sản phẩm:</label>
+                                @Html.DropDownListFor(m => m.CategoryId, new SelectList(
+                                    Model.Categories.Select(o => new {Value = o.Id, Text = o.CategoryName}), "Value", "Text"), new { @class = "form-control" })
                             </div>
                         </div>
                         <div class="col-md-2">

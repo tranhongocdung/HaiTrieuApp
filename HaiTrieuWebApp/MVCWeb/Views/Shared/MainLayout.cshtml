@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using MVCWeb.Cores
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -30,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <span class="navbar-brand">Khắc dấu Hải Triều</span>
+                <span class="navbar-brand">@AppSetting.Get("SiteHeader")</span>
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 @if (User != null)

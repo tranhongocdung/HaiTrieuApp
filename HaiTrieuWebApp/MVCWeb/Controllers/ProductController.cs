@@ -15,25 +15,30 @@ namespace MVCWeb.Controllers
     {
         private readonly IProductRepository _productRepository;
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
         public ProductController(
             IProductService productService,
+            ICategoryService categoryService,
             IProductRepository productRepository
             )
         {
             _productService = productService;
+            _categoryService = categoryService;
             _productRepository = productRepository;
         }
 
         public ActionResult Manage()
         {
-
+            var categories = _categoryService.GetAllWithTree();
+            categories.Insert(0, new Category {Id = 0, CategoryName = "-- Tất cả nhóm --"});
             var model = new ProductManageViewModel()
             {
                 CurrentPage = 1,
                 PageSize = 10,
             };
             var totalCount = 0;
+            model.Categories = categories;
             model.Products = _productService.GetList(new FilterParams(), ref totalCount);
             model.ItemCount = totalCount;
             return View(model);
@@ -49,6 +54,7 @@ namespace MVCWeb.Controllers
             {
                 PageNumber = page,
                 Keyword = model.Keyword,
+                CategoryId = model.CategoryId
             }, ref totalCount);
             model.ItemCount = totalCount;
             return View("_ProductTable", model);

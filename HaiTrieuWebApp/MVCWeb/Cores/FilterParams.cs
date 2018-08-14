@@ -15,6 +15,8 @@ namespace MVCWeb.Cores
 
         public int IsVIP { get; set; }
 
+        public int CategoryId { get; set; }
+
         //For Pagination
         public int PageSize { get; set; }
         public int PageNumber { get; set; }
@@ -33,6 +35,7 @@ namespace MVCWeb.Cores
             CustomerIds = new List<int>();
             StatusId = 0;
             IsVIP = 0;
+            CategoryId = 0;
         }
     }
 }

@@ -5,8 +5,8 @@ namespace MVCWeb.Cores.IServices
 {
     public interface IProductService : IWebAppService
     {
-        int Create(Product Product);
-        bool UpdateProduct(Product Product);
+        int Create(Product product);
+        bool UpdateProduct(Product product);
         List<Product> GetList(FilterParams fp, ref int totalCount);
     }
 }
