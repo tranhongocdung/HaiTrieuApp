@@ -149,6 +149,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Cores\AdvancedEntities\Customer.cs" />
     <Compile Include="Cores\AdvancedEntities\Order.cs" />
     <Compile Include="Cores\AdvancedEntities\Product.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\ProductEditViewModel.cs" />
     <Compile Include="Models\CustomerEditViewModel.cs" />
+    <Compile Include="Models\CategoryManageViewModel.cs" />
     <Compile Include="Models\ProductManageViewModel.cs" />
     <Compile Include="Models\LabelValueViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -265,6 +267,9 @@
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\hummingbird-treeview\hummingbird-treeview.css" />
+    <Content Include="Content\hummingbird-treeview\hummingbird-treeview.js" />
+    <Content Include="Content\hummingbird-treeview\index.html" />
     <Content Include="Content\images\ajax-loader-4.gif" />
     <Content Include="Content\images\ajax-loader-3.gif" />
     <Content Include="Content\images\ajax-loader-2.gif" />
@@ -381,6 +386,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\lib.js" />
     <Content Include="Content\typeahead\typeahead.bundle.js" />
+    <Content Include="Scripts\views\category-manage.js" />
     <Content Include="Scripts\views\change-password.js" />
     <Content Include="Scripts\views\product-manage.js" />
     <Content Include="Scripts\views\order-edit.js" />
@@ -517,6 +523,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\" />
+    <Folder Include="Views\Category\" />
     <Folder Include="Views\Config\" />
     <Folder Include="Views\DataSource\" />
     <Folder Include="Views\ProductImport\" />

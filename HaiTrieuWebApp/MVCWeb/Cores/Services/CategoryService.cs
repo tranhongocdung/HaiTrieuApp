@@ -53,7 +53,7 @@ namespace MVCWeb.Cores.Services
             return list.ToList();
         }
 
-        public List<Category> GetAllWithTree()
+        public List<Category> GetAllWithPrefixOnChildren()
         {
             var list = _categoryRepository.TableNoTracking.ToList();
             list.ForEach(category =>
@@ -69,6 +69,14 @@ namespace MVCWeb.Cores.Services
         public Category GetWithChildren(int categoryId)
         {
             return _categoryRepository.TableNoTracking.Include(o => o.ChildCategories).FirstOrDefault(o => o.Id == categoryId);
+        }
+
+        public List<Category> GetParentListWithChildren()
+        {
+            return
+                _categoryRepository.TableNoTracking.Include(o => o.ChildCategories)
+                    .Where(o => o.ParentId == null)
+                    .ToList();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace MVCWeb.Controllers
 
         public ActionResult Manage()
         {
-            var categories = _categoryService.GetAllWithTree();
+            var categories = _categoryService.GetAllWithPrefixOnChildren();
             categories.Insert(0, new Category {Id = 0, CategoryName = "-- Tất cả nhóm --"});
             var model = new ProductManageViewModel()
             {
