@@ -6,12 +6,12 @@ function initCategoryManageButton() {
     $(".manage-category").click(function () {
         $.ajax({
             method: "GET",
-            url: $("#manage-category-url").val(),
+            url: $("#category-manage-url").val(),
             success: function (html) {
                 $("#hidden-content").html(html);
                 $.validator.unobtrusive.parse("#frmCategoryEdit");
-                $("#product-edit-modal").modal();
-
+                $("#category-manage-modal").modal();
+                $("#treeview").hummingbird();
                 //initEditButtons();
             }
         });

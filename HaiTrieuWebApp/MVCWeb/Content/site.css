@@ -50,3 +50,18 @@ tr.shown td.details-control {
 
 #btnSubmit {position: relative}
 #manageLoading { position: absolute;left: 10px;top: 10px}
+
+.category-treeview-container {
+    padding-left: 30px;
+    height: 400px;
+    overflow-y: scroll   
+}
+.category-tree-node {height: 25px; padding: 3px}
+.category-tree-node.child {padding-left: 30px}
+.category-tree-node > div {display: inline-block}
+.category-tree-node > div.category-buttons { padding-left: 15px; display: none}
+.category-tree-node:hover > div.category-buttons {display: inline-block}
+.category-edit-btn {display: none}
+.category-treeview-container li:hover > .category-edit-btn {
+    display: inline-block
+}

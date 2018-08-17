@@ -11,7 +11,7 @@ function initProductEditButton() {
     $(".edit-product, .add-product").click(function () {
         $.ajax({
             method: "GET",
-            url: $("#edit-product-url").val(),
+            url: $("#product-edit-url").val(),
             data: { id: $(this).data("product-id") },
             success: function (html) {
                 $("#hidden-content").html(html);

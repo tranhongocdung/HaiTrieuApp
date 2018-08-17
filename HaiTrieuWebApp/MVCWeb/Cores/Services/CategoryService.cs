@@ -53,9 +53,21 @@ namespace MVCWeb.Cores.Services
             return list.ToList();
         }
 
+        public List<Category> GetAllWithTreeViewOrder()
+        {
+            var list = GetParentListWithChildren();
+            var sortedList = new List<Category>();
+            list.ForEach(category =>
+            {
+                sortedList.Add(category);
+                sortedList.AddRange(category.ChildCategories);
+            });
+            return sortedList;
+        }
+
         public List<Category> GetAllWithPrefixOnChildren()
         {
-            var list = _categoryRepository.TableNoTracking.ToList();
+            var list = GetAllWithTreeViewOrder();
             list.ForEach(category =>
             {
                 if (category.ParentId != null)
@@ -63,7 +75,7 @@ namespace MVCWeb.Cores.Services
                     category.CategoryName = "-- " + category.CategoryName;
                 }
             });
-            return list.OrderBy(o => o.ParentId != null).ThenBy(o => o.ParentId).ToList();
+            return list;
         }
 
         public Category GetWithChildren(int categoryId)

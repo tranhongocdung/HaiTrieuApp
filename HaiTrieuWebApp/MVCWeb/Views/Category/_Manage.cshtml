@@ -1,0 +1,119 @@
+﻿@model MVCWeb.Models.CategoryManageViewModel
+<div class="modal fade" id="category-manage-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" @* data-backdrop="static"*@>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modal-title">Nhóm sản phẩm</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Thêm/Sửa nhóm sản phẩm</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Tên nhóm</label>
+                                        @Html.TextBoxFor(o => o.Category.CategoryName, "", new { @class = "form-control", @id = "txtCategoryName" })
+                                        @Html.HiddenFor(o => o.Category.Id, new { @id = "ObjId" })
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Trực thuộc</label>
+                                        @Html.DropDownListFor(o => o.Category.ParentId, new SelectList(
+                                        Model.ParentCategories.Select(o => new { Value = o.Id, Text = o.CategoryName }), "Value", "Text"), new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>&nbsp;</label>
+                                        <div id="divCategoryAddButton">
+                                            <button class="btn btn-primary btn-block hidden">
+                                                <span class="glyphicon glyphicon-plus"></span> Thêm
+                                            </button>    
+                                        </div>
+                                        
+                                        <div id="divCategoryEditButton">
+                                            <button class="btn btn-success">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </button>
+                                            &nbsp;
+                                            &nbsp;
+                                            <button class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well category-treeview-container">
+                            @foreach (var category in Model.Categories)
+                            {
+                                <div class="category-tree-node @(category.IsChild?"child":"")">
+                                    <div>
+                                        <span class="glyphicon  @(category.IsChild?"glyphicon-record":"glyphicon-list")"></span>
+                                        &nbsp;@category.CategoryName
+                                    </div>
+                                    <div class="category-buttons">
+                                        <button type="button" class="btn btn-primary btn-xs">
+                                            <i class="fa fa-pencil"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        @*<div id="treeview_container" class="hummingbird-treeview well category-treeview-container">
+                            <ul id="treeview" class="hummingbird-base">
+                                @foreach (var parentCategory in Model.ParentCategories)
+                                {
+                                    <li>
+                                        <i class="fa fa-minus @(parentCategory.ChildCategories.Any() ? "" : "invisible")"></i>&nbsp;
+                                        <label>
+                                            <input id="category-@parentCategory.Id" data-id="@parentCategory.Id" type="checkbox"> @parentCategory.CategoryName
+                                        </label>
+                                        <i class="fa fa-pencil category-edit-btn"></i>
+                                        @if (parentCategory.ChildCategories.Any())
+                                        {
+                                            <ul style="display: block">
+                                                @foreach (var childCategory in parentCategory.ChildCategories)
+                                                {
+                                                    <li>
+                                                        <label>
+                                                            <input class="hummingbirdNoParent" id="category-@childCategory.Id" data-id="@childCategory.Id" type="checkbox">
+                                                            &nbsp;
+                                                            @childCategory.CategoryName
+                                                            &nbsp;
+                                                        </label>
+                                                        <i class="fa fa-pencil category-edit-btn"></i>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-2">
+                    <img src="~/Content/images/ajax-loader-3.gif" class="edit-loader" style="display: none" id="edit-loader" />
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-block btn-primary" id="btnSave">Lưu lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -62,17 +62,20 @@
     </div>
 </div>
 
-<input type="hidden" id="edit-product-url" value="@Url.Action("Edit", "Product")"/>
+<input type="hidden" id="category-manage-url" value="@Url.Action("Manage", "Category")" />
+<input type="hidden" id="product-edit-url" value="@Url.Action("Edit", "Product")"/>
 
 @section OptionalCss
 {
     <link href="~/Content/typeahead/typeahead-bootstrap.css" rel="stylesheet" />
     <link href="~/Content/summernote/summernote.css" rel="stylesheet" />
+    <link href="~/Content/hummingbird-treeview/hummingbird-treeview.css" rel="stylesheet" />
 }
 
 @section OptionalJs {
     <script src="~/Content/typeahead/typeahead.bundle.js"></script>
     <script src="~/Content/summernote/summernote.min.js"></script>
+    <script src="~/Content/hummingbird-treeview/hummingbird-treeview.js"></script>
     <script src="~/Scripts/views/product-manage.js"></script>
     <script src="~/Scripts/views/category-manage.js"></script>
 }

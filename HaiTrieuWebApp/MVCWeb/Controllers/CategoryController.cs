@@ -1,7 +1,4 @@
 ﻿using System.Web.Mvc;
-using MVCWeb.Cores;
-using MVCWeb.Cores.Entities;
-using MVCWeb.Cores.IRepositories;
 using MVCWeb.Cores.IServices;
 using MVCWeb.Cores.Security;
 using MVCWeb.Libraries;
@@ -21,7 +18,12 @@ namespace MVCWeb.Controllers
         }
         public ActionResult Manage()
         {
-            return View();
+            var model = new CategoryManageViewModel()
+            {
+                Categories = _categoryService.GetAllWithTreeViewOrder(),
+                ParentCategories = _categoryService.GetParentListWithChildren()
+            };
+            return View("_Manage", model);
         }
     }
 }
