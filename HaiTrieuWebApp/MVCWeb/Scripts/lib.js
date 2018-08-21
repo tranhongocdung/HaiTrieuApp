@@ -1,25 +1,53 @@
-﻿function showMessage(message, messagetype) {
-    var cssclass;
-    switch (messagetype) {
+﻿function showMessage(message, messageType) {
+    var cssClass;
+    switch (messageType) {
         case "success":
-            cssclass = "alert-success";
+            cssClass = "alert-success";
             break;
         case "error":
-            cssclass = "alert-danger";
+            cssClass = "alert-danger";
             break;
         case "warning":
-            cssclass = "alert-warning";
+            cssClass = "alert-warning";
             break;
         default:
-            cssclass = "alert-info";
+            cssClass = "alert-info";
     }
-    $("#alert-container").append("<div id=\"alert-div\" class=\"alert fade in text-center " + cssclass + "\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><span>" + message + "</span></div>");
+    $("#alert-container").append("<div id=\"alert-div\" class=\"alert fade in text-center " + cssClass + "\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><span>" + message + "</span></div>");
 
     setTimeout(function () {
         $("#alert-div").fadeTo(2000, 500).slideUp(500, function () {
             $("#alert-div").remove();
         });
     }, 2000);
+}
+
+function showModalMessage(message, messageType, alertContainer) {
+    var cssClass;
+    switch (messageType) {
+        case "success":
+            cssClass = "alert-success";
+            break;
+        case "error":
+            cssClass = "alert-danger";
+            break;
+        case "warning":
+            cssClass = "alert-warning";
+            break;
+        default:
+            cssClass = "alert-info";
+    }
+    var containerId = alertContainer === undefined ? "modal-alert-container" : alertContainer;
+    $("#" + containerId).append("<div id=\"modal-alert-div\" class=\"alert alert-small text-center " + cssClass + "\" style=\"display:none\"><span>" + message + "</span></div>");
+    $("#modal-alert-div").fadeIn(0).delay(800).fadeOut("slow");;
+}
+
+function setEditProgressBar(stt) {
+    if (stt == "on") {
+        $("#editLoading").fadeIn(0);
+    } else {
+        $("#editLoading").fadeOut("fast");
+    }
 }
 
 var digitArr = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"];

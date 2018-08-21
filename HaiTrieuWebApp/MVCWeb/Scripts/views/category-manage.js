@@ -11,9 +11,63 @@ function initCategoryManageButton() {
                 $("#hidden-content").html(html);
                 $.validator.unobtrusive.parse("#frmCategoryEdit");
                 $("#category-manage-modal").modal();
-                $("#treeview").hummingbird();
-                //initEditButtons();
+                initCategoryEditFormLoadButton();
             }
         });
+    });
+}
+
+function initEditCategoryButtons() {
+    $("#btnSave").click(function () {
+        $("#frmCategoryEdit").submit();
+    });
+}
+
+function initCategoryEditFormLoadButton() {
+    $(".edit-category").click(function () {
+        loadCategoryEditForm($(this).data("category-id"));
+        $(".category-treeview-container button").removeClass("btn-warning");
+        $(this).addClass("btn-warning");
+    });
+}
+
+function initCategoryEditCancelButton() {
+    $("#btnCancelEditCategory").click(function () {
+        loadCategoryEditForm(0);
+        $(".category-treeview-container button").removeClass("btn-warning");
+    });
+}
+
+function categoryEditBegin() {
+    setEditProgressBar("on");
+}
+
+function categoryEditCallBack(data) {
+    if (data.Success) {
+        showModalMessage(data.Message, "success");
+        loadCategoryListTreeView();
+    }
+    else showModalMessage(data.Message, "danger");
+    setEditProgressBar("off");
+}
+
+function loadCategoryListTreeView() {
+    
+}
+
+function loadCategoryEditForm(id) {
+    $.ajax({
+        method: "GET",
+        url: $("#category-edit-url").val(),
+        data: {
+            id: id
+        },
+        beforeSend: function () {
+            $("#editFormLoading").show();
+        },
+        success: function (html) {
+            $("#category-edit-container").html(html);
+            initCategoryEditCancelButton();
+        }
     });
 }

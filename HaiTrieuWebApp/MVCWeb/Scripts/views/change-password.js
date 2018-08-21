@@ -30,23 +30,16 @@ function changePasswordBegin() {
 
 function changePasswordCallBack(data) {
     if (data.Success) {
-        showNotificationOnEditForm("alert-success", data.Message);
+        showModalMessage(data.Message, "success");
     }
-    else showNotificationOnEditForm("alert-danger", data.Message);
+    else showModalMessage(data.Message, "danger");
     setChangePasswordProgressBar("off");
 }
+
 function setChangePasswordProgressBar(stt) {
     if (stt == "on") {
         $("#edit-loader").fadeIn(0);
     } else {
         $("#edit-loader").fadeOut("fast");
     }
-}
-function showNotificationOnEditForm(style, message) {
-    var notificationDiv = "<div class=\"alert alert-small text-center\" id=\"edit-notification\" style=\"display:none\"></div>";
-    $("#edit-content").html(notificationDiv);
-    var panel = $("#edit-notification");
-    panel.addClass(style);
-    panel.html(message);
-    panel.fadeIn(0).delay(800).fadeOut("slow");
 }

@@ -1,0 +1,83 @@
+﻿@model MVCWeb.Models.CategoryEditViewModel
+<div class="panel @(Model.Category.Id == 0 ? "panel-primary" : "panel-warning")">
+    <div class="panel-heading">
+        @if (Model.Category.Id == 0)
+        {
+            <span>
+                Thêm nhóm sản phẩm
+                &nbsp;&nbsp;
+                <img src="~/Content/images/ajax-loader-1.gif" id="editFormLoading" style="display: none" />
+            </span>
+        }
+        else
+        {
+            <span>
+                Sửa nhóm sản phẩm
+                &nbsp;&nbsp;
+                <img src="~/Content/images/ajax-loader-1.gif" id="editFormLoading" style="display: none" />
+            </span>
+            <button type="button" class="close" id="btnCancelEditCategory">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+        }
+    </div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("Edit", "Category", new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "POST",
+            OnBegin = "categoryEditBegin",
+            OnSuccess = "categoryEditCallBack"
+        }, new { id = "frmCategoryEdit" }))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tên nhóm</label>
+                        @Html.TextBoxFor(o => o.Category.CategoryName, new { @class = "form-control", @id = "txtCategoryName" })
+                        @Html.HiddenFor(o => o.Category.Id, new { @id = "ObjId" })
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Trực thuộc</label>
+                        @Html.DropDownListFor(o => o.Category.ParentId, new SelectList(
+                        Model.ParentCategories.Select(o => new { Value = o.Id, Text = o.CategoryName }), "Value", "Text"), new { @class = "form-control", @id = "ddlParentId" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <div>
+                            @if (Model.Category.Id == 0)
+                            {
+                                <div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-plus"></span> Thêm
+                                    </button>
+                                    &nbsp;&nbsp;
+                                    <img src="~/Content/images/ajax-loader-2.gif" id="editLoading" style="display: none" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <button type="submit" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger" id="btnDeleteCategory">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                    &nbsp;
+                                    &nbsp;
+                                    <img src="~/Content/images/ajax-loader-2.gif" id="editLoading" style="display: none" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }   
+    </div>
+</div>

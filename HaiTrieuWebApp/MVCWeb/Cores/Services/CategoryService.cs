@@ -37,6 +37,15 @@ namespace MVCWeb.Cores.Services
             return true;
         }
 
+        public Category RootCategory()
+        {
+            return new Category
+            {
+                Id = 0,
+                CategoryName = "--"
+            };
+        }
+
         public List<Category> GetList(FilterParams fp, ref int totalCount)
         {
             var list = _categoryRepository.TableNoTracking;

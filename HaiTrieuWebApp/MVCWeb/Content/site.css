@@ -8,7 +8,9 @@
     padding: 0;
     font-size: 15px;
 }
+.alert-small {padding: 7px 15px}
 #alert-div { margin-bottom: 15px}
+#modal-alert-div { margin-bottom: 10px}
 .form-group .twitter-typeahead {display: block !important}
 
 td.details-control {
@@ -51,12 +53,15 @@ tr.shown td.details-control {
 #btnSubmit {position: relative}
 #manageLoading { position: absolute;left: 10px;top: 10px}
 
+#category-manage-modal .modal-dialog {width: 700px}
+
 .category-treeview-container {
     padding-left: 30px;
     height: 400px;
     overflow-y: scroll   
 }
-.category-tree-node {height: 25px; padding: 3px}
+.category-tree-node {margin-top: 5px}
+.category-tree-node:first-child {margin-top: 0}
 .category-tree-node.child {padding-left: 30px}
 .category-tree-node > div {display: inline-block}
 .category-tree-node > div.category-buttons { padding-left: 15px; display: none}
