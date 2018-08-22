@@ -84,7 +84,7 @@ namespace MVCWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var message = "";
+                string message;
                 var obj = _categoryRepository.GetById(model.Category.Id);
                 if (obj == null)
                 {
@@ -101,6 +101,19 @@ namespace MVCWeb.Controllers
                 return Json(new ReturnData { Success = true, Message = message, Data = RenderRazorViewToString("_CategoryListTreeView", categories) });
             }
             return Json(new ReturnData { Success = false, Message = "Lỗi!" });
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var result = _categoryService.DeleteCategory(id);
+            if (result)
+            {
+                var message = "Đã xóa thành công!";
+                var categories = _categoryService.GetAllWithTreeViewOrder();
+                return Json(new ReturnData { Success = true, Message = message, Data = RenderRazorViewToString("_CategoryListTreeView", categories) });
+            }
+            return Json(new ReturnData { Success = false, Message = "Không thể xóa, nhóm chứa nhóm con hoặc không tồn tại!" });
         }
     }
 }

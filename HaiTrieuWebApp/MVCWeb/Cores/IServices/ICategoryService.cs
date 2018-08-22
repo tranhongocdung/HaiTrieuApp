@@ -7,6 +7,7 @@ namespace MVCWeb.Cores.IServices
     {
         int Create(Category category);
         bool UpdateCategory(Category category);
+        bool DeleteCategory(int categoryId);
         Category RootCategory();
         List<Category> GetList(FilterParams fp, ref int totalCount);
         List<Category> GetAllWithTreeViewOrder();

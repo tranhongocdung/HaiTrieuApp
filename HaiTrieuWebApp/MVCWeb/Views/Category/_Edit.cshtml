@@ -1,25 +1,14 @@
-﻿@model MVCWeb.Models.CategoryEditViewModel
+﻿@model CategoryEditViewModel
 <div class="panel @(Model.Category.Id == 0 ? "panel-primary" : "panel-warning")">
     <div class="panel-heading">
-        @if (Model.Category.Id == 0)
-        {
-            <span>
-                Thêm nhóm sản phẩm
-                &nbsp;&nbsp;
-                <img src="~/Content/images/ajax-loader-1.gif" id="editFormLoading" style="display: none" />
-            </span>
-        }
-        else
-        {
-            <span>
-                Sửa nhóm sản phẩm
-                &nbsp;&nbsp;
-                <img src="~/Content/images/ajax-loader-1.gif" id="editFormLoading" style="display: none" />
-            </span>
-            <button type="button" class="close" id="btnCancelEditCategory">
-                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-            </button>
-        }
+        <span>
+            @((Model.Category.Id == 0) ? "Thêm" : "Sửa") nhóm sản phẩm
+            &nbsp;&nbsp;
+            <img src="~/Content/images/ajax-loader-1.gif" id="editFormLoading" style="display: none" />
+        </span>
+        <button type="button" class="close @((Model.Category.Id == 0) ? "hidden" : "")" id="btnCancelEditCategory">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
     </div>
     <div class="panel-body">
         @using (Ajax.BeginForm("Edit", "Category", new AjaxOptions

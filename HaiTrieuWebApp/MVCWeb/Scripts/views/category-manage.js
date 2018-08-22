@@ -11,19 +11,14 @@ function initCategoryManageButton() {
                 $("#hidden-content").html(html);
                 $.validator.unobtrusive.parse("#frmCategoryEdit");
                 $("#category-manage-modal").modal();
-                initCategoryEditFormLoadButton();
+                initCategoryListTreeViewButtons();
+                initCategoryEditFormButtons();
             }
         });
     });
 }
 
-function initEditCategoryButtons() {
-    $("#btnSave").click(function () {
-        $("#frmCategoryEdit").submit();
-    });
-}
-
-function initCategoryEditFormLoadButton() {
+function initCategoryListTreeViewButtons() {
     $(".edit-category").click(function () {
         loadCategoryEditForm($(this).data("category-id"));
         $("#category-treeview-container button").removeClass("btn-warning");
@@ -31,10 +26,30 @@ function initCategoryEditFormLoadButton() {
     });
 }
 
-function initCategoryEditCancelButton() {
+function initCategoryEditFormButtons() {
     $("#btnCancelEditCategory").click(function () {
         loadCategoryEditForm(0);
         $("#category-treeview-container button").removeClass("btn-warning");
+    });
+    $("#btnDeleteCategory").confirmation({
+        singleton: true,
+        onConfirm: function () {
+            $.ajax({
+                method: "POST",
+                url: $("#category-delete-url").val(),
+                data: {
+                    id: $("#ObjId").val()
+                },
+                beforeSend: function () {
+                    categoryEditBegin();
+                },
+                success: function (data) {
+                    categoryEditCallBack(data);
+                }
+            });
+        },
+        placement: "top",
+        title: "Xóa nhóm này?"
     });
 }
 
@@ -46,7 +61,7 @@ function categoryEditCallBack(data) {
     if (data.Success) {
         showModalMessage(data.Message, "success");
         $("#category-treeview-container").html(data.Data);
-        initCategoryEditFormLoadButton();
+        initCategoryListTreeViewButtons();
         $("#btnCancelEditCategory").click();
     }
     else showModalMessage(data.Message, "danger");
@@ -65,7 +80,7 @@ function loadCategoryEditForm(id) {
         },
         success: function (html) {
             $("#category-edit-container").html(html);
-            initCategoryEditCancelButton();
+            initCategoryEditFormButtons();
         }
     });
 }

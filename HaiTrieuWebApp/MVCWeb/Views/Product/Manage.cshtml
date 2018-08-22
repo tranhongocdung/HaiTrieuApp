@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <label>Nhóm sản phẩm:</label>
                                 @Html.DropDownListFor(m => m.CategoryId, new SelectList(
-                                    Model.Categories.Select(o => new {Value = o.Id, Text = o.CategoryName}), "Value", "Text"), new { @class = "form-control" })
+                                    Model.Categories.Select(o => new {Value = o.Id, Text = o.CategoryName}), "Value", "Text"), new {@class = "form-control"})
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -63,6 +63,7 @@
 </div>
 
 <input type="hidden" id="category-edit-url" value="@Url.Action("Edit", "Category")" />
+<input type="hidden" id="category-delete-url" value="@Url.Action("Delete", "Category")" />
 <input type="hidden" id="category-manage-url" value="@Url.Action("Manage", "Category")" />
 <input type="hidden" id="product-edit-url" value="@Url.Action("Edit", "Product")"/>
 
@@ -77,6 +78,7 @@
     <script src="~/Content/typeahead/typeahead.bundle.js"></script>
     <script src="~/Content/summernote/summernote.min.js"></script>
     <script src="~/Content/hummingbird-treeview/hummingbird-treeview.js"></script>
+    <script src="~/Scripts/confirmation/bootstrap-confirmation.min.js"></script>
     <script src="~/Scripts/views/product-manage.js"></script>
     <script src="~/Scripts/views/category-manage.js"></script>
 }

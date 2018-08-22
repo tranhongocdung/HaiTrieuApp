@@ -23,6 +23,7 @@ namespace MVCWeb.Cores.Services
 
         public int Create(Category category)
         {
+            if (category.ParentId == 0) category.ParentId = null;
             _categoryRepository.Insert(category);
             return category.Id;
         }
@@ -34,6 +35,15 @@ namespace MVCWeb.Cores.Services
             currentCategory.CategoryName = category.CategoryName;
             currentCategory.ParentId = category.ParentId == 0 ? null : category.ParentId;
             _categoryRepository.Update(category);
+            return true;
+        }
+
+        public bool DeleteCategory(int categoryId)
+        {
+            var category = GetWithChildren(categoryId);
+            if (category == null) return false;
+            if (category.ChildCategories.Any()) return false;
+            _categoryRepository.Delete(category);
             return true;
         }
 
@@ -89,7 +99,7 @@ namespace MVCWeb.Cores.Services
 
         public Category GetWithChildren(int categoryId)
         {
-            return _categoryRepository.TableNoTracking.Include(o => o.ChildCategories).FirstOrDefault(o => o.Id == categoryId);
+            return _categoryRepository.Table.Include(o => o.ChildCategories).FirstOrDefault(o => o.Id == categoryId);
         }
 
         public List<Category> GetParentListWithChildren()
