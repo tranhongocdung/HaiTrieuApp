@@ -65,7 +65,7 @@ namespace MVCWeb.Controllers
             model.Categories = _categoryService.GetAllWithTreeViewOrder();
             if (id != 0)
             {
-                var product = _productRepository.GetById(id);
+                var product = _productService.GetWithCategoriesById(id);
                 if (product != null)
                 {
                     model.Product = product;

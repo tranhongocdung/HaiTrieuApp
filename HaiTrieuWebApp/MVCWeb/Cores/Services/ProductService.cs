@@ -22,6 +22,11 @@ namespace MVCWeb.Cores.Services
             _categoryService = categoryService;
         }
 
+        public Product GetWithCategoriesById(int productId)
+        {
+            return _productRepository.TableNoTracking.Include(o => o.Categories).FirstOrDefault(o => o.Id == productId);
+        }
+
         public int Create(Product product)
         {
             _productRepository.Insert(product);

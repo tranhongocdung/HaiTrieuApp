@@ -12,7 +12,10 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title pull-left">Danh sách sản phẩm</h3>
-                <button class="btn btn-success btn-sm pull-right manage-category">Nhóm sản phẩm</button>
+                @if (User.IsAdmin())
+                {
+                    <button class="btn btn-success btn-sm pull-right manage-category">Nhóm sản phẩm</button>    
+                }
                 <div class="clearfix"></div>
             </div>
             <div class="panel-body">
