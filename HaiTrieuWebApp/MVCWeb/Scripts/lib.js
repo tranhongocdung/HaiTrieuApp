@@ -39,7 +39,9 @@ function showModalMessage(message, messageType, alertContainer) {
     }
     var containerId = alertContainer === undefined ? "modal-alert-container" : alertContainer;
     $("#" + containerId).append("<div id=\"modal-alert-div\" class=\"alert alert-small text-center " + cssClass + "\" style=\"display:none\"><span>" + message + "</span></div>");
-    $("#modal-alert-div").fadeIn(0).delay(800).fadeOut("slow");;
+    $("#modal-alert-div").fadeIn(0).delay(800).fadeOut("slow",function() {
+        $("#modal-alert-div").remove();
+    });
 }
 
 function setEditProgressBar(stt) {
