@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MVCWeb.Cores.Entities
 {
     public partial class Product
     {
         public int Id { get; set; }
+        [Required]
         public string ProductName { get; set; }
         public int UnitPrice { get; set; }
         public int OriginalPrice { get; set; }

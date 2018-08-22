@@ -19,6 +19,7 @@ function initProductEditButton() {
                 $("#product-edit-modal").modal();
 
                 initEditProductButtons();
+                initSelectCategoryTreeViewButtons();
             }
         });
     });
@@ -27,6 +28,18 @@ function initProductEditButton() {
 function initEditProductButtons() {
     $("#btnSaveProduct").click(function () {
         $("#frmProductEdit").submit();
+    });
+}
+
+function initSelectCategoryTreeViewButtons() {
+    $("#category-treeview-container button").click(function () {
+        if ($(this).hasClass("selected")) {
+            $(this).removeClass("selected");
+            $(this).removeClass("btn-danger");
+        } else {
+            $(this).addClass("selected");
+            $(this).addClass("btn-danger");
+        }
     });
 }
 

@@ -17,37 +17,6 @@
                         <div class="well" id="category-treeview-container">
                             @Html.Partial("_CategoryListTreeView", Model.Categories)
                         </div>
-                        @*<div id="treeview_container" class="hummingbird-treeview well category-treeview-container">
-                            <ul id="treeview" class="hummingbird-base">
-                                @foreach (var parentCategory in Model.ParentCategories)
-                                {
-                                    <li>
-                                        <i class="fa fa-minus @(parentCategory.ChildCategories.Any() ? "" : "invisible")"></i>&nbsp;
-                                        <label>
-                                            <input id="category-@parentCategory.Id" data-id="@parentCategory.Id" type="checkbox"> @parentCategory.CategoryName
-                                        </label>
-                                        <i class="fa fa-pencil category-edit-btn"></i>
-                                        @if (parentCategory.ChildCategories.Any())
-                                        {
-                                            <ul style="display: block">
-                                                @foreach (var childCategory in parentCategory.ChildCategories)
-                                                {
-                                                    <li>
-                                                        <label>
-                                                            <input class="hummingbirdNoParent" id="category-@childCategory.Id" data-id="@childCategory.Id" type="checkbox">
-                                                            &nbsp;
-                                                            @childCategory.CategoryName
-                                                            &nbsp;
-                                                        </label>
-                                                        <i class="fa fa-pencil category-edit-btn"></i>
-                                                    </li>
-                                                }
-                                            </ul>
-                                        }
-                                    </li>
-                                }
-                            </ul>
-                        </div>*@
                     </div>
                 </div>
             </div>

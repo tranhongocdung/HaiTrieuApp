@@ -19,7 +19,7 @@ function initCategoryManageButton() {
 }
 
 function initCategoryListTreeViewButtons() {
-    $(".edit-category").click(function () {
+    $("#category-treeview-container button").click(function () {
         loadCategoryEditForm($(this).data("category-id"));
         $("#category-treeview-container button").removeClass("btn-warning");
         $(this).addClass("btn-warning");

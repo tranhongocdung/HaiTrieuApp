@@ -9,6 +9,7 @@ namespace MVCWeb.Cores.EntityConfigurations
         {
             ToTable("Product");
             HasKey(o => o.Id);
+            Property(o => o.ProductName).IsRequired();
             HasMany(o => o.Categories).WithMany(o => o.Products).Map(o =>
             {
                 o.MapLeftKey("ProductId");

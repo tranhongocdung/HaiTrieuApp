@@ -378,7 +378,7 @@ function initSubmitButton() {
 
 function validateOrderBeforeSend() {
     if ($("#customer-id").val() == "" && $("#txtCustomerName").val().trim() == "") {
-        showMessage("Vui lòng chọn khách hàng hoặc nhập ít nhất tên khách hàng!", "error");
+        showMessage("Vui lòng chọn khách hàng hoặc nhập tên khách hàng và số điện thoại!", "error");
         return false;
     }
     $("#order-discount-type").val($("#discount-type").val());

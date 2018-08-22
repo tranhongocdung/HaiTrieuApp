@@ -62,6 +62,7 @@ namespace MVCWeb.Controllers
         public ActionResult Edit(int id = 0)
         {
             var model = new ProductEditViewModel();
+            model.Categories = _categoryService.GetAllWithTreeViewOrder();
             if (id != 0)
             {
                 var product = _productRepository.GetById(id);
