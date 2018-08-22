@@ -58,7 +58,7 @@ tr.shown td.details-control {
 
 #category-treeview-container {
     padding-left: 30px;
-    height: 400px;
+    height: 360px;
     overflow-y: scroll   
 }
 .category-tree-node {margin-top: 5px}
