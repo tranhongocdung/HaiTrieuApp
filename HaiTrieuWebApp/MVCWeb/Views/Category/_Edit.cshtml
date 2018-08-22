@@ -65,10 +65,13 @@
                                     <button type="submit" class="btn btn-success">
                                         <span class="glyphicon glyphicon-ok"></span>
                                     </button>
-                                    &nbsp;
-                                    <button type="button" class="btn btn-danger" id="btnDeleteCategory">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
+                                    @if (Model.IsDeletable)
+                                    {
+                                        <span>&nbsp;</span>
+                                        <button type="button" class="btn btn-danger" id="btnDeleteCategory">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    }
                                     &nbsp;
                                     &nbsp;
                                     <img src="~/Content/images/ajax-loader-2.gif" id="editLoading" style="display: none" />

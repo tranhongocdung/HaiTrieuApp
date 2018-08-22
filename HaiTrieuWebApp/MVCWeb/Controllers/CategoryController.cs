@@ -46,7 +46,8 @@ namespace MVCWeb.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            var parentCategories = _categoryService.GetParentListWithChildren();
+            var parentCategories = _categoryService.GetParentListWithChildren().Where(o => o.Id != id).ToList();
+            parentCategories.Insert(0, _categoryService.RootCategory());
             var model = new CategoryEditViewModel();
             if (id != 0)
             {
@@ -54,24 +55,20 @@ namespace MVCWeb.Controllers
                 if (category != null)
                 {
                     model.Category = category;
-                    if (category.ParentId == null)
+                    if (category.ParentId == null && category.ChildCategories.Any())
                     {
-                        model.ParentCategories = new List<Category> {_categoryService.RootCategory()};
-                        model.IsParentCategoryDisabled = true;
-                        if (category.ChildCategories.Any())
-                        {
-                            model.IsDeletionDisabled = true;
-                        }
+                        model.IsDeletable = false;
+                        model.ParentCategories = new List<Category> { _categoryService.RootCategory() };
                     }
                     else
                     {
+                        model.IsDeletable = true;
                         model.ParentCategories = parentCategories;
                     }
                 }
             }
             else
             {
-                parentCategories.Insert(0, _categoryService.RootCategory());
                 model.Category = new Category
                 {
                     Id = 0
@@ -85,23 +82,24 @@ namespace MVCWeb.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(CategoryEditViewModel model)
         {
-            /*if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var message = "";
-                var obj = _productRepository.GetById(model.Product.Id);
+                var obj = _categoryRepository.GetById(model.Category.Id);
                 if (obj == null)
                 {
-                    obj = new Product();
-                    obj.Id = _productService.Create(model.Product);
+                    obj = new Category();
+                    obj.Id = _categoryService.Create(model.Category);
                     message = "Đã thêm thành công!";
                 }
                 else
                 {
-                    _productService.UpdateProduct(model.Product);
+                    _categoryService.UpdateCategory(model.Category);
                     message = "Đã cập nhật thành công!";
                 }
-                return Json(new ReturnData { Success = true, Message = message, Data = obj.Id.ToString() });
-            }*/
+                var categories = _categoryService.GetAllWithTreeViewOrder();
+                return Json(new ReturnData { Success = true, Message = message, Data = RenderRazorViewToString("_CategoryListTreeView", categories) });
+            }
             return Json(new ReturnData { Success = false, Message = "Lỗi!" });
         }
     }

@@ -32,7 +32,7 @@ namespace MVCWeb.Cores.Services
             var currentCategory = _categoryRepository.GetById(category.Id);
             if (currentCategory == null) return false;
             currentCategory.CategoryName = category.CategoryName;
-            currentCategory.ParentId = category.ParentId;
+            currentCategory.ParentId = category.ParentId == 0 ? null : category.ParentId;
             _categoryRepository.Update(category);
             return true;
         }

@@ -55,7 +55,7 @@ tr.shown td.details-control {
 
 #category-manage-modal .modal-dialog {width: 700px}
 
-.category-treeview-container {
+#category-treeview-container {
     padding-left: 30px;
     height: 400px;
     overflow-y: scroll   
@@ -67,6 +67,6 @@ tr.shown td.details-control {
 .category-tree-node > div.category-buttons { padding-left: 15px; display: none}
 .category-tree-node:hover > div.category-buttons {display: inline-block}
 .category-edit-btn {display: none}
-.category-treeview-container li:hover > .category-edit-btn {
+#category-treeview-container li:hover > .category-edit-btn {
     display: inline-block
 }

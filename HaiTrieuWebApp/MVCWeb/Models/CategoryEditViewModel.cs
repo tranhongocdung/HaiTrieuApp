@@ -7,7 +7,6 @@ namespace MVCWeb.Models
     {
         public Category Category { get; set; }
         public List<Category> ParentCategories { get; set; }
-        public bool IsParentCategoryDisabled { get; set; }
-        public bool IsDeletionDisabled { get; set; }
+        public bool IsDeletable { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿@model MVCWeb.Models.CategoryManageViewModel
+﻿@model List<Category>
 
-@foreach (var category in Model.Categories)
+@foreach (var category in Model)
 {
     <div class="category-tree-node @(category.IsChild?"child":"")">
         <button class="btn @(category.IsChild?"btn-success":"btn-info") btn-xs edit-category" data-category-name="@category.CategoryName" data-category-id="@category.Id" data-parent-id="@(category.ParentId ?? 0)">

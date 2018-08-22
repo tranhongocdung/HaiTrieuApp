@@ -1,4 +1,4 @@
-﻿@model MVCWeb.Models.CategoryManageViewModel
+﻿@model CategoryManageViewModel
 <div class="modal fade" id="category-manage-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" @* data-backdrop="static"*@>
     <div class="modal-dialog">
         <div class="modal-content">
@@ -17,8 +17,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="well category-treeview-container">
-                            @Html.Partial("_CategoryListTreeView", Model)
+                        <div class="well" id="category-treeview-container">
+                            @Html.Partial("_CategoryListTreeView", Model.Categories)
                         </div>
                         @*<div id="treeview_container" class="hummingbird-treeview well category-treeview-container">
                             <ul id="treeview" class="hummingbird-base">

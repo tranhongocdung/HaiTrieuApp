@@ -26,7 +26,7 @@ function initEditCategoryButtons() {
 function initCategoryEditFormLoadButton() {
     $(".edit-category").click(function () {
         loadCategoryEditForm($(this).data("category-id"));
-        $(".category-treeview-container button").removeClass("btn-warning");
+        $("#category-treeview-container button").removeClass("btn-warning");
         $(this).addClass("btn-warning");
     });
 }
@@ -34,7 +34,7 @@ function initCategoryEditFormLoadButton() {
 function initCategoryEditCancelButton() {
     $("#btnCancelEditCategory").click(function () {
         loadCategoryEditForm(0);
-        $(".category-treeview-container button").removeClass("btn-warning");
+        $("#category-treeview-container button").removeClass("btn-warning");
     });
 }
 
@@ -45,14 +45,12 @@ function categoryEditBegin() {
 function categoryEditCallBack(data) {
     if (data.Success) {
         showModalMessage(data.Message, "success");
-        loadCategoryListTreeView();
+        $("#category-treeview-container").html(data.Data);
+        initCategoryEditFormLoadButton();
+        $("#btnCancelEditCategory").click();
     }
     else showModalMessage(data.Message, "danger");
     setEditProgressBar("off");
-}
-
-function loadCategoryListTreeView() {
-    
 }
 
 function loadCategoryEditForm(id) {
