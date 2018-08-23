@@ -13,6 +13,7 @@ namespace MVCWeb.Cores.IServices
         List<Category> GetAllWithTreeViewOrder();
         List<Category> GetAllWithPrefixOnChildren();
         Category GetWithChildren(int categoryId);
+        IList<Category> GetCategories(IList<int> categoryIds);
         List<Category> GetParentListWithChildren();
     }
 }

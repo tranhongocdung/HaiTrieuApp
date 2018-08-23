@@ -6,7 +6,6 @@ namespace MVCWeb.Models
     public class ProductEditViewModel
     {
         public Product Product { get; set; }
-        public string MappedCategoryIds { get; set; }
         public List<Category> Categories { get; set; }
     }
 }

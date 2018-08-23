@@ -27,6 +27,7 @@ function initProductEditButton() {
 
 function initEditProductButtons() {
     $("#btnSaveProduct").click(function () {
+        productEditBeforeSend();
         $("#frmProductEdit").submit();
     });
 }
@@ -34,11 +35,15 @@ function initEditProductButtons() {
 function initSelectCategoryTreeViewButtons() {
     $("#category-treeview-container button").click(function () {
         if ($(this).hasClass("selected")) {
-            $(this).removeClass("selected");
-            $(this).removeClass("btn-danger");
+            $(this).removeClass("selected").removeClass("btn-danger");
         } else {
-            $(this).addClass("selected");
-            $(this).addClass("btn-danger");
+            $(this).addClass("selected").addClass("btn-danger");
+        }
+    });
+    var categoryIds = $("#MappedCategoryIds").val().split(",").map(Number);
+    $("#category-treeview-container button").each(function() {
+        if (categoryIds.indexOf($(this).data("category-id")) >= 0) {
+            $(this).addClass("selected").addClass("btn-danger");
         }
     });
 }
@@ -50,6 +55,16 @@ function productManageCallBack(result) {
 
 function productEditBegin() {
     setEditProgressBar("on");
+}
+
+function productEditBeforeSend() {
+    var categoryIds = [];
+    $("#category-treeview-container button").each(function () {
+        if ($(this).hasClass("selected")) {
+            categoryIds.push(parseInt($(this).data("category-id")));
+        }
+    });
+    $("#MappedCategoryIds").val(categoryIds.join(","));
 }
 
 function productEditCallBack(data) {

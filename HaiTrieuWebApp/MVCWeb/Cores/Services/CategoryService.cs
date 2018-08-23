@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Dynamic;
@@ -96,7 +95,10 @@ namespace MVCWeb.Cores.Services
             });
             return list;
         }
-
+        public IList<Category> GetCategories(IList<int> categoryIds)
+        {
+            return _categoryRepository.Table.Where(o => categoryIds.Contains(o.Id)).ToList();
+        }
         public Category GetWithChildren(int categoryId)
         {
             return _categoryRepository.Table.Include(o => o.ChildCategories).FirstOrDefault(o => o.Id == categoryId);

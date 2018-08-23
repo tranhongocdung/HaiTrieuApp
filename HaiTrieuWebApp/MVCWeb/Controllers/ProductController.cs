@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using MVCWeb.Cores;
 using MVCWeb.Cores.Entities;
 using MVCWeb.Cores.IRepositories;
@@ -68,6 +69,7 @@ namespace MVCWeb.Controllers
                 var product = _productService.GetWithCategoriesById(id);
                 if (product != null)
                 {
+                    product.MappedCategoryIds = string.Join(",", product.Categories.Select(o => o.Id));
                     model.Product = product;
                 }
             }

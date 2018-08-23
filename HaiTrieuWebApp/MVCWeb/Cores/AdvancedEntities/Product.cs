@@ -17,5 +17,7 @@ namespace MVCWeb.Cores.Entities
                 return "";
             }
         }
+        [NotMapped]
+        public string MappedCategoryIds { get; set; }
     }
 }

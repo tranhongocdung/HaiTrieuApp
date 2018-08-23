@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Dynamic;
+using Microsoft.Practices.ObjectBuilder2;
 using MVCWeb.Cores.Entities;
 using MVCWeb.Cores.IRepositories;
 using MVCWeb.Cores.IServices;
@@ -24,22 +25,35 @@ namespace MVCWeb.Cores.Services
 
         public Product GetWithCategoriesById(int productId)
         {
-            return _productRepository.TableNoTracking.Include(o => o.Categories).FirstOrDefault(o => o.Id == productId);
+            return _productRepository.Table.Include(o => o.Categories).FirstOrDefault(o => o.Id == productId);
         }
 
         public int Create(Product product)
         {
+            if (!string.IsNullOrEmpty(product.MappedCategoryIds))
+            {
+                var categoryIds = product.MappedCategoryIds.Split(',').Select(int.Parse).ToList();
+                var categories = _categoryService.GetCategories(categoryIds);
+                product.Categories = categories;
+            }
             _productRepository.Insert(product);
             return product.Id;
         }
         public bool UpdateProduct(Product product)
         {
-            var currentProduct = _productRepository.GetById(product.Id);
+            var currentProduct = GetWithCategoriesById(product.Id);
             if (currentProduct == null) return false;
             currentProduct.ProductName = product.ProductName;
             currentProduct.ShortDescription = product.ShortDescription;
             currentProduct.OriginalPrice = product.OriginalPrice;
             currentProduct.UnitPrice = product.UnitPrice;
+            currentProduct.Categories.Clear();
+            if (!string.IsNullOrEmpty(product.MappedCategoryIds))
+            {
+                var categoryIds = product.MappedCategoryIds.Split(',').Select(int.Parse).ToList();
+                var categories = _categoryService.GetCategories(categoryIds);
+                currentProduct.Categories = categories;
+            }
             _productRepository.Update(product);
             return true;
         }

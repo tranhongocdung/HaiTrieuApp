@@ -29,7 +29,7 @@
                                         <label>Tên sản phẩm</label>
                                         @Html.TextBoxFor(o => o.Product.ProductName, new { @class = "form-control", @id = "txtProductName" })
                                         @Html.HiddenFor(o => o.Product.Id, new { @id = "ObjId" })
-                                        @Html.HiddenFor(o => o.MappedCategoryIds, new { @id = "MappedCategoryIds" })
+                                        @Html.HiddenFor(o => o.Product.MappedCategoryIds, new { @id = "MappedCategoryIds" })
                                     </div>
                                 </div>
                                 <div class="col-md-12">
