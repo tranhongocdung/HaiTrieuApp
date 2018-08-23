@@ -10,7 +10,7 @@ namespace MVCWeb.Cores.Entities
         {
             get
             {
-                if (Categories.Any())
+                if (Categories != null && Categories.Any())
                 {
                     return string.Join(", ", Categories.OrderBy(o => o.ParentId).Select(o => o.CategoryName));
                 }
