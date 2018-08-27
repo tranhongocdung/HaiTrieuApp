@@ -14,87 +14,95 @@
     <link href="~/Content/print58.css" rel="stylesheet" />
 </head>
 <body>
-<div class="top-bottom-margin"></div>
-<div class="page">
-    <div class="subpage">
-        <div class="text-center">
-            <strong style="font-size: 12pt">
-                Shop Khánh An Kids<br/>
-                Thời Trang Cho Bé<br/>
-            </strong>
-            151A Thủ Khoa Huân - Phan Thiết<br/>
-            Hotline: <strong>0932.495.592</strong><br/>
-            Facebook: <strong>Khánh An Kids PT</strong><br/>
-            www.facebook.com/khanhankidsPT<br/>
-            --------------------------------------<br/>
-        </div>
-        <div style="font-size: 8pt">
-            <table style="width: 100%">
-                @{
-                    var i = 0;
-                }
-                <tr>
-                    <td class="text-center">STT</td>
-                    <td>
-                        Tên SP
-                    </td>
-                    <td class="text-center">
-                       Đơn giá
-                    </td>
-                    <td class="text-center">
-                       SL
-                    </td>
-                    <td class="text-right">
-                        Thành tiền
-                    </td>
-                </tr>
-                @foreach (var orderDetail in Model.Order.OrderDetails)
-                {
-                    i++;
+    <div class="top-bottom-margin"></div>
+    <div class="page">
+        <div class="subpage">
+            <div class="text-center">
+                <strong style="font-size: 12pt">
+                    Shop Khánh An Kids<br />
+                    Thời Trang Cho Bé<br />
+                </strong>
+                151A Thủ Khoa Huân - Phan Thiết<br />
+                Hotline: <strong>0932.495.592</strong><br />
+                Facebook: <strong>Khánh An Kids PT</strong><br />
+                www.facebook.com/khanhankidsPT<br />
+                --------------------------------------<br />
+            </div>
+            <div style="font-size: 8pt">
+                <table style="width: 100%">
+                    @{
+                        var i = 0;
+                    }
                     <tr>
-                        <td class="text-center">@i</td>
+                        <td class="text-center">STT</td>
                         <td>
-                            @orderDetail.Product.ProductName
-                            <input type="hidden" class="product-id" value="@orderDetail.ProductId"/>
+                            Tên SP
                         </td>
                         <td class="text-center">
-                            @orderDetail.UnitPrice.ToString("#,##0")
+                            Đơn giá
                         </td>
                         <td class="text-center">
-                            @orderDetail.Quantity
+                            SL
                         </td>
                         <td class="text-right">
-                            <strong>@((orderDetail.Quantity*orderDetail.UnitPrice).ToString("#,##0"))</strong>
-                            <input type="hidden" class="total-cash" value="@(orderDetail.Quantity*orderDetail.UnitPrice)"/>
+                            Thành tiền
                         </td>
                     </tr>
+                    @foreach (var orderDetail in Model.Order.OrderDetails)
+                    {
+                        i++;
+                        <tr>
+                            <td class="text-center">@i</td>
+                            <td>
+                                @orderDetail.Product.ProductName
+                                <input type="hidden" class="product-id" value="@orderDetail.ProductId" />
+                            </td>
+                            <td class="text-center">
+                                @orderDetail.UnitPrice.ToString("#,##0")
+                            </td>
+                            <td class="text-center">
+                                @orderDetail.Quantity
+                            </td>
+                            <td class="text-right">
+                                <strong>@((orderDetail.Quantity * orderDetail.UnitPrice).ToString("#,##0"))</strong>
+                                <input type="hidden" class="total-cash" value="@(orderDetail.Quantity*orderDetail.UnitPrice)" />
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="3" class="text-right"><strong>Thành tiền:</strong></td>
+                        <td colspan="2" class="text-right">
+                            <strong>@Model.TotalCash.ToString("#,##0")</strong>
+                            <input type="hidden" id="final-cash" value="@Model.TotalCash" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="text-center" style="font-style: italic">
+                @if (!string.IsNullOrEmpty(Model.Customer.Address))
+                {
+                    <span>
+                        --------------------------------------<br />
+                        Địa chỉ: @Model.Customer.Address
+                    </span>
+                    <br/>
                 }
-                <tr>
-                    <td colspan="3" class="text-right"><strong>Thành tiền:</strong></td>
-                    <td colspan="2" class="text-right">
-                        <strong>@Model.TotalCash.ToString("#,##0")</strong>
-                        <input type="hidden" id="final-cash" value="@Model.TotalCash" />
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="text-center" style="font-style: italic">
-            --------------------------------------<br/>
-            <strong>
-                Quý khách vui lòng kiểm tra<br />hàng trước khi rời khỏi Shop<br />
-            </strong>
-            ~~ Giữ hoá đơn khi đổi hàng ~~<br/>
-			~~ Đổi trả hàng trong vòng 24h ~~<br/>
-            <strong style="font-size: 10pt">
-                Xin cảm ơn quý khách hàng!
-            </strong><br/><br/>
-            (In lúc @DateTime.Now.ToString("HH:mm") ngày @DateTime.Now.ToString("dd/MM/yyyy"))
-        </div>
+                --------------------------------------<br />
+                <strong>
+                    Quý khách vui lòng kiểm tra<br />hàng trước khi rời khỏi Shop<br />
+                </strong>
+                ~~ Giữ hoá đơn khi đổi hàng ~~<br />
+                ~~ Đổi trả hàng trong vòng 24h ~~<br />
+                <strong style="font-size: 10pt">
+                    Xin cảm ơn quý khách hàng!
+                </strong><br /><br />
+                (In lúc @DateTime.Now.ToString("HH:mm") ngày @DateTime.Now.ToString("dd/MM/yyyy"))
+            </div>
 
 
+        </div>
     </div>
-</div>
-<script src="~/Scripts/jquery-2.2.1.min.js"></script>
+    <script src="~/Scripts/jquery-2.2.1.min.js"></script>
     <script src="~/Scripts/lib.js"></script>
     <script type="text/javascript">
         $("#numberInWord").html(readNumber($("#final-cash").val()))
