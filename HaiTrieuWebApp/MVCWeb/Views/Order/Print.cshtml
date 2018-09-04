@@ -22,28 +22,32 @@
                 <table>
                     <tr>
                         <td>
-                            <img src="~/Content/images/logo_sm.png" style="height: 55px" />
+                            <img src="~/Content/images/logo_qr.png" style="height: 80px" />
                         </td>
                         <td>
                             <div style="font-weight: bold; font-size: 12pt; margin-bottom: 3px">
-                                KHẮC DẤU HẢI TRIỀU
+                                YẾN BẢO TÍN
                             </div>
-                            <div>Địa chỉ: 96/90 Đường Trục, P. 13, Q. Bình Thạnh, TP. HCM</div>
-                            <div>MST: 0314002079&nbsp;&nbsp;/&nbsp;&nbsp;Điện thoại: 0938.249.391 - 0988.994.146</div>
+                            <div>Cung cấp thiết bị vật tư, thi công xây dựng nhà yến</div>
+                            <div>Địa chỉ: 41 Tuyên Quang, Phú Thủy, Phan Thiết, Bình Thuận</div>
+                            <div>Điện thoại: 0971 665 571 (A.Nghĩa) - 0938 249 391 (A.Triều)</div>
                         </td>
                     </tr>
                 </table>
             </div>
-            <div class="pull-right" style="width: 80mm">
+            <div class="pull-right" style="width: 70mm">
                 <div style="text-align: center; font-weight: bold; font-size: 12pt; margin-bottom: 3px">HÓA ĐƠN BÁN LẺ</div>
                 <div class="text-center">
-                    Mã hóa đơn: <span style="font-weight: bold; font-style: italic">HT@(Model.Order.Id.ToString().PadLeft(6,'0'))</span> &nbsp; &nbsp; Ngày xuất: <span style="font-weight: bold; font-style: italic">@DateTime.Now.ToString("dd/MM/yyyy")</span>
+                    Mã hóa đơn: <span style="font-weight: bold; font-style: italic">HT@(Model.Order.Id.ToString().PadLeft(6, '0'))</span>
                 </div>
-                <div class="text-center">- - - - - - - - ooo0ooo - - - - - - - -</div>
+                <div class="text-center">
+                    Ngày xuất: <span style="font-weight: bold; font-style: italic">@DateTime.Now.ToString("dd/MM/yyyy")</span>
+                </div>
+                <div class="text-center">- - - - ooo0ooo - - - -</div>
             </div>
         </div>
         <div class="clearfix"></div>
-        <div style="padding-left: 18px; margin: 15px 0">
+        <div style="padding-left: 18px; margin: 10px 0">
             <div><strong>KH:</strong> @Model.Customer.CustomerName</div>
             <div>
                 <strong>Địa chỉ:</strong> @Model.Customer.FullAddress
@@ -131,20 +135,23 @@
             <div class="clearfix"></div>
         </div>
         <div>
-            <div class="pull-right text-center" style="width: 205px; position: absolute; bottom: 20mm; right: 0">
+            <div class="pull-right text-center" style="width: 205px; margin-top: 20px">
                 Người bán
-                <br /><br /><br /><br />
-
+                <br/><br/><br/><br/>
                 <strong style="font-size: 12pt">Lê Hải Triều</strong>
             </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="welcome-message">
-            <div class="pull-left">
-                <strong>--- CÁM ƠN QUÝ KHÁCH ĐÃ ỦNG HỘ ---</strong>
+        <div>
+            <div class="welcome-message">
+                <div class="pull-left">
+                    <strong>--- CÁM ƠN QUÝ KHÁCH ĐÃ ỦNG HỘ ---</strong>
+                </div>
+                <div class="pull-right" style="font-style: italic">
+                    Website: https://www.facebook.com/yenbaotin/
+                </div>
             </div>
-            <div class="pull-right" style="font-style: italic">
-                Website: http://khacdauhaitrieu.com/
-            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>

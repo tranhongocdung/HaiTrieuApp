@@ -281,6 +281,7 @@
     <Content Include="Content\images\details-open.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo_sm.png" />
+    <Content Include="Content\images\logo_qr.png" />
     <Content Include="Content\images\vip-icon-large.png" />
     <Content Include="Content\images\vip-icon.png" />
     <Content Include="Content\json\region.js" />

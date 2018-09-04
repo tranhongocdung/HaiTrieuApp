@@ -12,7 +12,7 @@
 .page {
     width: 210mm;
     /*min-height: 297mm;*/
-    padding: 5mm 10mm 0 10mm;
+    padding: 5mm 10mm 5mm 10mm;
     margin: 0 auto;
     border: 1px #000 solid;
     border-radius: 5px;
@@ -21,7 +21,7 @@
 }
 .subpage {
     /*padding: 10mm;*/
-    height: 148.5mm;
+    /*min-height: 148.5mm;*/
     /*outline: 20mm #fff solid;*/
     position: relative
 }
@@ -62,4 +62,4 @@
     vertical-align: middle
 }
 .total-cash-table td {padding: 0 5px}
-.welcome-message { position: absolute;bottom: 10mm;width: 190mm}
+.welcome-message {margin-top: 30px;width: 190mm}
