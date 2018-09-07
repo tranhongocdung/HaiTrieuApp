@@ -17,9 +17,11 @@
     LoadingElementId = "orderEditLoading"
 }, new { @id = "frmOrderEdit" }))
 {
-    <div class="panel panel-warning">
+    <div class="panel panel-warning hidden" id="divCustomerInfoPanel">
         <div class="panel-heading">
-            Thông tin đơn hàng
+            <h3 class="panel-title pull-left">Thông tin đơn hàng</h3>
+            <button class="btn btn-info btn-sm pull-right" id="btnOpenQuickAddProductPanel">Thêm nhanh sản phẩm</button>
+            <div class="clearfix"></div>
         </div>
         <div class="panel-body">
             <div class="row" style="margin-bottom: 15px">
@@ -149,7 +151,25 @@
     @Html.HiddenFor(o => o.OrderDetailJson, new { @id = "order-detail-json" })
     @Html.HiddenFor(o => o.Order.Id, new { @id = "order-id" })
 }
-
+<div class="panel panel-info" id="divQuickAddProductPanel">
+    <div class="panel-heading">
+        <h3 class="panel-title pull-left">Thêm nhanh sản phẩm</h3>
+        <button class="btn btn-warning btn-sm pull-right" id="btnOpenCustomerInfoPanel">Thông tin đơn hàng</button>
+        <div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-6">
+            <div class="well" id="category-filter-container">
+                @Html.Partial("../Category/_CategoryListTreeView", Model.Categories)
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="product-select-wrapper">
+                <div class="well" id="product-select-container"></div>    
+            </div>
+        </div>
+    </div>
+</div>
 <div class="panel panel-warning">
     <div class="panel-heading">
         Chi tiết đơn hàng
@@ -339,6 +359,7 @@
 
 <input type="hidden" id="product-name-datasource" value="@Url.Action("GetProductName", "DataSource")"/>
 <input type="hidden" id="customer-suggestion-datasource" value="@Url.Action("GetCustomerSuggestion", "DataSource")"/>
+<input type="hidden" id="product-list-to-select-url" value="@Url.Action("ProductListForOrder", "Product")" />
 <input type="hidden" id="complete-order-url" value="@Url.Action("Complete","Order")" />
 <input type="hidden" id="print-url" value="@Url.Action("Print","Order")" />
 

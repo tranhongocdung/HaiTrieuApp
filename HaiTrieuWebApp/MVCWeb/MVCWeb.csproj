@@ -525,6 +525,7 @@
     <Content Include="Views\Category\_Manage.cshtml" />
     <Content Include="Views\Category\_Edit.cshtml" />
     <Content Include="Views\Category\_CategoryListTreeView.cshtml" />
+    <Content Include="Views\Product\_ProductListForOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,16 @@
+﻿@model List<Product>
+    
+<div class="list-group">
+    @foreach (var product in Model)
+    {
+        <button type="button" class="list-group-item">
+            <strong>@product.ProductName</strong>&nbsp;|&nbsp;
+            @if (!string.IsNullOrEmpty(product.ShortDescription))
+            {
+                <span>@product.ShortDescription</span>
+            }
+            &nbsp;-&nbsp;
+            <span class="italic">@product.UnitPrice.ToString("#,##0") VNĐ</span>
+        </button>
+    }
+</div>

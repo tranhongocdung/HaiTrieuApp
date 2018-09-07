@@ -1,4 +1,5 @@
-﻿using MVCWeb.Cores.Entities;
+﻿using System.Collections.Generic;
+using MVCWeb.Cores.Entities;
 
 namespace MVCWeb.Models
 {
@@ -14,5 +15,6 @@ namespace MVCWeb.Models
         {
             get { return Order != null && Order.OrderStatusId == OrderStatus.Completed; }
         }
+        public List<Category> Categories { get; set; }
     }
 }

@@ -17,14 +17,17 @@ namespace MVCWeb.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly ICustomerService _customerService;
+        private readonly ICategoryService _categoryService;
 
         public OrderController(
             IOrderService orderService,
+            ICategoryService categoryService,
             ICustomerService customerService
             )
         {
             _orderService = orderService;
             _customerService = customerService;
+            _categoryService = categoryService;
         }
 
         public ActionResult Index()
@@ -79,6 +82,7 @@ namespace MVCWeb.Controllers
                     model.Customer = order.Customer;
                 }
             }
+            model.Categories = _categoryService.GetAllWithTreeViewOrder();
             return View(model);
         }
         [HttpPost]

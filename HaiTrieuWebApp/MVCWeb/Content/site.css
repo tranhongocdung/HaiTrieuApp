@@ -13,6 +13,8 @@
 #modal-alert-div { margin-bottom: 10px}
 .form-group .twitter-typeahead {display: block !important}
 
+button.list-group-item {outline: none}
+
 td.details-control {
     background: url('images/details-open.png') no-repeat center center;
     cursor: pointer;
@@ -67,7 +69,12 @@ tr.shown td.details-control {
 .category-tree-node > div {display: inline-block}
 .category-tree-node > div.category-buttons { padding-left: 15px; display: none}
 .category-tree-node:hover > div.category-buttons {display: inline-block}
+.category-tree-node button {outline: none !important}
 .category-edit-btn {display: none}
 #category-treeview-container li:hover > .category-edit-btn {
     display: inline-block
+}
+#category-filter-container, #product-select-container { height: 396px; overflow-y: scroll}
+#product-select-container {
+    margin: 0 !important
 }

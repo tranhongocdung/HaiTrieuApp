@@ -11,10 +11,38 @@ $(document).ready(function () {
     initDiscountTypeOnChange();
     initSearchCustomerTextbox();
     initCustomerTypeToggle();
-    initSubmitButton();
     initExistingOrder();
     initOrderNoteHint();
+    initCategoryListTreeViewButtons();
+    initPublicButtons();
 });
+
+function initCategoryListTreeViewButtons() {
+    $("#category-filter-container button").click(function () {
+        loadProductListToSelect($(this).data("category-id"));
+        $("#category-filter-container button").removeClass("btn-danger");
+        $(this).addClass("btn-danger");
+    });
+}
+
+function loadProductListToSelect(categoryId)
+{
+    $.ajax({
+        method: "POST",
+        url: $("#product-list-to-select-url").val(),
+        data: { categoryId },
+        beforeSend: function () {
+            
+        },
+        success: function (html) {
+            $("#product-select-container").html(html);
+            $("#product-select-container button").click(function () {
+                if ($(this).hasClass("active")) $(this).removeClass("active");
+                else $(this).addClass("active");
+            });
+        }
+    });
+}
 
 function destroyRegionAreaHint() {
     $("#txtRegion").typeahead("destroy");
@@ -369,10 +397,20 @@ function calculateTotalCash() {
     $("#final-cash").html((totalCash-discount).toLocaleString("en"));
 }
 
-function initSubmitButton() {
+function initPublicButtons() {
+    //Submit button
     $("#btnSubmit").click(function () {
         if (validateOrderBeforeSend())
             $("#frmOrderEdit").submit();
+    });
+    //Show/hide customer-info/quick-add-product panel
+    $("#btnOpenCustomerInfoPanel").click(function() {
+        $("#divQuickAddProductPanel").addClass("hidden");
+        $("#divCustomerInfoPanel").removeClass("hidden");
+    });
+    $("#btnOpenQuickAddProductPanel").click(function () {
+        $("#divQuickAddProductPanel").removeClass("hidden");
+        $("#divCustomerInfoPanel").addClass("hidden");
     });
 }
 

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using MVCWeb.Cores;
 using MVCWeb.Cores.Entities;
@@ -82,6 +83,7 @@ namespace MVCWeb.Controllers
             }
             return View(model);
         }
+
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Edit(ProductEditViewModel model)
@@ -104,6 +106,18 @@ namespace MVCWeb.Controllers
                 return Json(new ReturnData { Success = true, Message = message, Data = obj.Id.ToString() });
             }
             return Json(new ReturnData { Success = false, Message = "Lỗi!" });
+        }
+
+        [HttpPost]
+        public ActionResult ProductListForOrder(int categoryId)
+        {
+            var count = 0;
+            var model = _productService.GetList(new FilterParams
+            {
+                CategoryId = categoryId,
+                PageNumber = 0
+            }, ref count);
+            return View("_ProductListForOrder", model);
         }
     }
 }
