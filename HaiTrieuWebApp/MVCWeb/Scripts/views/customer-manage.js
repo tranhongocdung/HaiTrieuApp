@@ -14,9 +14,9 @@ function initCustomerEditButton() {
             url: $("#edit-customer-url").val(),
             data: { id: $(this).data("customer-id") },
             success: function (html) {
-                $("#hidden-content").html(html);
+                $("#modal-content").html(html);
                 $.validator.unobtrusive.parse("#frmCustomerEdit");
-                $("#customer-edit-modal").modal();
+                $("#modal-content").modal();
 
                 $("#txtNote").summernote({
                     toolbar: false,

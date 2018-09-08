@@ -1,29 +1,27 @@
 ﻿@model CategoryManageViewModel
-<div class="modal fade" id="category-manage-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" @* data-backdrop="static"*@>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modal-title">Nhóm sản phẩm</h4>
-            </div>
-            <div class="modal-body" id="modal-body">
-                <div class="row">
-                    <div class="col-md-12" id="category-edit-container">
-                        @Html.Partial("_Edit", Model.CategoryEditViewModel)
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="well" id="category-treeview-container">
-                            @Html.Partial("_CategoryListTreeView", Model.Categories)
-                        </div>
-                    </div>
+<div class="modal-dialog" id="category-manage-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="modal-title">Nhóm sản phẩm</h4>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <div class="row">
+                <div class="col-md-12" id="category-edit-container">
+                    @Html.Partial("_Edit", Model.CategoryEditViewModel)
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="row">
                 <div class="col-md-12">
-                    <div id="modal-alert-container"></div>
+                    <div class="well" id="category-treeview-container">
+                        @Html.Partial("_CategoryListTreeView", Model.Categories)
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="col-md-12">
+                <div id="modal-alert-container"></div>
             </div>
         </div>
     </div>

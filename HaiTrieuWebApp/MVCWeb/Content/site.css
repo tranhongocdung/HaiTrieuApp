@@ -55,8 +55,8 @@ tr.shown td.details-control {
 #btnSubmit {position: relative}
 #manageLoading { position: absolute;left: 10px;top: 10px}
 
-#category-manage-modal .modal-dialog {width: 700px}
-#product-edit-modal  .modal-dialog {width: 750px}
+#category-manage-modal {width: 700px}
+#product-edit-modal {width: 750px}
 
 #category-treeview-container {
     padding-left: 30px;

@@ -1,35 +1,34 @@
 ﻿@model CustomerEditViewModel
 
-<div class="modal fade" id="customer-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"@* data-backdrop="static"*@>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modal-title">Thêm/Sửa khách hàng</h4>
-            </div>
-            <div class="modal-body" id="modal-body">
-                @using (Ajax.BeginForm("Edit", "Customer", new AjaxOptions
-                {
-                    InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "POST",
-                    OnBegin = "customerEditBegin",
-                    OnSuccess = "customerEditCallBack"
-                }, new {id = "frmCustomerEdit"}))
-                {
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="form-group">
-                                <label>Tên khách hàng</label>
-                                @Html.TextBoxFor(o => o.Customer.CustomerName, new {@class = "form-control", @id = "txtCustomerName"})
-                                @Html.HiddenFor(o => o.Customer.Id, new {@id = "ObjId"})
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="checkbox" style="margin-top: 30px">
-                                <label>@Html.CheckBoxFor(o => o.Customer.IsVIP, new {@id = "chkIsVIP" })Khách VIP</label>
-                            </div>
+<div class="modal-dialog" id="customer-edit-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="modal-title">Thêm/Sửa khách hàng</h4>
+        </div>
+        <div class="modal-body" id="modal-body">
+            @using (Ajax.BeginForm("Edit", "Customer", new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "POST",
+                OnBegin = "customerEditBegin",
+                OnSuccess = "customerEditCallBack"
+            }, new { id = "frmCustomerEdit" }))
+            {
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>Tên khách hàng</label>
+                            @Html.TextBoxFor(o => o.Customer.CustomerName, new { @class = "form-control", @id = "txtCustomerName" })
+                            @Html.HiddenFor(o => o.Customer.Id, new { @id = "ObjId" })
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="checkbox" style="margin-top: 30px">
+                            <label>@Html.CheckBoxFor(o => o.Customer.IsVIP, new { @id = "chkIsVIP" })Khách VIP</label>
+                        </div>
+                    </div>
+                </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -74,23 +73,22 @@
                             </div>
                         </div>
                     </div>
-                }
-                <div id="modal-alert-container"></div>
+            }
+            <div id="modal-alert-container"></div>
+        </div>
+        <div class="modal-footer">
+            <div class="col-md-2">
+                <img src="~/Content/images/ajax-loader-3.gif" class="edit-loader" style="display: none" id="editLoading" />
             </div>
-            <div class="modal-footer">
-                <div class="col-md-2">
-                    <img src="~/Content/images/ajax-loader-3.gif" class="edit-loader" style="display: none" id="editLoading"/>
-                </div>
-                <div class="col-md-6"></div>
-                @*<div class="col-md-2">
+            <div class="col-md-6"></div>
+            @*<div class="col-md-2">
                     <button type="button" class="btn btn-block btn-danger" id="btnDelete" style="display: none">Xóa</button>
                 </div>
                 <div class="col-md-4">
                     <button type="button" class="btn btn-block btn-success" id="btnResetEditForm">Tạo mới</button>
                 </div>*@
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-block btn-primary" id="btnSave">Lưu lại</button>
-                </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-block btn-primary" id="btnSave">Lưu lại</button>
             </div>
         </div>
     </div>

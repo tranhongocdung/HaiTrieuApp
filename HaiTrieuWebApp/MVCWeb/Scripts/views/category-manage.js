@@ -8,9 +8,9 @@ function initCategoryManageButton() {
             method: "GET",
             url: $("#category-manage-url").val(),
             success: function (html) {
-                $("#hidden-content").html(html);
+                $("#modal-content").html(html);
                 $.validator.unobtrusive.parse("#frmCategoryEdit");
-                $("#category-manage-modal").modal();
+                $("#modal-content").modal();
                 initCategoryListTreeViewButtons();
                 initCategoryEditFormButtons();
             }

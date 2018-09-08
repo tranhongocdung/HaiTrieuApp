@@ -8,9 +8,9 @@ function initChangePasswordButton() {
             method: "GET",
             url: $("#change-password-url").val(),
             success: function (html) {
-                $("#hidden-content").html(html);
+                $("#modal-content").html(html);
                 $.validator.unobtrusive.parse("#frmChangePassword");
-                $("#change-password-modal").modal();
+                $("#modal-content").modal();
 
                 initSavePasswordButton();
             }

@@ -17,7 +17,7 @@
     LoadingElementId = "orderEditLoading"
 }, new { @id = "frmOrderEdit" }))
 {
-    <div class="panel panel-warning hidden" id="divCustomerInfoPanel">
+    <div class="panel panel-warning" id="divCustomerInfoPanel">
         <div class="panel-heading">
             <h3 class="panel-title pull-left">Thông tin đơn hàng</h3>
             <button class="btn btn-info btn-sm pull-right" id="btnOpenQuickAddProductPanel">Thêm nhanh sản phẩm</button>
@@ -151,7 +151,7 @@
     @Html.HiddenFor(o => o.OrderDetailJson, new { @id = "order-detail-json" })
     @Html.HiddenFor(o => o.Order.Id, new { @id = "order-id" })
 }
-<div class="panel panel-info" id="divQuickAddProductPanel">
+<div class="panel panel-info hidden" id="divQuickAddProductPanel">
     <div class="panel-heading">
         <h3 class="panel-title pull-left">Thêm nhanh sản phẩm</h3>
         <button class="btn btn-warning btn-sm pull-right" id="btnOpenCustomerInfoPanel">Thông tin đơn hàng</button>

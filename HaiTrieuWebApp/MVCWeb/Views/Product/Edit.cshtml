@@ -1,69 +1,71 @@
 ﻿@model ProductEditViewModel
 
-<div class="modal fade" id="product-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"@* data-backdrop="static"*@>
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modal-title">Thêm/Sửa sản phẩm</h4>
-            </div>
-            <div class="modal-body" id="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="well" id="category-treeview-container">
-                            @Html.Partial("../Category/_CategoryListTreeView", Model.Categories)
-                        </div>
+<div class="modal-dialog" id="product-edit-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="modal-title">Thêm/Sửa sản phẩm</h4>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="well" id="category-treeview-container">
+                        @Html.Partial("../Category/_CategoryListTreeView", Model.Categories)
                     </div>
-                    <div class="col-md-6">
-                        @using (Ajax.BeginForm("Edit", "Product", new AjaxOptions
-                        {
-                            InsertionMode = InsertionMode.Replace,
-                            HttpMethod = "POST",
-                            OnBegin = "productEditBegin",
-                            OnSuccess = "productEditCallBack"
-                        }, new { id = "frmProductEdit", @dataToggle = "validator" }))
-                        {
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Tên sản phẩm</label>
-                                        @Html.TextBoxFor(o => o.Product.ProductName, new { @class = "form-control", @id = "txtProductName" })
-                                        @Html.HiddenFor(o => o.Product.Id, new { @id = "ObjId" })
-                                        @Html.HiddenFor(o => o.Product.MappedCategoryIds, new { @id = "MappedCategoryIds" })
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Mô tả sản phẩm</label>
-                                        @Html.TextBoxFor(o => o.Product.ShortDescription, new { @class = "form-control", @id = "txtShortDescription" })
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Giá gốc</label>
-                                        @Html.TextBoxFor(o => o.Product.OriginalPrice, new { @class = "form-control", @id = "txtOriginalPrice" })
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Giá bán</label>
-                                        @Html.TextBoxFor(o => o.Product.UnitPrice, new { @class = "form-control", @id = "txtUnitPrice" })
-                                    </div>
+                </div>
+                <div class="col-md-6">
+                    @using (Ajax.BeginForm("Edit", "Product", new AjaxOptions
+                    {
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "POST",
+                        OnBegin = "productEditBegin",
+                        OnSuccess = "productEditCallBack"
+                    }, new { id = "frmProductEdit", @dataToggle = "validator" }))
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Tên sản phẩm</label>
+                                    @Html.TextBoxFor(o => o.Product.ProductName, new { @class = "form-control", @id = "txtProductName" })
+                                    @Html.HiddenFor(o => o.Product.Id, new { @id = "ObjId" })
+                                    @Html.HiddenFor(o => o.Product.MappedCategoryIds, new { @id = "MappedCategoryIds" })
                                 </div>
                             </div>
-                        }
-                    </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Mô tả sản phẩm</label>
+                                    @Html.TextBoxFor(o => o.Product.ShortDescription, new { @class = "form-control", @id = "txtShortDescription" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Giá gốc</label>
+                                    @Html.TextBoxFor(o => o.Product.OriginalPrice, new { @class = "form-control", @id = "txtOriginalPrice" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Giá bán</label>
+                                    @Html.TextBoxFor(o => o.Product.UnitPrice, new { @class = "form-control", @id = "txtUnitPrice" })
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
-                <div id="modal-alert-container"></div>
             </div>
-            <div class="modal-footer">
-                <div class="col-md-2">
-                    <img src="~/Content/images/ajax-loader-3.gif" class="edit-loader" style="display: none" id="editLoading"/>
-                </div>
-                <div class="col-md-6"></div>
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-block btn-primary" id="btnSaveProduct">Lưu lại</button>
-                </div>
+            <div id="modal-alert-container"></div>
+        </div>
+        <div class="modal-footer">
+            <div class="col-md-2">
+                <img src="~/Content/images/ajax-loader-3.gif" class="edit-loader" style="display: none" id="editLoading" />
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-block btn-success" id="btnSaveProductThenReset">Lưu lại và thêm mới</button>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-block btn-primary" id="btnSaveProduct">Lưu lại</button>
+                <input type="hidden" id="resetFormAfterSubmit" value="0" />
             </div>
         </div>
     </div>

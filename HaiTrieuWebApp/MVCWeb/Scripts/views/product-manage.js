@@ -14,9 +14,9 @@ function initProductEditButton() {
             url: $("#product-edit-url").val(),
             data: { id: $(this).data("product-id") },
             success: function (html) {
-                $("#hidden-content").html(html);
+                $("#modal-content").html(html);
                 $.validator.unobtrusive.parse("#frmProductEdit");
-                $("#product-edit-modal").modal();
+                $("#modal-content").modal();
 
                 initEditProductButtons();
                 initSelectCategoryTreeViewButtons();
@@ -27,6 +27,12 @@ function initProductEditButton() {
 
 function initEditProductButtons() {
     $("#btnSaveProduct").click(function () {
+        $("#resetFormAfterSubmit").val("0");
+        productEditBeforeSend();
+        $("#frmProductEdit").submit();
+    });
+    $("#btnSaveProductThenReset").click(function () {
+        $("#resetFormAfterSubmit").val("1");
         productEditBeforeSend();
         $("#frmProductEdit").submit();
     });
@@ -70,7 +76,15 @@ function productEditBeforeSend() {
 function productEditCallBack(data) {
     if (data.Success) {
         showModalMessage(data.Message, "success");
-        $("#ObjId").val(data.Data);
+        if ($("#resetFormAfterSubmit").val() == "0") {
+            $("#ObjId").val(data.Data);
+        } else {
+            $("#ObjId").val("0");
+            $("#txtProductName").val("");
+            $("#txtShortDescription").val("");
+            $("#txtOriginalPrice").val("0");
+            $("#txtUnitPrice").val("0");
+        }
         reloadCurrentPage();
     }
     else showModalMessage(data.Message, "danger");
