@@ -15,11 +15,9 @@
     }
     $("#alert-container").append("<div id=\"alert-div\" class=\"alert fade in text-center " + cssClass + "\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a><span>" + message + "</span></div>");
 
-    setTimeout(function () {
-        $("#alert-div").fadeTo(2000, 500).slideUp(500, function () {
-            $("#alert-div").remove();
-        });
-    }, 2000);
+    $("#alert-div").fadeTo(2000, 500).slideUp(500, function () {
+        $("#alert-div").remove();
+    });
 }
 
 function showModalMessage(message, messageType, alertContainer) {

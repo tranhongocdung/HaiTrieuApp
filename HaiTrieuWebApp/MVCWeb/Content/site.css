@@ -75,6 +75,11 @@ tr.shown td.details-control {
     display: inline-block
 }
 #category-filter-container, #product-select-container { height: 396px; overflow-y: scroll}
+#product-select-wrapper {
+    position: relative
+}
 #product-select-container {
     margin: 0 !important
 }
+#productSelectLoading { position: absolute;left: 20px;bottom: 20px;z-index: 10}
+#btnAddProductToOrder { position: absolute;right: 35px;bottom: 15px;z-index: 10}

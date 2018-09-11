@@ -32,7 +32,7 @@ function loadProductListToSelect(categoryId)
         url: $("#product-list-to-select-url").val(),
         data: { categoryId },
         beforeSend: function () {
-            
+            $("#productSelectLoading").removeClass("hidden");
         },
         success: function (html) {
             $("#product-select-container").html(html);
@@ -40,6 +40,7 @@ function loadProductListToSelect(categoryId)
                 if ($(this).hasClass("active")) $(this).removeClass("active");
                 else $(this).addClass("active");
             });
+            $("#productSelectLoading").addClass("hidden");
         }
     });
 }
@@ -276,18 +277,45 @@ function initNumericTextbox(selector, container) {
 
 function initAddProductRowButton() {
     $("#add-product-row").click(function() {
-        var productRow = $("#product-order-row-template").html();
-        var appendRow = $("#tr-for-append");
-        appendRow.append(productRow);
-        appendRow.removeAttr("id");
-        appendRow.addClass("product-order-row");
-        initXEditable(appendRow);
-        initRemoveProductRowButton(appendRow);
-        initNumericTextbox(".unit-price", appendRow);
-        initNumericTextbox(".quantity", appendRow);
-        $("#product-order-row-container").append("<tr id=\"tr-for-append\"></tr>");
-        numberProductRow();
+        addProductRow();
     });
+}
+
+function addProductRow(list) {
+    var productRow = $("#product-order-row-template").html();
+    if (typeof list === "undefined") {
+        list = [{ProductId : 0, UnitPrice : 0}];
+    }
+    list.forEach(function(product) {
+        var inCart = $(".product-order-row .product-id[value=" + product.ProductId + "]");
+        if (product.ProductId != 0) {
+            if (inCart.length > 0) {
+                let inCartProductRow = inCart.closest(".product-order-row");
+                let quantityContainer = inCartProductRow.find(".quantity");
+                quantityContainer.val(parseInt(quantityContainer.val()) + 1);
+                calculateCashForProductRow(inCartProductRow);
+            } else {
+                let appendRow = $("#tr-for-append");
+                appendRow.append(productRow);
+                appendRow.removeAttr("id");
+                appendRow.addClass("product-order-row");
+                appendRow.find(".product-name").attr("data-value", product.ProductId).html(product.ProductName);
+                appendRow.find(".product-id").val(product.ProductId);
+                appendRow.find(".quantity").val("1");
+                appendRow.find(".original-price").val(product.OriginalPrice);
+                appendRow.find(".unit-price").val(product.UnitPrice);
+                appendRow.find(".short-description").html(product.ShortDescription);
+                calculateCashForProductRow(appendRow);
+                initXEditable(appendRow);
+                initRemoveProductRowButton(appendRow);
+                initNumericTextbox(".unit-price", appendRow);
+                initNumericTextbox(".quantity", appendRow);
+                $("#product-order-row-container").append("<tr id=\"tr-for-append\"></tr>");
+            }
+        }
+    });
+    numberProductRow();
+    calculateTotalCash();
 }
 
 function initRemoveProductRowButton(container) {
@@ -308,7 +336,7 @@ function initRemoveProductRowButton(container) {
 
 function numberProductRow() {
     var i = 0;
-    $(".count-no").each(function() {
+    $(".product-order-row .count-no").each(function () {
         i++;
         $(this).html(i);
     });
@@ -411,6 +439,19 @@ function initPublicButtons() {
     $("#btnOpenQuickAddProductPanel").click(function () {
         $("#divQuickAddProductPanel").removeClass("hidden");
         $("#divCustomerInfoPanel").addClass("hidden");
+    });
+    $("#btnAddProductToOrder").click(function() {
+        var list = [];
+        $("#product-select-container button.active").each(function() {
+            list.push({
+                ProductId: $(this).data("product-id"),
+                ProductName: $(this).data("product-name"),
+                UnitPrice: $(this).data("unit-price"),
+                OriginalPrice: $(this).data("original-price"),
+                ShortDescription: $(this).data("short-description")
+            });
+        });
+        addProductRow(list);
     });
 }
 
