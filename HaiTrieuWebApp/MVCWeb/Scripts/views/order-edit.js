@@ -2,7 +2,6 @@
 
 $(document).ready(function () {
     initXEditable();
-    initAddProductRowButton();
     initRemoveProductRowButton();
     numberProductRow();
     initNumericTextbox(".unit-price");
@@ -275,43 +274,32 @@ function initNumericTextbox(selector, container) {
     });
 }
 
-function initAddProductRowButton() {
-    $("#add-product-row").click(function() {
-        addProductRow();
-    });
-}
-
 function addProductRow(list) {
     var productRow = $("#product-order-row-template").html();
-    if (typeof list === "undefined") {
-        list = [{ProductId : 0, UnitPrice : 0}];
-    }
     list.forEach(function(product) {
         var inCart = $(".product-order-row .product-id[value=" + product.ProductId + "]");
-        if (product.ProductId != 0) {
-            if (inCart.length > 0) {
-                let inCartProductRow = inCart.closest(".product-order-row");
-                let quantityContainer = inCartProductRow.find(".quantity");
-                quantityContainer.val(parseInt(quantityContainer.val()) + 1);
-                calculateCashForProductRow(inCartProductRow);
-            } else {
-                let appendRow = $("#tr-for-append");
-                appendRow.append(productRow);
-                appendRow.removeAttr("id");
-                appendRow.addClass("product-order-row");
-                appendRow.find(".product-name").attr("data-value", product.ProductId).html(product.ProductName);
-                appendRow.find(".product-id").val(product.ProductId);
-                appendRow.find(".quantity").val("1");
-                appendRow.find(".original-price").val(product.OriginalPrice);
-                appendRow.find(".unit-price").val(product.UnitPrice);
-                appendRow.find(".short-description").html(product.ShortDescription);
-                calculateCashForProductRow(appendRow);
-                initXEditable(appendRow);
-                initRemoveProductRowButton(appendRow);
-                initNumericTextbox(".unit-price", appendRow);
-                initNumericTextbox(".quantity", appendRow);
-                $("#product-order-row-container").append("<tr id=\"tr-for-append\"></tr>");
-            }
+        if (inCart.length > 0 && product.ProductId != 0) {
+            let inCartProductRow = inCart.closest(".product-order-row");
+            let quantityContainer = inCartProductRow.find(".quantity");
+            quantityContainer.val(parseInt(quantityContainer.val()) + 1);
+            calculateCashForProductRow(inCartProductRow);
+        } else {
+            let appendRow = $("#tr-for-append");
+            appendRow.append(productRow);
+            appendRow.removeAttr("id");
+            appendRow.addClass("product-order-row");
+            appendRow.find(".product-name").attr("data-value", product.ProductId).html(product.ProductName);
+            appendRow.find(".product-id").val(product.ProductId);
+            appendRow.find(".quantity").val("1");
+            appendRow.find(".original-price").val(product.OriginalPrice);
+            appendRow.find(".unit-price").val(product.UnitPrice);
+            appendRow.find(".short-description").html(product.ShortDescription);
+            calculateCashForProductRow(appendRow);
+            initXEditable(appendRow);
+            initRemoveProductRowButton(appendRow);
+            initNumericTextbox(".unit-price", appendRow);
+            initNumericTextbox(".quantity", appendRow);
+            $("#product-order-row-container").append("<tr id=\"tr-for-append\"></tr>");
         }
     });
     numberProductRow();
@@ -450,6 +438,17 @@ function initPublicButtons() {
                 OriginalPrice: $(this).data("original-price"),
                 ShortDescription: $(this).data("short-description")
             });
+        });
+        addProductRow(list);
+    });
+    $("#add-product-row").click(function () {
+        var list = [];
+        list.push({
+            ProductId: 0,
+            ProductName: "",
+            UnitPrice: 0,
+            OriginalPrice: 0,
+            ShortDescription: ""
         });
         addProductRow(list);
     });
