@@ -151,7 +151,11 @@ namespace MVCWeb.Controllers
             _orderService.RestoreOrder(id);
             return Content("");
         }
-
+        public ActionResult PaymentHistory(int id)
+        {
+            var order = _orderService.GetWithAllRelations(id);
+            return View("_PaymentHistory", order);
+        }
         public ActionResult LoadStatistic(string customerIds, string fromDate, string toDate, int statusId = 0)
         {
             var model = new OrderStatisticViewModel();

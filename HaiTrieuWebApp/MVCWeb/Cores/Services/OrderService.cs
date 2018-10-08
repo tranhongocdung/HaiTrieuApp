@@ -82,10 +82,18 @@ namespace MVCWeb.Cores.Services
             return _orderRepository.Table.Include(o => o.OrderDetails).FirstOrDefault(o => o.Id == id);
         }
 
+        public Order GetWithAllRelations(int id)
+        {
+            return
+                _orderRepository.TableNoTracking.Include(o => o.Customer)
+                    .Include(o => o.OrderDetails).Include(o => o.PaymentHistories)
+                    .FirstOrDefault(o => o.Id == id);
+        }
+
         public List<Order> GetList(FilterParams fp, ref int totalCount)
         {
             var list = _orderRepository.TableNoTracking.Include(o => o.Customer).Include(o => o.CreatedBy)
-                .Include(o => o.OrderDetails.Select(p => p.Product));
+                .Include(o => o.OrderDetails.Select(p => p.Product)).Include(o => o.PaymentHistories);
             if (fp.StatusId != 0)
             {
                 list = list.Where(o => o.OrderStatusId == fp.StatusId);

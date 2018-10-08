@@ -153,6 +153,8 @@
     <Compile Include="Cores\AdvancedEntities\Category.cs" />
     <Compile Include="Cores\AdvancedEntities\Customer.cs" />
     <Compile Include="Cores\AdvancedEntities\Order.cs" />
+    <Compile Include="Cores\AdvancedEntities\PaymentHistory.cs" />
+    <Compile Include="Cores\AdvancedEntities\PaymentMethod.cs" />
     <Compile Include="Cores\AdvancedEntities\Product.cs" />
     <Compile Include="Cores\Entities\Config.cs" />
     <Compile Include="Cores\Entities\Category.cs" />
@@ -161,9 +163,11 @@
     <Compile Include="Cores\Entities\Order.cs" />
     <Compile Include="Cores\Entities\OrderDetail.cs" />
     <Compile Include="Cores\Entities\OrderStatus.cs" />
+    <Compile Include="Cores\Entities\PaymentHistory.cs" />
     <Compile Include="Cores\Entities\Product.cs" />
     <Compile Include="Cores\Entities\User.cs" />
     <Compile Include="Cores\EntityConfigurations\ConfigConfiguration.cs" />
+    <Compile Include="Cores\EntityConfigurations\PaymentHistoryConfiguration.cs" />
     <Compile Include="Cores\EntityConfigurations\UserConfiguration.cs" />
     <Compile Include="Cores\EntityConfigurations\OrderStatusConfiguration.cs" />
     <Compile Include="Cores\EntityConfigurations\OrderDetailConfiguration.cs" />
@@ -526,6 +530,7 @@
     <Content Include="Views\Category\_Edit.cshtml" />
     <Content Include="Views\Category\_CategoryListTreeView.cshtml" />
     <Content Include="Views\Product\_ProductListForOrder.cshtml" />
+    <Content Include="Views\Order\_PaymentHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

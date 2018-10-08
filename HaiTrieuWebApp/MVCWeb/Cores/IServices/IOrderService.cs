@@ -12,6 +12,7 @@ namespace MVCWeb.Cores.IServices
         void RestoreOrder(int orderId);
         Order GetWithOrderDetails(int id);
         Order GetWithCustomerAndOrderDetails(int id);
+        Order GetWithAllRelations(int id);
         List<Order> GetList(FilterParams fp, ref int totalCount);
         void UpdateOrderDetail(List<OrderDetail> orderDetails, int orderId);
 

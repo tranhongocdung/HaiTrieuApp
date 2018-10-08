@@ -12,7 +12,7 @@ namespace MVCWeb.Models
 
         public int TotalCash
         {
-            get { return Order.OrderDetails.Sum(o => o.Quantity*o.UnitPrice); }
+            get { return (int)Order.OrderDetails.Sum(o => o.Quantity*o.UnitPrice); }
         }
 
         public int Discount

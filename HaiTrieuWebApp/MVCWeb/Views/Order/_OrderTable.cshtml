@@ -10,6 +10,7 @@
             <th class="text-center" style="width: 100px">Thành tiền</th>
             <th class="text-center" style="width: 100px">Chiết khấu</th>
             <th class="text-center" style="width: 100px">Thực thu</th>
+            <th class="text-center" style="width: 100px">Công nợ</th>
             <th class="text-center" style="width: 100px">Ngày tạo</th>
             <th class="text-center" style="width: 120px">Tạo bởi</th>
             <th style="width: 135px"></th>
@@ -26,9 +27,15 @@
                     <td class="details-control"></td>
                     <td class="text-center">@item.Id</td>
                     <td class="italic">@item.Customer.SuggestName</td>
-                    <td class="text-center text-success"><strong> @item.TotalCash.ToString("#,##0")</strong></td>
+                    <td class="text-center text-success"><strong>@item.TotalCash.ToString("#,##0")</strong></td>
                     <td class="text-center">@item.DiscountString</td>
-                    <td class="text-center text-danger"><strong> @item.RealCash.ToString("#,##0")</strong></td>
+                    <td class="text-center text-danger"><strong>@item.RealCash.ToString("#,##0")</strong></td>
+                    <td class="text-center text-danger">
+                        @if (item.OrderStatusId == OrderStatus.Pending)
+                        {
+                            <button type="button" class="btn btn-block btn-sm btn-danger open-payment-history">@item.RemainingCash.ToString("#,##0")</button>
+                        }
+                    </td>
                     <td class="text-center">@item.CreatedOn.ToString("dd/MM/yyyy")</td>
                     <td class="text-center">
                         @if (item.CreatedBy != null)

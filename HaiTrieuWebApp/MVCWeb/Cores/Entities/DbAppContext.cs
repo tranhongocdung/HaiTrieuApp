@@ -25,6 +25,7 @@ namespace MVCWeb.Cores.Entities
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<PaymentHistory> PaymentHistories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,6 +37,7 @@ namespace MVCWeb.Cores.Entities
             modelBuilder.Configurations.Add(new OrderStatusConfiguration());
             modelBuilder.Configurations.Add(new ProductConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new PaymentHistoryConfiguration());
         }
     }
 }

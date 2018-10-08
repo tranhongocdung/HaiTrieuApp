@@ -20,5 +20,6 @@ namespace MVCWeb.Cores.Entities
         public OrderStatus OrderStatus { get; set; }
         public User CreatedBy { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<PaymentHistory> PaymentHistories { get; set; }
     }
 }

@@ -9,7 +9,7 @@ var tableDefOptions = {
     "bPaginate": false,
     "dom": "<\"search\"f><\"top\"l>rt<\"bottom\"ip><\"clear\">",
     "aoColumnDefs": [
-            { 'bSortable': false, 'aTargets': [0, 1, 2, 3, 4, 5, 6, 7] }],
+            { 'bSortable': false, 'aTargets': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }],
     "fnDrawCallback": function (o) {
         $(".dataTables_scrollBody").scrollTop(0);
     }
@@ -141,6 +141,17 @@ function initOrderActionButtons() {
         },
         placement: "left",
         title: "Khôi phục đơn này?"
+    });
+    $(".open-payment-history").click(function() {
+        $.ajax({
+            method: "GET",
+            url: $("#payment-history-url").val(),
+            data: { id: $(this).closest("tr").data("order-id") },
+            success: function (html) {
+                $("#modal-content").html(html);
+                $("#modal-content").modal();
+            }
+        });
     });
 }
 

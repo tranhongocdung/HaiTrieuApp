@@ -388,7 +388,7 @@ function calculateCashForProductRow(container) {
         quantity.val("1");
     }
     var productCash = container.find(".product-cash");
-    var result = parseInt(unitPrice.val()) * parseInt(quantity.val());
+    var result = parseInt(unitPrice.val()) * parseFloat(quantity.val());
     productCash.data("value", result);
     productCash.val(result.toLocaleString("en"));
 }

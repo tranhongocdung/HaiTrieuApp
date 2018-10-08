@@ -234,7 +234,7 @@
                                         <input type="text" placeholder="Đơn giá" class="form-control unit-price" value="@orderDetail.UnitPrice" />
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="Số lượng" class="form-control quantity" value="@orderDetail.Quantity" />
+                                        <input type="text" placeholder="Số lượng" class="form-control quantity" value="@orderDetail.Quantity.ToString("G29")" />
                                     </td>
                                     <td>
                                         <input type="text" placeholder="Thành tiền" class="form-control product-cash" data-value="" readonly="readonly" />
