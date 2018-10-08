@@ -96,7 +96,7 @@
                     <td>@item.Product.ProductName</td>
                     <td>@item.Note</td>
                     <td class="text-center text-primary">@item.UnitPrice.ToString("#,##0")</td>
-                    <td class="text-center">@item.Quantity</td>
+                    <td class="text-center">@item.Quantity.ToString("G29")</td>
                     <td class="text-center text-success">@((item.UnitPrice*item.Quantity).ToString("#,##0"))</td>
                 </tr>
             }
