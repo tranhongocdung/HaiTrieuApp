@@ -103,7 +103,7 @@
                             @orderDetail.UnitPrice.ToString("#,##0")
                         </td>
                         <td class="text-center">
-                            @orderDetail.Quantity
+                            @orderDetail.Quantity.ToString("G29")
                         </td>
                         <td class="text-center">
                             <strong>@((orderDetail.Quantity*orderDetail.UnitPrice).ToString("#,##0"))</strong>
